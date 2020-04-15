@@ -4,10 +4,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Fibonacho</title>
-        <link rel="shortcut icon" type="image/png" href="../img/favicon.png">
+        <link rel="shortcut icon" type="image/png" href="../../img/favicon.png">
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Baloo+2:400,700&display=swap" rel="stylesheet">        
-        <link href="../css/styles.css" rel="stylesheet">
+        <link href="../../css/styles.css" rel="stylesheet">
     </head>
     <body onload="pageLoaded()">
         <!--===SIDEBAR===-->
@@ -19,366 +19,130 @@
         </label>
         <!--=======Sidebar Menu=======-->
         <div class="sidebar">
-            <header>Grado 3</header>
+            <header>Grado 1</header>
             <ul>
-                <li><a href="../index.html"><i class="fas fa-h-square"></i>Home</a></li>
-                <li><a href="#" class="current-page"><i class="fas fa-user-astronaut"></i>Multiplicación | Rep.</a></li>
-                <li><a href="grado-3-resta.html"><i class="fas fa-user-astronaut"></i>Resta | Repaso</a></li>
-                <li><a href="grado-3-suma.html"><i class="fas fa-user-astronaut"></i>Suma | Propiedades</a></li>
-                <li><a href="../index.html#site-about"><i class="fas fa-question-circle"></i>Sobre mi</a></li>
-                <li><a href="../index.html#site-contact"><i class="fas fa-envelope"></i>Contacto</a></li>
+                <li><a href="../../index.html"><i class="fas fa-home"></i>Home</a></li>
+                <li><a href="../../index.html#site-about"><i class="fas fa-question-circle"></i>Sobre mi</a></li>
+                <li><a href="../../index.html#site-contact"><i class="fas fa-envelope"></i>Contacto</a></li>
             </ul>
         </div>
 
-        <!--=======Section=======-->
-        <main class="pattern">
-            <article class="block">
+        <main class="pattern pattern-overlay">
 
-                <div class="real-block shadow">
+        <!--=======PANORAMA=======-->
+            <div>
+                <div class="card-flex-container">
 
-                    <!--=======Intro=======-->
-                    <section class="chapter">
-                        <!--<p class="date">19/03/20</p>-->
-                        <div class="chapter-level">Nivel 1</div>
-                        <h1 class="chapter-title">Repaso de la multiplicación</h1>
-                        <p class="subtitle">En este capítulo vamos a recordar la multiplicación.</P>
-                        <!--=======Hero Image=======-->
-                        <img src="../img/3-multiplicacion-repaso/seastars.jpg" alt="">
-                        <!--=======Title & Video Button=======-->
-                        <div class="flex-video">
-                            <div class="flex-video-title">
-                                <div><span class="chapter__number">Introducción</span></div>
-                                <h2 class="section-title">¿Qué es la multiplicación y para qué nos sirve?</h2>
+
+                    <!--=======CARD 03: La Multiplicacion (Repaso)=======-->
+                    <div class="card-flex-item card-flex-item-container card-shadow">
+                        <!--********CARD-BODY********-->
+                        <div class="card-body">
+                            <h2 class="card-body-title">La Multiplicación</h2>
+                            <p class="card-body-date">14/04/2020</p>
+                            <p class="card-body-text">
+                                Recuerda que la multiplicación es una operación cercana a la suma, podríamos decir 
+                                que son hermanas, ya que se complementan y comparten muchas de sus propiedades, aunque...
+                            </p>
+                            <a class="card-body-link shadow-btn" href="./grado-3-multiplicacion.html">Continúa</a>
+                        </div>
+                        <!--********CARD-IMAGE********-->
+                        <div class="card-image">
+                            <img class="card-image-file card-image-bg" src="./../../img/grado-3/multiplicacion-repaso/hero.jpg" alt="">
+                            <p class="card-review shadow-btn">Repaso</p>
+                        </div>
+                        <!--********CARD-INFO********-->
+                        <div class="card-info">
+                            <div class="card-info-item card-info-item-left">
+                                <p class="card-info-big">20m</p>
+                                <p class="card-info-small">LEER</p>
                             </div>
-                            <div class="flex-video-btn">
-                                <a class="test-button shadow-btn" href="#" target="_blank">Vídeo 01</a>
+                            <div class="card-info-item card-info-item-middle">
+                                <p class="card-info-big">5</p>
+                                <p class="card-info-small">VÍDEOS</p>
                             </div>
-                        </div> <!--=======/Title & Video Button=======-->
-
-                        <p class="main-text">
-                            Recuerda que la multiplicación es una operación cercana a la suma, podríamos decir 
-                            que son hermanas, ya que se complementan y comparten muchas de sus propiedades, aunque no todas. 
-                        </p>
-                        <p class="main-text">
-                            Cuando estás multiplicando, estas realizando sumas de una forma más rápida y resumida. 
-                        </p>
-                        <p><span class="example">Observa:</span></p> <!--"Observa"-->
-                        <img class="img-diagram img-diagram-full-screen" src="../img/3-multiplicacion-repaso/multiplicacion-1.png" alt="">
-                        <p class="main-text">
-                            Las tablas de multiplicar nos indican los resultados entre la multiplicación de un número de grupos por un un número de elementos. 
-                        </p>
-                        <p class="main-text">
-                            Si observas bien notarás que <strong>al multiplicar con la tabla del 2</strong> lo que estás haciendo es realizando grupos en los cuales vas agrupando 
-                            de a 2 elementos, es por esto que la tabla del 2 la puedes aprender memorizando el conteo de 2 en 2 
-                            (2, 4, 6, 8, 10, 12, 14, 16, 18, 20). 
-                        </p>
-                        <img class="img-diagram img-diagram-full-screen" src="../img/3-multiplicacion-repaso/multiplicacion-2.png" alt="">
-                        <p class="main-text">
-                            <strong>Al multiplicar con la tabla del 3</strong> lo que estás haciendo es realizando grupos en los cuales vas agrupando de a 3 elementos 
-                            por cada grupo, es por esto que la tabla del 3 la puedes aprender memorizando el conteo de 3 en 3 
-                            (3, 6, 9, 12, 15, 18, 21, 24, 27, 30). 
-                        </p>
-                        <img class="img-diagram img-diagram-full-screen" src="../img/3-multiplicacion-repaso/multiplicacion-3.png" alt="">
-                        <p class="main-text">
-                            <strong>Al multiplicar con la tabla del 4</strong> lo que estás haciendo es realizando grupos en los cuales vas agrupando de a 4 elementos por cada grupo, 
-                            es por esto que la tabla del 4 la puedes aprender memorizando el conteo de 4 en 4 (4, 8, 12, 16, 20, 24, 28, 32, 36, 40). 
-                        </p>
-                        <img class="img-diagram img-diagram-full-screen" src="../img/3-multiplicacion-repaso/multiplicacion-4.png" alt="">
-                        <p class="main-text">
-                            <strong>Al multiplicar con la tabla del 5</strong> lo que estás haciendo es realizando grupos en los cuales vas agrupando de a 5 elementos por cada grupo, 
-                            es por esto que la tabla del 5 la puedes aprender memorizando el conteo de 5 en 5 (5, 10, 15, 20, 25, 30, 35, 40, 45, 50). 
-                        </p>
-                        <img class="img-diagram img-diagram-full-screen" src="../img/3-multiplicacion-repaso/multiplicacion-5.png" alt="">
-                        <p class="main-text">
-                            <strong>Al multiplicar con la tabla del 6</strong> lo que estás haciendo es realizando grupos en los cuales vas agrupando de a 6 elementos por cada grupo, 
-                            es por esto que la tabla del 6 la puedes aprender memorizando el conteo de 6 en 6 (6, 12, 18, 24, 30, 36, 42, 48, 54, 60). 
-                        </p>
-                        <img class="img-diagram img-diagram-full-screen" src="../img/3-multiplicacion-repaso/multiplicacion-6.png" alt="">
-                        <p class="main-text">
-                            <strong>Al multiplicar con la tabla del 7</strong> lo que estás haciendo es realizando grupos en los cuales vas agrupando de a 7 elementos por cada grupo, 
-                            es por esto que la tabla del 7 la puedes aprender memorizando el conteo de 7 en 7 (7, 14, 21, 28, 35, 42, 49, 56, 63, 70). 
-                        </p>
-                        <img class="img-diagram img-diagram-full-screen" src="../img/3-multiplicacion-repaso/multiplicacion-7.png" alt="">
-                        <p class="main-text">
-                            <strong>Al multiplicar con la tabla del 8</strong> lo que estás haciendo es realizando grupos en los cuales vas agrupando de a 8 elementos por cada grupo, 
-                            es por esto que la tabla del 8 la puedes aprender memorizando el conteo de 8 en 8 (8, 16, 24, 32, 40, 48, 56, 64, 72, 80). 
-                        </p>
-                        <img class="img-diagram img-diagram-full-screen" src="../img/3-multiplicacion-repaso/multiplicacion-8.png" alt="">
-                        <p class="main-text">
-                            <strong>Al multiplicar con la tabla del 9</strong> lo que estás haciendo es realizando grupos en los cuales vas agrupando de a 9 elementos por cada grupo, 
-                            es por esto que la tabla del 9 la puedes aprender memorizando el conteo de 9 en 9 (9, 18, 27, 36, 45, 54, 63, 72, 81, 90). 
-                        </p>
-
-
-                        <!--=======Goals=======-->
-                        <ul class="goals"><span class="goal-text">¿Qué vamos a aprender?</span>
-                            <li class="goal-list-dot">Multiplicación por una cifra</li>
-                            <li class="goal-list-dot">Multiplicación por dos cifras</li>
-                            <li class="goal-list-dot">Multiplicación por tres cifras</li>
-                        </ul>
-
-                        <p><span class="example">Antes debes recordar:</span></p> <!--"Observa"-->
-                        <p class="main-text">
-                            Los términos de la multiplicación: 
-                        </p>
-                        <img class="img-diagram" src="../img/3-multiplicacion-repaso/multiplicacion-9.png" alt="">
-
-
-                    </section>
-
-                    <!--=======Chapter 01=======-->
-                    <section class="chapter">
-                        <!--=======Title & Video Button=======-->
-                        <div class="flex-video">
-                            <div class="flex-video-title">
-                                <h2 class="section-title"><span class="chapter__number">(1)</span>Multiplicación por una cifra:</h2>
+                            <div class="card-info-item card-info-item-right">
+                                <p class="card-info-big">2</p>
+                                <p class="card-info-small">NIVEL</p>
                             </div>
-                            <div class="flex-video-btn">
-                                <a class="test-button shadow-btn" href="#" target="_blank">Vídeo 02</a>
+                        </div>
+                    </div><!--=======/CARD 03=======-->
+
+                    <!--=======CARD 02: La Resta (Repaso)=======-->
+                    <div class="card-flex-item card-flex-item-container card-shadow">
+                        <!--********CARD-BODY********-->
+                        <div class="card-body">
+                            <h2 class="card-body-title">La Resta</h2>
+                            <p class="card-body-date">14/04/2020</p>
+                            <p class="card-body-text">
+                                La resta es la operación inversa a la suma, es decir, en la resta no agregamos sino que quitamos. 
+                                Es por esto que la resta nos sirve para averiguar cuánto nos queda de algo a lo cual...
+                            </p>
+                            <a class="card-body-link shadow-btn" href="./grado-3-resta.html">Continúa</a>
+                        </div>
+                        <!--********CARD-IMAGE********-->
+                        <div class="card-image">
+                            <img class="card-image-file" src="./../../img/grado-3/resta-repaso/hero.jpg" alt="">
+                            <p class="card-review shadow-btn">Repaso</p>
+                        </div>
+                        <!--********CARD-INFO********-->
+                        <div class="card-info">
+                            <div class="card-info-item card-info-item-left">
+                                <p class="card-info-big">16m</p>
+                                <p class="card-info-small">LEER</p>
                             </div>
-                        </div> <!--=======/Title & Video Button=======-->
-
-                        <p class="main-text">
-                            Cuando multiplicamos por una cifra debemos tener en cuenta <strong>la tabla de multiplicar</strong> que nos pide la operación, 
-                            es decir, sabernos muy bien la tabla para resolver bien la operación, además es importante que anotes en la casilla 
-                            correcta el número que llevas, si tienes esa situación y que lo sumes al número correspondiente. 
-                        </p>
-                        <p><span class="example">Pasos para multiplicar por 1 cifra:</span></p> <!--"Observa"-->
-                        
-                        <!--=======SUBSECTION A=======-->
-                        <p class="main-text"><span class="section-nr">A. </span>
-                            Iniciamos por las unidades. El factor primer factor me multiplica al número que está en la casilla 
-                            de las unidades. Si esta multiplicación me da un número de dos cifras, escribimos en el producto 
-                            solo las unidades y anotamos las decenas en la casilla de las decenas. 
-                        </p>
-                        <p><span class="example">Observa:</span></p> <!--"Observa"-->
-                        <img class="img-diagram img-diagram-full-screen" src="../img/3-multiplicacion-repaso/multiplicacion-10.png" alt="">
-                        <hr> <!--line-->
-                        
-                        <!--=======SUBSECTION B=======-->
-                        <p class="main-text"><span class="section-nr">B. </span>
-                            Continuamos multiplicando ahora por las decenas y al resultado de esta multiplicación le sumamos el número que llevábamos. 
-                        </p>
-                        <p><span class="example">Observa:</span></p> <!--"Observa"-->
-                        <img class="img-diagram img-diagram-full-screen" src="../img/3-multiplicacion-repaso/multiplicacion-11.png" alt="">
-                        <hr> <!--line-->
-
-                        <!--=======SUBSECTION C=======-->
-                        <p class="main-text"><span class="section-nr">C. </span>
-                            Pasamos ahora a multiplicar por las centenas. 
-                        </p>
-                        <p><span class="example">Observa:</span></p> <!--"Observa"-->
-                        <img class="img-diagram img-diagram-full-screen" src="../img/3-multiplicacion-repaso/multiplicacion-12.png" alt="">
-                        
-                    </section>
-
-
-                    <!--=======Chapter 02=======-->
-                    <section class="chapter">
-                        <!--=======Title & Video Button=======-->
-                        <div class="flex-video">
-                            <div class="flex-video-title">
-                                <h2 class="section-title"><span class="chapter__number">(2)</span>Multiplicación por dos cifras:</h2>
+                            <div class="card-info-item card-info-item-middle">
+                                <p class="card-info-big">5</p>
+                                <p class="card-info-small">VÍDEOS</p>
                             </div>
-                            <div class="flex-video-btn">
-                                <a class="test-button shadow-btn" href="#" target="_blank">Vídeo 03</a>
+                            <div class="card-info-item card-info-item-right">
+                                <p class="card-info-big">1</p>
+                                <p class="card-info-small">NIVEL</p>
                             </div>
-                        </div> <!--=======/Title & Video Button=======-->
+                        </div>
+                    </div><!--=======/CARD 02=======-->
 
-                        <p class="main-text">
-                            Para multiplicar por dos cifras debemos tener en cuenta varias cosas, entre ellas, las dos tablas de multiplicar que te 
-                            pide la operación, ubicar el número que llevas, si es la situación, en la casilla correcta, dejar el espacio en las unidades 
-                            cuando vas a multiplicar por la segunda cifra y sumar los totales.
-                        </p>
-                        <p><span class="example">Pasos para multiplicar por dos cifras:</span></p> <!--"Observa"-->
-                        
-                        <!--=======SUBSECTION A=======-->
-                        <p class="main-text"><span class="section-nr">A. </span>
-                            Iniciamos multiplicando por la primera cifra a cada uno de los números que se encuentran en la parte superior, 
-                            iniciando siempre por las unidades, después pasando a las decenas, luego a las centenas, etc. 
-                        </p>
-                        <p><span class="example">Observa:</span></p> <!--"Observa"-->
-                        <img class="img-diagram img-diagram-full-screen" src="../img/3-multiplicacion-repaso/multiplicacion-13.png" alt="">
-                        <hr> <!--line-->
-                        
-                        <!--=======SUBSECTION B=======-->
-                        <p class="main-text"><span class="section-nr">B. </span>
-                            Para pasar a multiplicar por la segunda cifra, primero debemos dibujar un cuadrito vacío debajo de las unidades 
-                            ya que la cifra por la cual vamos a multiplicar pertenece a las decenas, una vez hecho esto, empezamos a multiplicar 
-                            la segunda cifra por las unidades, después las decenas, y luego las centenas. 
-                        </p>
-                        <p><span class="example">Observa:</span></p> <!--"Observa"-->
-                        <img class="img-diagram img-diagram-full-screen" src="../img/3-multiplicacion-repaso/multiplicacion-14.png" alt="">
-                        <hr> <!--line-->
-
-                        <!--=======SUBSECTION C=======-->
-                        <p class="main-text"><span class="section-nr">C. </span>
-                            Ahora que ya tenemos listas las multiplicaciones solo nos falta sumar los dos resultados que obtuvimos. 
-                        </p>
-                        <p><span class="example">Observa:</span></p> <!--"Observa"-->
-                        <img class="img-diagram img-diagram-full-screen" src="../img/3-multiplicacion-repaso/multiplicacion-15.png" alt="">
-                        
-                    </section>
-
-
-                    <!--=======Chapter 03=======-->
-                    <section class="chapter">
-                        <!--=======Title & Video Button=======-->
-                        <div class="flex-video">
-                            <div class="flex-video-title">
-                                <h2 class="section-title"><span class="chapter__number">(3)</span>Multiplicación por tres cifras:</h2>
+                    <!--=======CARD 01: Propiedades Suma=======-->
+                    <div class="card-flex-item card-flex-item-container card-shadow">
+                        <!--********CARD-BODY********-->
+                        <div class="card-body">
+                            <h2 class="card-body-title">Propiedades | Suma</h2>
+                            <p class="card-body-date">14/04/2020</p>
+                            <p class="card-body-text">
+                                Una propiedad es una característica o un rasgo que identifica a algo o a alguien. 
+                                La suma tiene sus propias características que nos permiten hacer diferentes formas de...
+                            </p>
+                            <a class="card-body-link shadow-btn" href="./grado-3-suma.html">Continúa</a>
+                        </div>
+                        <!--********CARD-IMAGE********-->
+                        <div class="card-image">
+                            <img class="card-image-file" src="./../../img/grado-3/suma/hero.jpg" alt="">
+                        </div>
+                        <!--********CARD-INFO********-->
+                        <div class="card-info">
+                            <div class="card-info-item card-info-item-left">
+                                <p class="card-info-big">16m</p>
+                                <p class="card-info-small">LEER</p>
                             </div>
-                            <div class="flex-video-btn">
-                                <a class="test-button shadow-btn" href="https://youtu.be/3iwRSl6QP9E" target="_blank">Vídeo 04</a>
+                            <div class="card-info-item card-info-item-middle">
+                                <p class="card-info-big">6</p>
+                                <p class="card-info-small">VÍDEOS</p>
                             </div>
-                        </div> <!--=======/Title & Video Button=======-->
-
-                        <p class="main-text">
-                            Para multiplicar por tres cifras debemos tener tener en cuenta varias cosas, entre ellas llevar el orden de los números que 
-                            estamos multiplicando iniciando siempre por las unidades, después las decenas y después las centenas. Escribir en la casilla 
-                            correspondiente los números que llevas al multiplicar y al sumar, y dibujar los dos cuadrito vacíos en las unidades primero y 
-                            después en las decenas al multiplicar por la segunda y la tercera cifra.
-                        </p>
-                        <!--=======Quote=======-->
-                        <p class="main-text-quote">“<b>Tip:</b> Escribe los números muy ordenados uno debajo del otro cada vez que cambias de 
-                            cifra al multiplicar para que al final en la suma no tengas ningún problema.
-                        </p><!--=======/Quote=======-->
-                        <p><span class="example">Pasos para multiplicar por tres cifras:</span></p> <!--"Observa"-->
-                        
-                        <!--=======SUBSECTION A=======-->
-                        <p class="main-text"><span class="section-nr">A. </span>
-                            Iniciamos multiplicando por la primera cifra a todos los números de la parte superior, como si estuvieras multiplicando 
-                            por una sola cifra, seguimos el mismo procedimiento. 
-                        </p>
-                        <p><span class="example">Observa:</span></p> <!--"Observa"-->
-                        <img class="img-diagram img-diagram-full-screen" src="../img/3-multiplicacion-repaso/multiplicacion-16.png" alt="">
-                        <hr> <!--line-->
-                        
-                        <!--=======SUBSECTION B=======-->
-                        <p class="main-text"><span class="section-nr">B. </span>
-                            Ahora vamos a pasar a multiplicar por la segunda cifra, recuerda que antes de hacerlo debemos dibujar un cuadrito debajo de las unidades, 
-                            después de hecho esto podemos multiplicar la segunda cifra por los tres números de la parte superior. 
-                        </p>
-                        <p><span class="example">Observa:</span></p> <!--"Observa"-->
-                        <img class="img-diagram img-diagram-full-screen" src="../img/3-multiplicacion-repaso/multiplicacion-17.png" alt="">
-                        <hr> <!--line-->
-
-                        <!--=======SUBSECTION C=======-->
-                        <p class="main-text"><span class="section-nr">C. </span>
-                            Ahora vamos a pasar a multiplicar por la tercera cifra, antes de hacerlo debemos dibujar un cuadrito vacío debajo de las decenas, 
-                            luego de hacer esto, ya podemos iniciar con la multiplicación por la tercera cifra. 
-                        </p>
-                        <p><span class="example">Observa:</span></p> <!--"Observa"-->
-                        <img class="img-diagram img-diagram-full-screen" src="../img/3-multiplicacion-repaso/multiplicacion-18.png" alt="">
-
-                        <!--=======SUBSECTION D=======-->
-                        <p class="main-text"><span class="section-nr">D. </span>
-                            Ya solo nos falta sumar los tres resultados, para finalizar la multiplicación. 
-                        </p>
-                        <p><span class="example">Observa:</span></p> <!--"Observa"-->
-                        <img class="img-diagram img-diagram-full-screen" src="../img/3-multiplicacion-repaso/multiplicacion-19.png" alt="">
-                        <p class="main-text">
-                            Así de fácil es multiplicar por tres cifras, si prestas atención a los detalles será súper sencillo hacerlo, 
-                            una vez has aprendido a multiplicar por una cifra podrás hacerlo por las cifras que quieras.
-                        </p>
-                    </section>
-
-                    </section>
-
-                    <!--=======Video & PDF Button=======-->
-                    <section class="chapter chapter-new">
-                        <div class="flex-video-container">
-                            <p class="text-summary">¡Tiempo para un repaso!</p>
-                            <div class="flex-video flex-video-last">
-                                <!--=======Button: Video=======-->
-                                <div class="flex-video-btn">
-                                    <a class="test-button test-button-inverted shadow-btn" href="#" target="_blank">Vídeo 05</a>
-                                </div>
-                                <!--=======Button: Workshop=======-->
-                                <div class="flex-video-btn">
-                                    <a class="test-button test-button-inverted shadow-btn" href="#" target="_blank">Taller</a>
-                                </div>
-                            </div> <!--=======/Video & PDF Button=======-->
+                            <div class="card-info-item card-info-item-right">
+                                <p class="card-info-big">1</p>
+                                <p class="card-info-small">NIVEL</p>
+                            </div>
                         </div>
-                    </section>
+                    </div><!--=======/CARD 01=======-->
 
+                    
+                </div><!--=======/ CARDS COLLECTION=======-->
 
-                    <!--=======Extra: Resources=======-->
-                    <section class="resources resources-margin">
-                        <h2 class="section-title"><span class="chapter__number"><i class="fas fa-graduation-cap"></i></span>Material extra para trabajar el tema de la multiplicación:</h2>
-                        
-                        <div class="resources resources-extra-material">
-                            <p class="list-dot">En el siguiente enlace podrás encontrar 
-                                <a href="https://www.educapeques.com/recursos-para-el-aula/fichas-de-matematicas-y-numeros/tablas-de-multiplicar-del-1-al-10.html" target="_blank">
-                                    diferentes recursos para aprenderse las tablas desde el 1 hasta el 10</a>
-                                 creadas por <b>educapeques.com</b>.</p>
-                        </div>
-
-                        <div class="resources resources-extra-material">
-                            <p class="list-dot">Dando click en este enlace encontrarás 
-                                <a href="https://www.orientacionandujar.es/2018/04/23/actividades-para-repasar-las-tablas-de-multiplicar/" target="_blank">
-                                    fichas que puedes descargar para repasar las tablas de multiplicar</a>
-                                 creadas por <b>Orientaciónandujar.es</b>.</p>
-                        </div>
-
-                        <div class="resources resources-extra-material">
-                            <p class="list-dot">En este enlace podrás 
-                                <a href="https://drive.google.com/file/d/16E0GkvPkF9A-mvNA5f77IH1GZK9pVUMD/view" target="_blank">
-                                    descargar un cuadernillo de trabajo sobre las tablas de multiplicar</a>
-                                 creado por <b>Edufichas.com</b>.</p>
-                        </div>
-
-                        <div class="resources resources-extra-material">
-                            <p class="list-dot">En este link podrás descargarte 
-                                <a href="https://drive.google.com/file/d/1APvV3Ve9TdsgnRIWxZh9M-_NmBK1m2Zb/view" target="_blank">
-                                    un cuadernillo de trabajo sobre multiplicaciones por 1, 2 y 3 cifras</a>
-                                 creado por <b>Edufichas.com</b>.</p>
-                        </div>
-
-                    </section>
-
-                    <!--=======Extra: Videos=======-->
-                    <section class="resources resources-margin">
-                        <h2 class="section-title"><span class="chapter__number"><i class="fas fa-video"></i></span>Vídeos orientativos:</h2>
-                        
-                        <div class="resources">
-                            <p class="list-dot">En este vídeo <em>“La multiplicación” </em> de <b>Aula 365- Los creadores</b> encontrarás 
-                                <a href="https://www.youtube.com/watch?v=CpBVPMBXvt4" target="_blank">
-                                    una explicación de lo que es la multiplicación</a>.</p>
-                        </div>
-
-                        <div class="resources">
-                            <p class="list-dot">En este vídeo <em>“Aprendiendo a multiplicar. La multiplicación” </em>de Happy learning encontrarás 
-                                <a href="https://www.youtube.com/watch?v=YFtEaVw5k1A" target="_blank">
-                                    una explicación de la relación entre la suma y la multiplicación</a>.</p>
-                        </div>
-
-                        <div class="resources">
-                            <p class="list-dot">En este vídeo <em>“¿Cómo multiplicar por dos cifras?”</em> de <b>Aula 365- Los creadores</b> encontrarás 
-                                <a href="https://www.youtube.com/watch?v=7_OlAWCRs_Y" target="_blank">
-                                    una explicación del procedimiento para multiplicar por 2 cifras</a>.</p>
-                        </div>
-
-                    </section>
-
-                    <!--=======Extra: Credits=======-->
-                    <section class="resources resources-credits">
-                        <h2 class="section-title"><span class="chapter__number"><i class="fas fa-external-link-alt"></i></span>Créditos de las figuras:</h2>
-                        <div class="resources list-dot">
-                            <a href="https://unsplash.com/@iamshahrukh" target="_blank">Photo by Shahrukh</a>
-                        </div>
-
-                        <div class="resources list-dot">
-                            <a href="https://www.freepik.es/fotos-vectores-gratis/comida" target="_blank">Vector de Comida creado por gstudioimagen - www.freepik.es</a>                        </div>
-                        
-                    </section>
-
-                </div>
-            </article>
+            </div>
         </main>
 
         <footer class="site-footer">
-            <img class="footer-logo" src="../img/fibonacho.png" alt="">
+            <img class="footer-logo" src="../../img/fibonacho.png" alt="">
             <div class="footer-title">fibonacho</div>
             <p class="copyright">Copyright 2020</p>
             <p>• • •</p>
@@ -387,11 +151,11 @@
     </body>
 
     <!-- jQuery -->
-    <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>-->
 
     <!-- JS -->
-    <!--<script src="../js/script.js"></script>-->
+    <script src="../js/script.js"></script>
 
 </html>

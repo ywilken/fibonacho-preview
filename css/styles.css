@@ -1319,7 +1319,28 @@ a .site-courses__icon {
     opacity: 1;
 }
 
-.card-new {
+.card-review {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(255, 195, 0 , 0.9);
+    background: rgba(255, 166, 0 , 0.9);
+    background: rgba(97, 106, 107, 0.9);
+    background: rgba(255, 87, 51, 0.9);
+    background: rgba(35, 67, 102, 0.95);
+    color: white;
+    padding: 0.125em 0.5em;
+    font-weight: 900;
+}
+
+/* =========== This automatically changes the color of the REVIEW tag =================*/
+.card-flex-item:first-child .card-review{
+    background: rgba(144, 12, 63, 0.95);
+}
+
+/* =========== This automatically adds the NUEVO tag =================*/
+.card-flex-item:first-child .card-image::after {
+    content: "Nuevo";
     position: absolute;
     top: 10px;
     right: 10px;
@@ -1327,10 +1348,14 @@ a .site-courses__icon {
     background: rgba(97, 106, 107, 0.9);
     background: rgba(255, 87, 51, 0.9);
     background: rgba(255, 166, 0 , 0.9);
-
+    color: #234366;
     color: white;
     padding: 0.125em 0.5em;
     font-weight: 900;
+
+    -webkit-box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.2);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+    -moz-box-shadow:    0px 0px 2px 2px rgba(0,0,0,0.2);  /* Firefox 3.5 - 3.6 */
+    box-shadow:         0px 0px 9px 2px rgba(0,0,0,0.2);  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 }
 
 .card-body {
@@ -1354,6 +1379,8 @@ a .site-courses__icon {
     text-align: center;
     font-style: italic;
     height: 120px;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
 }
 
 .card-body-link {
@@ -1402,7 +1429,12 @@ a .site-courses__icon {
     padding: 1rem 2rem;
 }
 
-.card-info-featured {
+/* .card-info-featured {
+    background: #900C3F;
+} */
+
+/* =========== This automatically selects the first card =================*/
+.card-flex-item:first-child .card-info-item{
     background: #900C3F;
 }
 
