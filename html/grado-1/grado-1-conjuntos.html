@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fibonacho</title>
+        <link rel="shortcut icon" type="image/png" href="../img/favicon.png">
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Baloo+2:400,700&display=swap" rel="stylesheet">        
+        <link href="../../css/styles.css" rel="stylesheet">
+    </head>
+    <body onload="pageLoaded()">
+        <!--===SIDEBAR===-->
+        <!--=======Menu open/close=======-->
+        <input type="checkbox" id="check">
+        <label for="check">
+            <i class="fas fa-bars" id="btn"></i>
+            <i class="fas fa-times" id="cancel"></i>
+        </label>
+        <!--=======Sidebar Menu=======-->
+        <div class="sidebar">
+            <header>Grado 1</header>
+            <ul>
+                <li><a href="../../index.html"><i class="fas fa-home"></i>Home</a></li>
+                <li><a href="./grado-1.html"><i class="fas fa-meteor"></i>Todos los temas</a></li>
+                <li><a href="#" class="current-page"><i class="fas fa-user-astronaut"></i>Conjuntos</a></li>
+                <li><a href="./grado-1-unidades-1.html"><i class="fas fa-chevron-circle-right"></i>Siguiente</a></li>
+                <li><a href="../../index.html#site-contact"><i class="fas fa-envelope"></i>Contacto</a></li>
+            </ul>
+        </div>
+        
+
+        <!--=======Section=======-->
+        <main class="pattern">
+            <article class="block">
+
+                <div class="real-block shadow">
+
+                    <section class="chapter">
+                        <!--<p class="date">19/03/20</p>-->
+                        <div class="chapter-level">Nivel 1</div>
+                        <h1 class="chapter-title">Conjuntos</h1>
+                        <p class="subtitle">En este capítulo aprenderás todo sobre conjuntos.</P>
+                        <img src="./../../img/grado-1/conjuntos/hero.jpg" alt="">
+                        <!--=======Title & Video Button=======-->
+                        <div class="flex-video">
+                            <div class="flex-video-title">
+                                <div><span class="chapter__number">Introducción</span></div>
+                                <h2 class="section-title">¿Qué es un conjunto y para qué nos sirve?</h2>
+                            </div>
+                            <div class="flex-video-btn">
+                                <a class="test-button shadow-btn" href="https://youtu.be/sd8fPrDqtLk" target="_blank">Vídeo 01</a>
+                            </div>
+                        </div> <!--=======/Title & Video Button=======-->
+                        
+                        <p class="main-text">Un conjunto es un <strong>grupo de objetos</strong> (que pueden ser: 
+                            frutas, colores, juguetes, personas, etc.) que comparten una 
+                            característica común.</p>
+                        <p class="main-text"><span class="example">Ejemplo:</span> en la nevera de tu casa hay manzanas, peras, leche, queso, bananos. 
+                            Con estos elementos podemos formar 2 conjuntos:</p>
+                        <img class="img-diagram" src="./../../img/grado-1/conjuntos/conjuntos-1.png" alt="">
+                        <div class="chapter-box chapter-box--learn">
+                            <i class="fas fa-user-astronaut chapter-box__icon chapter-box__icon--learn"></i>
+                            <div class="chapter-box__text chapter-box__text--learn">
+                                <p><span class="strong--box">Regla:</span> Los conjuntos nos sirven para clasificar 
+                                    y ordenar objetos según su característica común.</p>
+                            </div>
+                        </div>
+                        <ul class="goals"><span class="goal-text">Lo que aprenderemos sobre conjuntos:</span>
+                            <li class="goal-list-dot">Representación de conjuntos</li>
+                            <li class="goal-list-dot">Cardinal de un conjunto</li>
+                            <li class="goal-list-dot">Relación de pertenencia y no pertenencia</li>
+                        </ul>
+                        <!--<p class="main-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+                            Autem quisquam natus ex quia omnis quasi enim nam! Excepturi magni, 
+                            animi dolor provident porro cumque. Sit minus doloribus impedit ullam deserunt.</p>
+                        -->
+                        <div class="space"></div>  <!--empty space-->
+                    </section>
+
+                    <!--=======Chapter 01=======-->
+                    <section class="chapter">
+                         <!--=======Title & Video Button=======-->
+                        <div class="flex-video">
+                            <div class="flex-video-title">
+                                <h2 class="section-title"><span class="chapter__number">(1)</span>Representación de conjuntos:</h2>
+                            </div>
+                            <div class="flex-video-btn">
+                                <a class="test-button shadow-btn" href="https://youtu.be/EHkXUP-0heY" target="_blank">Vídeo 02</a>
+                            </div>
+                        </div> <!--=======/Title & Video Button=======-->
+                        
+                        <p class="main-text">Hoy veremos dos formas de representar conjuntos:</p>
+                        <ol class="section-list">
+                            <li><strong>Diagramas de Venn</strong></li>
+                            <li><strong>Usando llaves</strong></li>
+                        </ol>
+                        <p class="main-text"><span class="section-nr">1. </span>Un diagrama de Venn es un dibujo que nos muestra dentro de un 
+                            círculo los objetos o elementos que queremos clasificar. Este círculo siempre lleva una 
+                            letra mayúscula que es su nombre. Así:</p>
+                        <img class="img-diagram" src="./../../img/grado-1/conjuntos/conjuntos-2.png" alt="">
+                        <p class="main-text"><span class="section-nr">2. </span>Si no queremos dibujar el conjunto, 
+                            podemos usar otra manera más sencilla, siguiendo estos pasos, observa:</p>
+                        <p class="main-text">Escribes el nombre del conjunto y escribes al lado 2 puntos:</p>
+                        <p class="main-text text-margin"><strong>R:</strong></p>
+                        <p class="main-text">Luego dibujas una llave:</p>
+                        <p class="main-text text-margin"><strong>R: {</strong></p>
+                        <p class="main-text">Dentro escribes el nombre de los elementos separándolos con una coma (,)</p>
+                        <p class="main-text text-margin"><strong>R: {naranja, manzana, sandía, fresa</strong></p>
+                        <p class="main-text">Finalmente cierras la llave:</p>
+                        <p class="main-text text-margin"><strong>R: {naranja, manzana, sandía, fresa}</strong></p>
+                        <div class="space"></div>  <!--empty space-->
+                    </section>
+
+                    <!--=======Chapter 02=======-->
+                    <section class="chapter">
+                        <!--=======Title & Video Button=======-->
+                        <div class="flex-video">
+                            <div class="flex-video-title">
+                                <h2 class="section-title"><span class="chapter__number">(2)</span>Cardinal de un conjunto:</h2>
+                            </div>
+                            <div class="flex-video-btn">
+                                <a class="test-button shadow-btn" href="https://youtu.be/_2N2DU-ImrI" target="_blank">Vídeo 03</a>
+                            </div>
+                        </div> <!--=======/Title & Video Button=======-->
+
+                        <p class="main-text">El cardinal de un conjunto es el número de elementos u objetos que tenemos 
+                            dentro del conjunto.</p>
+                        <p><span class="example">Observa:</span></p>
+                        <img class="img-diagram" src="./../../img/grado-1/conjuntos/conjuntos-3.png" alt="">
+                        <p>Este conjunto tiene 4 frutas, así que el cardinal del conjunto R es 4. 
+                            Para saber cuál es el cardinal de tu conjunto solo tienes que contar 
+                            cuántos elementos hay dentro.
+                        </p>
+                        <div class="space"></div>  <!--empty space-->
+                    </section>
+
+                    <!--=======Chapter 03=======-->
+                    <section class="chapter">
+                        <!--=======Title & Video Button=======-->
+                        <div class="flex-video">
+                            <div class="flex-video-title">
+                                <h2 class="section-title"><span class="chapter__number">(3)</span>Relación de pertenencia y no pertenencia:</h2>
+                            </div>
+                            <div class="flex-video-btn">
+                                <a class="test-button shadow-btn" href="https://youtu.be/B4KCvaXpMVY" target="_blank">Vídeo 04</a>
+                            </div>
+                        </div> <!--=======/Title & Video Button=======-->
+
+                        <p class="main-text">Para saber si un elemento o un objeto puede 
+                            pertenecer o estar dentro de nuestro conjunto tenemos que compararlos 
+                            y pensar si comparten la característica común.</p>
+                        <p><span class="example">Observa:</span></p>
+                        <img class="img-diagram" src="./../../img/grado-1/conjuntos/conjuntos-4.png" alt="">
+                        <img class="img-diagram" src="./../../img/grado-1/conjuntos/conjuntos-5.png" alt="">
+                        <p>Para decir si un elemento o un objeto pertenece o no pertenece vamos a usar estos símbolos:</p>
+                        <img class="img-diagram" src="./../../img/grado-1/conjuntos/conjuntos-6.png" alt="">
+                        <p><span class="example">Ejemplo:</span></p>
+                        <img class="img-diagram img-diagram-full-screen" src="./../../img/grado-1/conjuntos/conjuntos-7.png" alt="">
+                        <div class="space"></div>  <!--empty space-->
+                    </section>
+
+                    <!--=======Video & PDF Button=======-->
+                    <section class="chapter chapter-new">
+                        <div class="flex-video-container">
+                            <p class="text-summary">¡Tiempo para un repaso!</p>
+                            <div class="flex-video flex-video-last">
+                                <!--=======Button: Video=======-->
+                                <div class="flex-video-btn">
+                                    <a class="test-button test-button-inverted shadow-btn" href="https://youtu.be/wyJYg1CGLEM" target="_blank">Vídeo 05</a>
+                                </div>
+                                <!--=======Button: Workshop=======-->
+                                <div class="flex-video-btn">
+                                    <a class="test-button test-button-inverted shadow-btn" href="https://drive.google.com/file/d/1u2UFc2SdBp2FU5RY3GfykPPzNkTnYmh-/view?usp=sharing" target="_blank">Taller</a>
+                                </div>
+                            </div> <!--=======/Video & PDF Button=======-->
+                        </div>
+                    </section>
+
+                    <!--=======Resources=======-->
+                    <section class="resources resources-margin">
+                        <h2 class="section-title"><span class="chapter__number"><i class="fas fa-graduation-cap"></i></span>Material extra para trabajar el tema conjuntos:</h2>
+                        <div class="resources">
+                            <a href="https://fichasparaimprimir.com/wp-content/uploads/2017/07/Ficha-de-Aprendiendo-Conjuntos-para-Primero-de-Primaria.pdf" target="_blank">Ficha sobre conjuntos</a>
+                        </div>
+                    </section>
+
+                    <section class="resources">
+                        <h2 class="section-title"><span class="chapter__number"><i class="fas fa-external-link-alt"></i></span>Créditos de las figuras:</h2>
+                        <div class="resources">
+                            <a href="https://unsplash.com/@miinyuii" target="_blank">Photo by Duy Pham</a>
+                        </div>
+                        <div class="resources">
+                            <a href="https://www.freepik.es/fotos-vectores-gratis/comida" target="_blank">Vector de Comida creado por photoroyalty - www.freepik.es</a>
+                        </div>
+                        <div class="resources">
+                            <a href="https://www.freepik.es/fotos-vectores-gratis/invierno" target="_blank">Vector de Invierno creado por macrovector_official - www.freepik.es</a>                        </p>
+                        </div>
+                        <div class="space"></div>  <!--empty space-->
+                    </section>
+
+                </div>
+            </article>
+
+        </main>
+
+        <footer class="site-footer">
+            <img class="footer-logo" src="../img/fibonacho.png" alt="">
+            <div class="footer-title">fibonacho</div>
+            <p class="copyright">Copyright 2020</p>
+            <p>• • •</p>
+        </footer>
+        
+    </body>
+
+    <!-- jQuery -->
+    <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>-->
+
+    <!-- JS -->
+    <!--<script src="../js/script.js"></script>-->
+
+</html>

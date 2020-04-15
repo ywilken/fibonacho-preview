@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fibonacho</title>
+        <link rel="shortcut icon" type="image/png" href="../img/favicon.png">
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Baloo+2:400,700&display=swap" rel="stylesheet">        
+        <link href="../css/styles.css" rel="stylesheet">
+    </head>
+    <body onload="pageLoaded()">
+        <!--===SIDEBAR===-->
+        <!--=======Menu open/close=======-->
+        <input type="checkbox" id="check">
+        <label for="check">
+            <i class="fas fa-bars" id="btn"></i>
+            <i class="fas fa-times" id="cancel"></i>
+        </label>
+        <!--=======Sidebar Menu=======-->
+        <div class="sidebar">
+            <header>Grado 3</header>
+            <ul>
+                <li><a href="../index.html"><i class="fas fa-h-square"></i>Home</a></li>
+                <li><a href="grado-3.html"><i class="fas fa-user-astronaut"></i>Multiplicación | Rep.</a></li>
+                <li><a href="#" class="current-page"><i class="fas fa-user-astronaut"></i>Resta | Repaso</a></li>
+                <li><a href="grado-3-suma.html"><i class="fas fa-user-astronaut"></i>Suma | Propiedades</a></li>
+                <li><a href="../index.html#site-about"><i class="fas fa-question-circle"></i>Sobre mi</a></li>
+                <li><a href="../index.html#site-contact"><i class="fas fa-envelope"></i>Contacto</a></li>
+            </ul>
+        </div>
+
+        <!--=======Section=======-->
+        <main class="pattern">
+            <article class="block">
+
+                <div class="real-block shadow">
+
+                    <!--=======Intro=======-->
+                    <section class="chapter">
+                        <!--<p class="date">19/03/20</p>-->
+                        <div class="chapter-level">Nivel 1</div>
+                        <h1 class="chapter-title">Repaso de la resta</h1>
+                        <p class="subtitle">En este capítulo vamos a recordar la resta.</P>
+                        <!--=======Hero Image=======-->
+                        <img src="../img/3-resta-repaso/cat.jpg" alt="">
+                        <!--=======Title & Video Button=======-->
+                        <div class="flex-video">
+                            <div class="flex-video-title">
+                                <div><span class="chapter__number">Introducción</span></div>
+                                <h2 class="section-title">¿Qué es una resta y para qué nos sirve?</h2>
+                            </div>
+                            <div class="flex-video-btn">
+                                <a class="test-button shadow-btn" href="https://youtu.be/3xlSgWM5drs" target="_blank">Vídeo 01</a>
+                            </div>
+                        </div> <!--=======/Title & Video Button=======-->
+
+                        <p class="main-text">
+                            La resta es la operación inversa a la suma, es decir, en la resta no agregamos sino que quitamos. 
+                            Es por esto que la resta nos sirve para averiguar cuánto nos queda de algo a lo cual le quitamos una parte, 
+                            para comparar la diferencia entre 2 o más números. 
+                        </p>
+                        <p><span class="example">Debes recordar antes:</span></p> <!--"Observa"-->
+                        <p class="main-text">
+                            Vamos a recordar primero los términos de la resta:
+                        </p>
+                        <img class="img-diagram" src="../img/3-resta-repaso/resta-1.png" alt="">
+                        <p class="main-text">
+                            El <strong>Minuendo</strong> es la cantidad total a quién le voy a quitar una parte. 
+                            Esta cantidad <strong>siempre es mayor que el sustraendo</strong>.
+                        </p>
+                        <p class="main-text">
+                            El <strong>Sustraendo</strong> es la cantidad que voy a quitar. Esta cantidad <strong>siempre es menor que el minuendo</strong>.
+                        </p>
+                        <p class="main-text">
+                            La <strong>Diferencia</strong> es lo que me queda después de realizar la resta. Esta cantidad <strong>siempre es menor que el minuendo y el sustraendo</strong>.
+                        </p>
+                        <!--=======Goals=======-->
+                        <ul class="goals"><span class="goal-text">¿Qué vamos a aprender?</span>
+                            <li class="goal-list-dot">Restas desagrupando (Repaso)</li>
+                            <li class="goal-list-dot">¿Qué hacer cuando el “vecino” no me puede prestar?</li>
+                            <li class="goal-list-dot">La prueba de la resta</li>
+                        </ul>
+
+                    </section>
+
+                    <!--=======Chapter 01=======-->
+                    <section class="chapter">
+                        <!--=======Title & Video Button=======-->
+                        <div class="flex-video">
+                            <div class="flex-video-title">
+                                <h2 class="section-title"><span class="chapter__number">(1)</span>Restas desagrupando:</h2>
+                            </div>
+                            <div class="flex-video-btn">
+                                <a class="test-button shadow-btn" href="https://youtu.be/WBt_K6jMQME" target="_blank">Vídeo 02</a>
+                            </div>
+                        </div> <!--=======/Title & Video Button=======-->
+
+                        <p class="main-text">Recuerda que hay ocasiones en las cuales debemos <strong>“prestar con el vecino”</strong>, 
+                            es decir prestar una decena o una centena (o incluso algo más) con el número que tenemos al lado izquierdo con el fin de poder 
+                            restar una cifra menor con una cifra mayor. A esta acción se le llama <strong>“desagrupar”</strong>. </p>
+                        <p><span class="example">Observa:</span></p> <!--"Observa"-->
+                        <img class="img-diagram" src="../img/3-resta-repaso/resta-2.png" alt="">
+                        <p class="main-text">Observa que el cero de las decenas es menor que el 2, y a cero no le puedo quitar 
+                            una cantidad mayor, así que el 2 le prestó una centena al cero, como el 2 prestó este se resta así 
+                            mismo un 1 (2 - 1 = 1) y queda en 1, mientras que el cero que recibió una centena se suma a sí mismo 
+                            un 10 en las decenas (0 + 10 = 10) quedando en 10. 
+                        </p>
+                        <!--=======Quote=======-->
+                        <p class="main-text-quote">
+                            Recuerda que 10 decenas son 100.
+                        </p> <!--=======/Quote=======-->
+                    </section>
+
+
+                    <!--=======Chapter 02=======-->
+                    <section class="chapter">
+                        <!--=======Title & Video Button=======-->
+                        <div class="flex-video">
+                            <div class="flex-video-title">
+                                <h2 class="section-title"><span class="chapter__number">(2)</span>¿Qué hacer cuando el “vecino” no me puede prestar?</h2>
+                            </div>
+                            <div class="flex-video-btn">
+                                <a class="test-button shadow-btn" href="https://youtu.be/7Bu7hpVnB0c" target="_blank">Vídeo 03</a>
+                            </div>
+                        </div> <!--=======/Title & Video Button=======-->
+
+                        <p class="main-text">Cuando tenemos dos números seguidos que son menores a las cantidades que necesito restar 
+                            debemos esperar a que el vecino preste con su vecino más cercano.</p>
+                        <p><span class="example">Observa:</span></p> <!--"Observa"-->
+                        <img class="img-diagram img-diagram-full-screen" src="../img/3-resta-repaso/resta-3.png" alt="">
+                        <hr> <!--line-->
+                        <img class="img-diagram img-diagram-full-screen" src="../img/3-resta-repaso/resta-4.png" alt="">
+                        <hr> <!--line-->
+                        <img class="img-diagram img-diagram-full-screen" src="../img/3-resta-repaso/resta-5.png" alt="">
+                        <hr> <!--line-->
+                        <img class="img-diagram img-diagram-full-screen" src="../img/3-resta-repaso/resta-6.png" alt="">
+                        <!--=======Quote=======-->
+                        <p class="main-text-quote">
+                            <b>Tip: </b>Cuando tenemos dos ceros juntos que necesitan prestar, siempre el segundo cero queda en 9 al prestarle al primer cero, y el primer cero queda siempre en 10.
+                        </p> <!--=======/Quote=======-->
+                    </section>
+
+
+                    <!--=======Chapter 03=======-->
+                    <section class="chapter">
+                        <!--=======Title & Video Button=======-->
+                        <div class="flex-video">
+                            <div class="flex-video-title">
+                                <h2 class="section-title"><span class="chapter__number">(3)</span>La prueba de la resta:</h2>
+                            </div>
+                            <div class="flex-video-btn">
+                                <a class="test-button shadow-btn" href="https://youtu.be/3iwRSl6QP9E" target="_blank">Vídeo 04</a>
+                            </div>
+                        </div> <!--=======/Title & Video Button=======-->
+
+                        <p class="main-text">
+                            Para saber si hemos hecho bien el procedimiento de una resta podemos comprobarlo con la prueba. 
+                            Este es un procedimiento muy sencillo que podemos usar siempre.
+                        </p>
+                        <p><span class="example">Observa:</span></p> <!--"Observa"-->
+                        <!--=======LearnBox=======-->
+                        <div class="chapter-box chapter-box--learn">
+                            <i class="fas fa-user-astronaut chapter-box__icon chapter-box__icon--learn"></i>
+                            <div class="chapter-box__text chapter-box__text--learn">
+                                <p><span class="strong--box">Regla:</span></p>
+                                <p>Para la prueba de la resta debemos usar esta fórmula: <u>“Sustraendo + Diferencia = Minuendo”</u>.</p>
+                            </div>
+                        </div> <!--=======/LearnBox=======-->
+                        <p><span class="example">Observa la siguiente situación problema de sustracción:</span></p> <!--"Observa"-->
+                        <img class="img-diagram img-diagram-full-screen" src="../img/3-resta-repaso/resta-7.png" alt="">
+                        <p class="main-text">
+                            Aquí debemos hacer una resta.
+                        </p>
+                        <!--=======LearnBox=======-->
+                        <div class="chapter-box chapter-box--learn">
+                            <i class="fas fa-user-astronaut chapter-box__icon chapter-box__icon--learn"></i>
+                            <div class="chapter-box__text chapter-box__text--learn">
+                                <p><span class="strong--box">Regla:</span></p>
+                                <p>Cuando vas a hacer una resta recuerda ubicar la cantidad mayor encima de la cantidad menor.</p>
+                            </div>
+                        </div> <!--=======/LearnBox=======-->
+                        <p><span class="example">Así:</span></p> <!--"Observa"-->
+                        <img class="img-diagram img-diagram-full-screen" src="../img/3-resta-repaso/resta-8.png" alt="">
+                        <p class="main-text">
+                            Ahora vamos a comprobarlo usando la prueba de la resta:
+                        </p>
+                        <img class="img-diagram img-diagram-full-screen" src="../img/3-resta-repaso/resta-9.png" alt="">
+
+                    </section>
+
+                    <!--=======Video & PDF Button=======-->
+                    <section class="chapter chapter-new">
+                        <div class="flex-video-container">
+                            <p class="text-summary">¡Tiempo para un repaso!</p>
+                            <div class="flex-video flex-video-last">
+                                <!--=======Button: Video=======-->
+                                <div class="flex-video-btn">
+                                    <a class="test-button test-button-inverted shadow-btn" href="https://youtu.be/HySvWtL4a9k" target="_blank">Vídeo 05</a>
+                                </div>
+                                <!--=======Button: Workshop=======-->
+                                <div class="flex-video-btn">
+                                    <a class="test-button test-button-inverted shadow-btn" href="https://drive.google.com/file/d/1qOaQfxZJguOYNKgE-4GBjR6TI2kYRcSe/view?usp=sharing" target="_blank">Taller</a>
+                                </div>
+                            </div> <!--=======/Video & PDF Button=======-->
+                        </div>
+                    </section>
+
+
+                    <!--=======Extra: Resources=======-->
+                    <section class="resources resources-margin">
+                        <h2 class="section-title"><span class="chapter__number"><i class="fas fa-graduation-cap"></i></span>Material extra para trabajar la resta:</h2>
+                        
+                        <div class="resources resources-extra-material">
+                            <p class="list-dot">En este enlace podrás encontrar 
+                                <a href="https://fichasparaimprimir.com/wp-content/uploads/2017/11/Ficha-Ejercicios-de-Restas-para-Tercero-de-Primaria.pdf" target="_blank">
+                                    una ficha de trabajo sobre la prueba de la resta y situaciones problema de la resta</a>
+                                 creada por <b>Fichasparaimprimir.com</b>.</p>
+                        </div>
+
+                    </section>
+
+                    <!--=======Extra: Videos=======-->
+                    <section class="resources resources-margin">
+                        <h2 class="section-title"><span class="chapter__number"><i class="fas fa-video"></i></span>Vídeo orientativo::</h2>
+                        
+                        <div class="resources">
+                            <p class="list-dot">En este enlace encontrarás 
+                                <a href="https://www.youtube.com/watch?v=OAr0Q1R1bCA&t=36s" target="_blank">
+                                    un vídeo sobre la prueba de la resta</a>
+                                 creado por <b>matecitos.com</b>.</p>
+                        </div>
+
+                    </section>
+
+                    <!--=======Extra: Credits=======-->
+                    <section class="resources resources-credits">
+                        <h2 class="section-title"><span class="chapter__number"><i class="fas fa-external-link-alt"></i></span>Créditos de las figuras:</h2>
+                        <div class="resources list-dot">
+                            <a href="https://unsplash.com/@janayara" target="_blank">Photo by Janayara Machado</a>
+                        </div>
+
+                        <div class="resources list-dot">
+                            <a href="https://www.freepik.es/fotos-vectores-gratis/plantilla" target="_blank">Vector de Plantilla creado por colorfuelstudio - www.freepik.es</a>
+                        </div>
+                        
+                    </section>
+
+                </div>
+            </article>
+        </main>
+
+        <footer class="site-footer">
+            <img class="footer-logo" src="../img/fibonacho.png" alt="">
+            <div class="footer-title">fibonacho</div>
+            <p class="copyright">Copyright 2020</p>
+            <p>• • •</p>
+        </footer>
+        
+    </body>
+
+    <!-- jQuery -->
+    <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>-->
+
+    <!-- JS -->
+    <!--<script src="../js/script.js"></script>-->
+
+</html>

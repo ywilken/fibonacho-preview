@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fibonacho</title>
+        <link rel="shortcut icon" type="image/png" href="../img/favicon.png">
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Baloo+2:400,700&display=swap" rel="stylesheet">        
+        <link href="../css/styles.css" rel="stylesheet">
+    </head>
+    <body onload="pageLoaded()">
+        <!--===SIDEBAR===-->
+        <!--=======Menu open/close=======-->
+        <input type="checkbox" id="check">
+        <label for="check">
+            <i class="fas fa-bars" id="btn"></i>
+            <i class="fas fa-times" id="cancel"></i>
+        </label>
+        <!--=======Sidebar Menu=======-->
+        <div class="sidebar">
+            <header>Grado 3</header>
+            <ul>
+                <li><a href="../index.html"><i class="fas fa-h-square"></i>Home</a></li>
+                <li><a href="grado-3.html"><i class="fas fa-user-astronaut"></i>Multiplicación | Rep.</a></li>
+                <li><a href="grado-3-resta.html"><i class="fas fa-user-astronaut"></i>Resta | Repaso</a></li>
+                <li><a href="#" class="current-page"><i class="fas fa-user-astronaut"></i>Suma | Propiedades</a></li>
+                <li><a href="../index.html#site-about"><i class="fas fa-question-circle"></i>Sobre mi</a></li>
+                <li><a href="../index.html#site-contact"><i class="fas fa-envelope"></i>Contacto</a></li>
+            </ul>
+        </div>
+
+        <!--=======Section=======-->
+        <main class="pattern">
+            <article class="block">
+
+                <div class="real-block shadow">
+
+                    <!--=======Intro=======-->
+                    <section class="chapter">
+                        <!--<p class="date">19/03/20</p>-->
+                        <div class="chapter-level">Nivel 1</div>
+                        <h1 class="chapter-title">Las propiedades de la suma</h1>
+                        <p class="subtitle">En este capítulo aprenderás todo sobre la suma.</P>
+                        <!--=======Hero Image=======-->
+                        <img src="../img/suma/dog-glasses.jpg" alt="">
+                        <!--=======Title & Video Button=======-->
+                        <div class="flex-video">
+                            <div class="flex-video-title">
+                                <div><span class="chapter__number">Introducción</span></div>
+                                <h2 class="section-title">¿Qué son las propiedades de la suma y para qué nos sirven?</h2>
+                            </div>
+                            <div class="flex-video-btn">
+                                <a class="test-button shadow-btn" href="https://youtu.be/swn21COtE78" target="_blank">Vídeo 01</a>
+                            </div>
+                        </div> <!--=======/Title & Video Button=======-->
+
+                        <p class="main-text">
+                        Una propiedad es una característica o un rasgo que identifica a algo o a alguien. 
+                        La suma tiene sus propias características que nos permiten hacer diferentes formas de 
+                        cálculo sin cambiar el resultado. 
+                        </p>
+                        <p class="main-text">
+                        Lo que debes recordar primero:
+                        </p>
+                        <p><span class="example">Los términos de la suma: </span></p> <!--"Observa"-->
+                        <img class="img-diagram" src="../img/suma/suma-1.png" alt="">
+                        <!--=======Goals=======-->
+                        <ul class="goals"><span class="goal-text">Lo que aprenderemos sobre las propiedades de la suma:</span>
+                            <li class="goal-list-dot">La propiedad conmutativa de la suma</li>
+                            <li class="goal-list-dot">La propiedad asociativa de la suma</li>
+                            <li class="goal-list-dot">La propiedad elemento neutro de la suma</li>
+                            <li class="goal-list-dot">La propiedad distributiva de la suma (2 formas de resolverlo)</li>
+                        </ul>
+
+                        <div class="space"></div>  <!--empty space-->
+                    </section>
+
+                    <!--=======Chapter 01=======-->
+                    <section class="chapter">
+                        <!--=======Title & Video Button=======-->
+                        <div class="flex-video">
+                            <div class="flex-video-title">
+                                <h2 class="section-title"><span class="chapter__number">(1)</span>Propiedad conmutativa:</h2>
+                            </div>
+                            <div class="flex-video-btn">
+                                <a class="test-button shadow-btn" href="https://youtu.be/9v7RBSnpA6U" target="_blank">Vídeo 02</a>
+                            </div>
+                        </div> <!--=======/Title & Video Button=======-->
+
+                        <!--=======LearnBox=======-->
+                        <div class="chapter-box chapter-box--learn">
+                            <i class="fas fa-user-astronaut chapter-box__icon chapter-box__icon--learn"></i>
+                            <div class="chapter-box__text chapter-box__text--learn">
+                                <p><span class="strong--box">Definición:</span></p>
+                                <p>El orden de los sumandos no cambia el total.</p>
+                            </div>
+                        </div>
+
+                        <p class="main-text">Esto quiere decir que, sin importar el orden en que ubiques 
+                            los números que quieres sumar el resultado será el mismo.</p>
+                        <p><span class="example">Ejemplo:</span></p> <!--"Observa"-->
+                        <img class="img-diagram" src="../img/suma/suma-2.png" alt="">
+
+                        <div class="space"></div>  <!--empty space-->
+                    </section>
+
+
+                    <!--=======Chapter 02=======-->
+                    <section class="chapter">
+                        <!--=======Title & Video Button=======-->
+                        <div class="flex-video">
+                            <div class="flex-video-title">
+                                <h2 class="section-title"><span class="chapter__number">(2)</span>Propiedad asociativa:</h2>
+                            </div>
+                            <div class="flex-video-btn">
+                                <a class="test-button shadow-btn" href="https://youtu.be/asJBI751Vqw" target="_blank">Vídeo 03</a>
+                            </div>
+                        </div> <!--=======/Title & Video Button=======-->
+
+                        <!--=======LearnBox=======-->
+                        <div class="chapter-box chapter-box--learn">
+                            <i class="fas fa-user-astronaut chapter-box__icon chapter-box__icon--learn"></i>
+                            <div class="chapter-box__text chapter-box__text--learn">
+                                <p><span class="strong--box">Definición:</span></p>
+                                <p>El orden en que se asocian los sumandos no altera el total.</p>
+                            </div>
+                        </div>
+
+                        <p class="main-text">Recuerda que asociar es agrupar, por lo tanto con esta 
+                            propiedad de la suma podrás agrupar los números a sumar en el orden que 
+                            desees y el resultado siempre será el mismo.</p>
+                        <p><span class="example">Ejemplo:</span></p> <!--"Observa"-->
+                        <img class="img-diagram" src="../img/suma/suma-3.png" alt="">
+                        <!--=======Quote=======-->
+                        <p class="main-text-quote">“<b>No olvides:</b> Para aplicar la propiedad asociativa debes
+                             agrupar los sumandos de una forma diferente a la ya dada.”</p>
+
+                        <div class="space"></div>  <!--empty space-->
+                    </section>
+
+
+                    <!--=======Chapter 03=======-->
+                    <section class="chapter">
+                        <!--=======Title & Video Button=======-->
+                        <div class="flex-video">
+                            <div class="flex-video-title">
+                                <h2 class="section-title"><span class="chapter__number">(3)</span>Propiedad del elemento neutro:</h2>
+                            </div>
+                            <div class="flex-video-btn">
+                                <a class="test-button shadow-btn" href="https://youtu.be/MjmlVF20FV4" target="_blank">Vídeo 04</a>
+                            </div>
+                        </div> <!--=======/Title & Video Button=======-->
+
+                        <!--=======LearnBox=======-->
+                        <div class="chapter-box chapter-box--learn">
+                            <i class="fas fa-user-astronaut chapter-box__icon chapter-box__icon--learn"></i>
+                            <div class="chapter-box__text chapter-box__text--learn">
+                                <p><span class="strong--box">Definición:</span></p>
+                                <p>Al sumar un número con cero, el total será el mismo número.</p>
+                            </div>
+                        </div>
+
+                        <p class="main-text">Esto quiere decir, que cualquier número que 
+                            sumes con cero te dará el mismo número.</p>
+                        <p><span class="example">Ejemplo:</span></p> <!--"Observa"-->
+                        <img class="img-diagram" src="../img/suma/suma-4.png" alt="">
+
+                        <div class="space"></div>  <!--empty space-->
+                    </section>
+
+
+                    <!--=======Chapter 04=======-->
+                    <section class="chapter">
+                        <!--=======Title & Video Button=======-->
+                        <div class="flex-video">
+                            <div class="flex-video-title">
+                                <h2 class="section-title"><span class="chapter__number">(4)</span>Propiedad distributiva:</h2>
+                            </div>
+                            <div class="flex-video-btn">
+                                <a class="test-button shadow-btn" href="https://youtu.be/jpIJpdq1Zts" target="_blank">Vídeo 05</a>
+                            </div>
+                        </div> <!--=======/Title & Video Button=======-->
+
+                        <!--=======LearnBox=======-->
+                        <div class="chapter-box chapter-box--learn">
+                            <i class="fas fa-user-astronaut chapter-box__icon chapter-box__icon--learn"></i>
+                            <div class="chapter-box__text chapter-box__text--learn">
+                                <p><span class="strong--box">Definición:</span></p>
+                                <p>Al sumar 2 números y multiplicar ese resultado por otro número el resultado
+                                     será el mismo si multiplicas el número por cada sumando y sumas los 
+                                     resultados.</p>
+                            </div>
+                        </div>
+
+                        <p class="main-text">Esto quiere decir que, cuando tienes una operación en la que un 
+                            número está multiplicando a 2 sumandos dentro de un paréntesis tienes 2 opciones 
+                            para resolverlo.</p>
+                        <p><span class="example">Observa:</span></p> <!--"Observa"-->
+                        <img class="img-diagram" src="../img/suma/suma-5.png" alt="">
+                        <img class="img-diagram" src="../img/suma/suma-5-1.png" alt="">
+                        <hr>
+                        <img class="img-diagram" src="../img/suma/suma-5-2.png" alt="">
+                        <img class="img-diagram" src="../img/suma/suma-5-3.png" alt="">
+
+                        <div class="space"></div>  <!--empty space-->
+                    </section>
+
+                    <!--=======Video & PDF Button=======-->
+                    <section class="chapter chapter-new">
+                        <div class="flex-video-container">
+                            <p class="text-summary">¡Tiempo para un repaso!</p>
+                            <div class="flex-video flex-video-last">
+                                <!--=======Button: Video=======-->
+                                <div class="flex-video-btn">
+                                    <a class="test-button test-button-inverted shadow-btn" href="https://youtu.be/BY7G2OOJFc8" target="_blank">Vídeo 06</a>
+                                </div>
+                                <!--=======Button: Workshop=======-->
+                                <div class="flex-video-btn">
+                                    <a class="test-button test-button-inverted shadow-btn" href="https://drive.google.com/file/d/1HhiZQP95bd6ON0jGTpSd4Yafbr_vWdCA/view?usp=sharing" target="_blank">Taller</a>
+                                </div>
+                            </div> <!--=======/Video & PDF Button=======-->
+                        </div>
+                    </section>
+
+
+                    <!--=======Extra: Resources=======-->
+                    <section class="resources resources-margin">
+                        <h2 class="section-title"><span class="chapter__number"><i class="fas fa-graduation-cap"></i></span>Material extra para trabajar las propiedades de la suma:</h2>
+                        <p>Fichas para trabajar la propiedad asociativa, conmutativa y elemento neutro de la suma:</p>
+                        <div class="resources list-dot">
+                            <a href="https://fichasparaimprimir.com/wp-content/uploads/2017/10/Ficha-de-Propiedades-de-la-Suma-para-Segundo-de-Primaria.pdf" target="_blank">Ficha 01</a>
+                        </div>
+                        <div class="resources list-dot">
+                            <a href="https://www.edufichas.com/matematicas/aprender-las-horas/" target="_blank">Ficha 02</a>
+                        </div>
+                    </section>
+
+                    <!--=======Extra: Videos=======-->
+                    <section class="resources resources-margin">
+                        <h2 class="section-title"><span class="chapter__number"><i class="fas fa-video"></i></span>Enlaces de vídeos sobre el reloj:</h2>
+                        <p>Vídeo de La Eduteca en el cual encontrarás una explicación sencilla de la propiedad conmutativa y asociativa de la suma:</p>
+                        <div class="resources list-dot">
+                            <a href="https://www.youtube.com/watch?v=wZn5JZatTBY&list=RDwZn5JZatTBY&start_radio=1" target="_blank">Vídeo 01</a>
+                        </div>
+                    </section>
+
+                    <!--=======Extra: Credits=======-->
+                    <section class="resources">
+                        <h2 class="section-title"><span class="chapter__number"><i class="fas fa-external-link-alt"></i></span>Créditos de las figuras:</h2>
+                        <div class="resources list-dot">
+                            <a href="https://unsplash.com/@jamie452" target="_blank">Photo by Jamie Street</a>
+                        </div>
+                        <div class="space"></div>  <!--empty space-->
+                    </section>
+
+                </div>
+            </article>
+        </main>
+
+        <footer class="site-footer">
+            <img class="footer-logo" src="../img/fibonacho.png" alt="">
+            <div class="footer-title">fibonacho</div>
+            <p class="copyright">Copyright 2020</p>
+            <p>• • •</p>
+        </footer>
+        
+    </body>
+
+    <!-- jQuery -->
+    <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>-->
+
+    <!-- JS -->
+    <!--<script src="../js/script.js"></script>-->
+
+</html>
