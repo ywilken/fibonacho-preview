@@ -999,15 +999,15 @@ a .site-courses__icon {
         min-height: 100vh;
         justify-content: space-between;
         font-weight: 400;
-        font-size: 2rem;
+        font-size: 1.875rem;
     }
 
     .site-about__text {
-        width: 50%;
+        width: 55%;
     }
 
     .site-about__image {
-        width: 45%;
+        width: 40%;
     }
 }
 
@@ -1072,7 +1072,7 @@ a .site-courses__icon {
 
     .site-contact__text {
         width: 50%;
-        font-size: 2rem;
+        font-size: 1.875rem;
     }
 }
 
