@@ -557,11 +557,15 @@ hr {
     user-select: none;
 }
 
-.sidebar ul a {
+.sidebar ul a,
+.sidebar ul .go-back-link {
+    cursor: pointer;
     display: block;
     height: 100%;
     width: 100%;
-    line-height: 65px;
+    padding-top: 1.25rem;
+    padding-bottom: 1.5rem;
+    line-height: 1;
     font-size: 1.25rem;
     color: #ff847c;
     padding-left: 40px;
@@ -570,13 +574,21 @@ hr {
     transition: 400ms;
 }
 
-.sidebar ul li:hover a{
+.sidebar ul li:hover a,
+.sidebar ul li:hover .go-back-link {
     padding-left: 50px;
     color: #e84a5f;
 }
 
-.sidebar ul a i{
+.sidebar ul a i,
+.sidebar ul .go-back-link i{
     margin-right: 16px;
+}
+
+.current-page {
+    background: #3A454A;
+    /* display: flex;
+    flex-direction: row; */
 }
 
 /*==================
@@ -682,9 +694,7 @@ label #cancel:hover{
   ==================*/
 
 
-.current-page {
-    background: #3A454A;
-}
+
 
 /*.test-color-2 {
     background: #e84a5f;
@@ -1485,4 +1495,318 @@ a .site-courses__icon {
     .card-flex-item {
         min-width: 180px;
     }
+}
+
+/*==================
+QUIZ
+==================*/
+.pattern-quiz {
+    padding: 0;
+}
+
+.quiz-block {
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+}
+
+.real-quiz-block {
+    padding: 1.75rem 2.5rem;
+}
+
+.quiz-container,
+.quiz-over {
+    --clr-primary: #ff7665;
+    --clr-bg-normal: #dbdbdb;
+    --clr-bg-normal-selected: #ebebeb;
+    --clr-bg-correct: #69df5e;
+    --clr-bg-wrong: #df675e;
+    font-size: 1rem;
+}
+
+.question-number h3 {
+    color: var(--clr-primary);;
+    border-bottom: 1px solid var(--clr-primary);
+    margin: 0;
+}
+
+.question {
+    font-size: 1.75rem;
+    padding: 1rem 0;
+}
+
+/* here I added a flex-box */
+.quiz-options {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.quiz-options div {
+    width: 49%;
+}
+/* until here */
+
+@media (max-width: 600px) {
+    .quiz-options div {
+        width: 100%;
+    }
+}
+
+.quiz-options div {
+    cursor: pointer;
+    background-color: var(--clr-bg-normal);
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    transition: 250ms ease-in all;
+}
+
+.quiz-options div img {
+    width: 80%;
+    margin: 0.25rem auto;
+}
+
+.quiz-options div:focus,
+.quiz-options div:hover {
+    background-color: var(--clr-bg-normal-selected);
+    background-color: rgb(194, 213, 255);
+    box-shadow: inset 0 0 0 1px rgba(64, 79, 211, 0.8);
+    color:rgba(64, 79, 211, 1);
+}
+
+.quiz-options div.disabled {
+    pointer-events: none;
+}
+
+.quiz-options div.correct{
+    z-index: 1;
+    color: rgb(0, 100, 0);;
+}
+
+.quiz-options div.correct::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--clr-bg-correct);
+    z-index: -1;
+    animation: animateBackground 1s ease;
+    animation-fill-mode: forwards;
+}
+
+.quiz-options div.wrong{
+    z-index: 1;
+    color: rgb(100, 0, 0);;
+}
+
+.quiz-options div.wrong::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--clr-bg-wrong);
+    z-index: -1;
+    animation: animateBackground 1s ease;
+    animation-fill-mode: forwards;
+}
+
+@keyframes animateBackground {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+/* .quiz-button {
+    display: flex;
+    justify-content: center;
+} */
+
+.quiz-button .btn-next {
+    cursor: pointer;
+    padding: 0.5em 2.25em;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--clr-primary);
+    font-size: 1.25rem;
+    color: white;
+    display: inline-block;
+    margin: 1rem 0;
+    transition: all 250ms ease-in;
+    font-weight: 900;
+    font-family: inherit;
+}
+
+.quiz-button .btn-next:hover {
+    background-color: #ffcecb;
+    color: var(--clr-primary);
+    box-shadow: inset 0 0 0 1px var(--clr-primary);
+}
+.answers-tracker{
+    border-top: 1px solid var(--clr-primary);
+    padding-top: 1rem;
+}
+
+.answers-tracker div{
+    height: 40px;
+    width: 40px;
+    background-color: #ffcecb;
+    display: inline-block;
+    border-radius: 50%;
+    margin-right: 0.375rem;
+}
+
+.answers-tracker div.correct{
+    background-color: var(--clr-bg-correct);
+    content: "<i class="fas fa-chevron-right"></i>";
+}
+
+.answers-tracker div.wrong{
+    background-color: var(--clr-bg-wrong);
+    background-image: url(../img/quiz/wrong.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 40%;
+}
+
+.answers-tracker div.correct{
+    background-color: var(--clr-bg-correct);
+    background-image: url(../img/quiz/correct.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50%;
+}
+
+/*==================
+QUIZ OVER SCREEN
+==================*/
+
+.quiz-over {
+    position: fixed;
+    background: rgba(0,0,0,0.9);
+    z-index: 1500;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+/* This is our JS class to toggle display on*/
+.quiz-over.show {
+    display: flex;
+}
+
+.quiz-over-box {
+    background-image: linear-gradient(120deg, rgb(13, 227, 255), rgb(2, 141, 255));
+    border-radius: 15px;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 0 6px 4px black;
+    padding: 1em 0.5em 1.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.quiz-over-title {
+    display: inline-block;
+    line-height: 1.1;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: rgba(18, 4, 70, 0.8);
+    border-bottom: 1px solid rgba(18, 4, 70, 0.2);
+    width: 100%;
+}
+
+.quiz-over-text {
+    font-size: 1.5rem;
+    line-height: 1;
+    color: rgba(18, 4, 70, 0.6);
+    margin-bottom: 0.75rem;
+    font-weight: 900;
+    text-align: center;
+
+}
+
+.quiz-over-text + .quiz-over-text {
+    border-bottom: 1px solid rgba(18, 4, 70, 0.2);
+    width: 100%;
+    padding-bottom: 1em;
+}
+
+.quiz-over-box .correct-answers,
+.quiz-over-box .total-questions,
+.quiz-over-box .result-percentage,
+.quiz-over-text span {
+    color: rgb(0, 4, 238);
+    font-size: 1.825rem;
+}
+
+.quiz-buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.try-again-btn,
+.go-back-btn {
+    margin: 0 0 0.5rem 0;
+}
+
+.try-again-btn i,
+.go-back-btn i {
+        opacity: 0.7;
+        margin-right: 0.5rem;
+        font-size: 1.25rem;
+}
+
+@media (min-width: 600px) {
+    .quiz-buttons {
+        flex-direction: row;
+    }
+
+    .try-again-btn,
+    .go-back-btn {
+        margin: 0 0.25rem;
+    }
+}
+
+.try-again-btn,
+.go-back-btn {
+    display: flex;
+    align-items: center;
+    --clr-bg: rgb(53, 55, 201);
+    --clr-bg-a: rgba(53, 55, 201, 0.5);
+    background:var(--clr-bg);
+    border: none;
+    padding: 0.25em 1.75em;
+    font-weight: 900;
+    font-family: inherit;
+    font-size: 1.5rem;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 250ms all ease-in;
+}
+
+.try-again-btn:focus,
+.try-again-btn:hover,
+.go-back-btn:focus,
+.go-back-btn:hover {
+    box-shadow: inset 0 0 0 2px var(--clr-bg);
+    background: var(--clr-bg-a);
+    color: rgb(54, 24, 221);
 }
