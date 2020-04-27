@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fibonacho</title>
+        <link rel="shortcut icon" type="image/png" href="../img/favicon.png">
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Baloo+2:400,700|Caveat:400,700&display=swap" rel="stylesheet">        
+        <link href="../../css/styles.css" rel="stylesheet">
+    </head>
+    <body>
+        <!--===SIDEBAR===-->
+        <!--=======Menu open/close=======-->
+        <input type="checkbox" id="check">
+        <label for="check">
+            <i class="fas fa-bars" id="btn"></i>
+            <i class="fas fa-times" id="cancel"></i>
+        </label>
+        <!--=======Sidebar Menu=======-->
+        <div class="sidebar">
+            <header>Grado 4/5</header>
+            <ul>
+                <li><a href="../../index.html"><i class="fas fa-home"></i>Home</a></li>
+                <li><a href="./grado-4.html"><i class="fas fa-meteor"></i>Todos los temas</a></li>
+                <li><a href="#" class="current-page"><i class="fas fa-user-astronaut"></i>Fraccion de un #</a></li>
+                <!-- <li><a href="./grado-4-fracciones-2.html"><i class="fas fa-chevron-circle-right"></i>Siguiente</a></li> -->
+                <li><a href="./grado-4-fraccion-de-numero-quiz.html"><i class="fas fa-rocket"></i>Examen</a></li>
+                <li><a href="./grado-4-fracciones-2.html"><i class="fas fa-chevron-circle-left"></i>Anterior</a></li>
+                <li><a href="../../index.html#site-contact"><i class="fas fa-envelope"></i>Contacto</a></li>
+            </ul>
+        </div>
+
+
+        <!--====== HTML GENERATOR ======-->
+        <div class="html-gen-container">
+            <h2 class="html-gen-title">HTML Generator</h2>
+            <!--====== GENERAL SETTINGS======-->
+            <div class="html-gen-box">
+                <div class="d-flex jc-space">
+                    <h3 class="html-gen-subtitle">Ajustes generales</h3>
+                    <button class="html-gen-btn btn-general-toggle"><i class="fas fa-edit"></i></button>
+                </div>
+                <form data-form="form--general" class="html-gen-form hidden-html-gen">
+                    <div class="form__selection d-flex">
+                        <p class="html-gen-instruction">Elige un nivel:</p>
+                        <select data-input="input--nivel" class="select-box select-box--small as-center">
+                            <option value="1" class="select-box__option">Nivel 1</option>
+                            <option value="2" class="select-box__option">Nivel 2</option>
+                            <option value="3" class="select-box__option">Nivel 3</option>
+                            <option value="4" class="select-box__option">Nivel 4</option>
+                            <option value="5" class="select-box__option">Nivel 5</option>
+                        </select>
+                    </div>
+                    <div>
+                        <p class="html-gen-instruction">Elige un título:</p>
+                        <input data-input="input--title" type="text" class="html-gen-input">
+                    </div>
+                    <div>
+                        <p class="html-gen-instruction">Elige un subtítulo:</p>
+                        <input data-input="input--subtitle" type="text" class="html-gen-input">
+                    </div>
+                    <div>
+                        <p class="html-gen-instruction">Elige una imagen como "hero image":</p>
+                        <input data-input="input--hero-img" stype="text" class="html-gen-input">
+                    </div>
+                    <div>
+                        <p class="html-gen-instruction">Describe la imagen "hero image":</p>
+                        <input data-input="input--hero-img-alt" stype="text" class="html-gen-input">
+                    </div>
+                    <!--====== Ajustes de imagen ======-->
+                    <div class="d-flex jc-start">
+                        <h3 class="html-gen-subtitle html-gen-subtitle--more">Ajustes de imagen</h3>
+                        <button data-btn="btn--image-settings-toggle" class="html-gen-btn html-gen-btn-inside"><i class="fas fa-pen"></i></button>
+                    </div>
+                    <div data-form="form--image-settings" class="hidden-html-gen">
+                        <div class="form__selection form__selection--add-elements">
+                            <p class="html-gen-instruction">Las imagenes se deben guardar de la siguiente forma:</p>
+                            <p class="output--img-direction" data-output="output--img-direction"></p>
+                        </div>
+                        <div>
+                            <p class="html-gen-instruction">Las imagenes se guardará en la carpeta:</p>
+                            <input data-input="input--img-folder" stype="text" class="html-gen-input" placeholder="(ej. multiplicacion)">
+                        </div>
+                        <div>
+                            <p class="html-gen-instruction">Las imagenes se llamaran:</p>
+                            <input data-input="input--img-name" stype="text" class="html-gen-input" placeholder="(ej. multiplicar)">
+                        </div>
+                        <div>
+                            <p class="html-gen-instruction">Las imagenes iniciaran con el número:</p>
+                            <input data-input="input--img-number" stype="text" class="html-gen-input" placeholder="(ej. 1)">
+                        </div>
+                        <div class="form__selection d-flex">
+                            <p class="html-gen-instruction">Las imagenes son del formato:</p>
+                            <select data-input="input--img-format" class="select-box select-box--small">
+                                <option value="png" class="select-box__option">png</option>
+                                <option value="jpg" class="select-box__option">jpg</option>
+                            </select>
+                        </div>
+                        <div class="form__selection d-flex">
+                            <p class="html-gen-instruction">La imagen "hero image" es del formato:</p>
+                            <select data-input="input--hero-img-format" class="select-box select-box--small">
+                                <option value="jpg" class="select-box__option">jpg</option>
+                                <option value="png" class="select-box__option">png</option>
+                            </select>
+                        </div>
+                        <div class="form__selection d-flex">
+                            <p class="html-gen-instruction">El tema es del grado:</p>
+                            <select data-input="input--course-nr" class="select-box select-box--small">
+                                <option value="grado-1" class="select-box__option">Grado 1</option>
+                                <option value="grado-2" class="select-box__option">Grado 2</option>
+                                <option value="grado-3" class="select-box__option">Grado 3</option>
+                                <option value="grado-4" class="select-box__option">Grado 4/5</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!--====== INTRODUCTION ======-->
+                    <div class="d-flex jc-start">
+                        <h3 class="html-gen-subtitle html-gen-subtitle--more">La introducción</h3>
+                        <button data-btn="btn--intro-toggle" class="html-gen-btn html-gen-btn-inside"><i class="fas fa-pen"></i></button>
+                    </div>
+                    <div data-form="form--intro-general" class="hidden-html-gen">
+                        <div class="form__selection d-flex">
+                            <p class="html-gen-instruction">¿Hay introducción?</p>
+                            <select data-input="input--intro" class="select-box select-box--small">
+                                <option value="no" class="select-box__option">No</option>
+                                <option value="yes" class="select-box__option">Sí</option>
+                            </select>
+                        </div>
+                        <div data-form="form--intro" class="html-gen-intro hidden-html-gen">
+                            <div class="form__selection d-flex">
+                                <p class="html-gen-instruction">La introducción tiene vídeo:</p>
+                                <select data-input="input--intro__video" class="select-box select-box--small">
+                                    <option value="no" class="select-box__option">No</option>
+                                    <option value="yes" class="select-box__option">Sí</option>
+                                </select>
+                            </div>
+                            <div>
+                                <p class="html-gen-instruction">Elige un título para la introducción:</p>
+                                <input data-input="input--intro__title" type="text" class="html-gen-input">
+                            </div>
+                            <div>
+                                <p class="html-gen-instruction">Número del vídeo (01, 02, 03 etc.):</p>
+                                <input data-input="input--intro__video-nr" type="text" class="html-gen-input">
+                            </div>
+                            <div>
+                                <p class="html-gen-instruction">La url del vídeo es:</p>
+                                <input data-input="input--intro__video-url" type="text" class="html-gen-input">
+                            </div>
+                            <!--====== ADD TEXT ======-->
+                            <div class="form__selection form__selection--add-elements d-flex">
+                                <p class="html-gen-instruction">Agrega elemento:</p>
+                                <select data-input="input--intro-add-input" class="select-box select-box--small">
+                                    <option value="p" class="select-box__option">p (Texto)</option>
+                                    <option value="observa" class="select-box__option">Observa:</option>
+                                    <option value="img" class="select-box__option">img (Imagen)</option>
+                                    <option value="ul" class="select-box__option">ul (Lista)</option>
+                                    <option value="learnbox" class="select-box__option">Learnbox (Regla)</option>
+                                    <option value="quote" class="select-box__option">Quote (Tip)</option>
+                                </select>
+                                <button data-btn="btn--intro-add-input" class="html-gen-btn btn-add-element"><i class="fas fa-plus-circle"></i></button>
+                            </div>
+                        </div>
+                        <div data-form="form--intro-add-input"></div>
+                    </div>
+
+                    <!--====== OBJECTIVES ======-->
+                    <div class="d-flex jc-start">
+                        <h3 class="html-gen-subtitle html-gen-subtitle--more">Objetivos</h3>
+                        <button data-btn="btn--objectives-toggle" class="html-gen-btn html-gen-btn-inside"><i class="fas fa-pen"></i></button>
+                    </div>
+                    <div data-form="form--objectives" class="hidden-html-gen">
+                        <div>
+                            <p class="html-gen-instruction">Elige un título para los objetivos:</p>
+                            <input data-input="input--objectives__title" type="text" class="html-gen-input">
+                        </div>
+                        <div class="form__selection form__selection--add-elements d-flex">
+                            <p class="html-gen-instruction">Agrega objetivo:</p>
+                            <button data-btn="btn--add-objective" class="html-gen-btn btn-add-element"><i class="fas fa-plus-circle"></i></button>
+                        </div>
+                        <div data-form="form--add-objective"></div>
+                    </div>
+                    <!--====== OPTIONAL TEXT ======-->
+                    <div class="d-flex jc-start">
+                        <h3 class="html-gen-subtitle html-gen-subtitle--more">Explicaciones Addicionales (Opcional)</h3>
+                        <button data-btn="btn--objectives-toggle" class="html-gen-btn html-gen-btn-inside"><i class="fas fa-pen"></i></button>
+                    </div>
+                    <div data-form="form--objectives" class="">
+                        <!--====== ADD TEXT ======-->
+                        <div class="form__selection form__selection--add-elements d-flex">
+                            <p class="html-gen-instruction">Agrega elemento:</p>
+                            <select data-input="input--intro-add-input" class="select-box select-box--small">
+                                <option value="p" class="select-box__option">p (Texto)</option>
+                                <option value="observa" class="select-box__option">Observa:</option>
+                                <option value="img" class="select-box__option">img (Imagen)</option>
+                                <option value="ul" class="select-box__option">ul (Lista)</option>
+                                <option value="learnbox" class="select-box__option">Learnbox (Regla)</option>
+                                <option value="quote" class="select-box__option">Quote (Tip)</option>
+                            </select>
+                            <button data-btn="btn--intro-add-input" class="html-gen-btn btn-add-element"><i class="fas fa-plus-circle"></i></button>
+                        </div>
+                        <div data-form="form--add-objective"></div>
+                    </div>
+                </form>
+                <!-- <div>
+                    <input type="radio" id="r-nivel-1" name="r-nivel" value="r-nivel-1" class="text-nivel">
+                    <label for="r-nivel" class="">1</label>
+                </div> -->
+                <!-- <div class="form__radio">
+                    <div class="radio-option">
+                        <input type="radio" id="r-intro-1" name="r-nivel" value="r-nivel-1" class="text-nivel">
+                        <label for="r-intro-1" class="">Sí</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="r-intro-2" name="r-nivel" value="r-nivel-1" class="text-nivel">
+                        <label for="r-intro-2" class="">No</label>
+                    </div>
+                </div> -->
+                <!--====== BUTTONS ======-->
+                <div class="html-gen-btn-container d-flex jc-center">
+                    <button data-btn="btn--create-document" class="html-gen-btn btn-submit-general">Crear documento</button>
+                    <button data-btn="btn--delete-all" class="html-gen-btn btn-delete">Elimina borrador</button>
+                </div>
+            </div> <!--====== / GENERATOR SETTINGS======-->
+
+
+
+            <!--====== GENERAL SETTINGS ======-->
+            <div class="html-gen-box html-gen-box--new-form">
+                <div class="d-flex jc-space">
+                    <h3 class="html-gen-subtitle">Agrega sección</h3>
+                    <button data-btn="btn--section-add-input" class="html-gen-btn btn-add-element"><i class="fas fa-plus-circle"></i></button>
+                </div>
+            </div>
+
+            <!--====== SPACE FOR NEW SECTION FORMS ======-->
+            <div data-form="form--section-add-input"></div>
+
+
+            <!--====== GENERAL SETTINGS======-->
+            <div class="html-gen-box">
+                <div class="d-flex jc-space">
+                    <h3 class="html-gen-subtitle">Sección 01</h3>
+                    <button class="html-gen-btn btn-general-toggle"><i class="fas fa-edit"></i></button>
+                </div>
+                <form data-form="form--general" class="html-gen-form "> <!--hidden-html-gen-->
+                    <div>
+                        <p class="html-gen-instruction">Elige un título para la sección:</p>
+                        <input data-input="input--intro__title" type="text" class="html-gen-input">
+                    </div>
+                    <div>
+                        <p class="html-gen-instruction">Número de la sección (1, 2, 3 etc.):</p>
+                        <input data-input="input--intro__video-nr" type="text" class="html-gen-input" placeholder="(ej. 1)">
+                    </div>
+                    <div class="form__selection d-flex">
+                        <p class="html-gen-instruction">La sección tiene vídeo:</p>
+                        <select data-input="input--intro__video" class="select-box select-box--small">
+                            <option value="yes" class="select-box__option">Sí</option>
+                            <option value="no" class="select-box__option">No</option>
+                        </select>
+                    </div>
+                    <div>
+                        <p class="html-gen-instruction">Número del vídeo (01, 02, 03 etc.):</p>
+                        <input data-input="input--intro__video-nr" type="text" class="html-gen-input" placeholder="(ej. 01)">
+                    </div>
+                    <div>
+                        <p class="html-gen-instruction">La url del vídeo es:</p>
+                        <input data-input="input--intro__video-url" type="text" class="html-gen-input">
+                    </div>
+                    <!--====== ADD TEXT ======-->
+                    <div class="form__selection form__selection--add-elements d-flex">
+                        <p class="html-gen-instruction">Agrega elemento:</p>
+                        <select data-input="input--intro-add-input" class="select-box select-box--small">
+                            <option value="p" class="select-box__option">p (Texto)</option>
+                            <option value="observa" class="select-box__option">Observa:</option>
+                            <option value="img" class="select-box__option">img (Imagen)</option>
+                            <option value="ul" class="select-box__option">ul (Lista)</option>
+                            <option value="learnbox" class="select-box__option">Learnbox (Regla)</option>
+                            <option value="quote" class="select-box__option">Quote (Tip)</option>
+                        </select>
+                        <button data-btn="btn--intro-add-input" class="html-gen-btn btn-add-element"><i class="fas fa-plus-circle"></i></button>
+                    </div>
+                    <div data-form="form--add-objective"></div>
+                    <!--====== ADD SUBSECTION ======-->
+                    <h3 class="html-gen-subtitle html-gen-subtitle--more">Subsecciones</h3>
+                    <div class="form__selection form__selection--add-list-items d-flex">
+                        <p class="html-gen-instruction">Agrega subsección:</p>
+                        <button data-btn="btn--add-objective" class="html-gen-btn btn-add-element"><i class="fas fa-plus-circle"></i></button>
+                    </div>
+                    <!--====== NEW SUBSECTION ======-->
+                    <div>
+                        <div class="d-flex jc-start">
+                            <h3 class="html-gen-subtitle html-gen-subtitle--more">Subsección #1</h3>
+                            <button data-btn="btn--objectives-toggle" class="html-gen-btn html-gen-btn-inside"><i class="fas fa-pen"></i></button>
+                        </div>
+                        <div data-form="form--objectives" class=""> <!--hidden-html-gen-->
+                            <div>
+                                <p class="html-gen-instruction">Elige un título para la subsección:</p>
+                                <input data-input="input--objectives__title" type="text" class="html-gen-input">
+                            </div>
+                            <div>
+                                <p class="html-gen-instruction">Elige una letra para la subsección:</p>
+                                <input data-input="input--objectives__title" type="text" class="html-gen-input" placeholder="(ej. A)">
+                            </div>
+                            <div class="form__selection d-flex">
+                                <p class="html-gen-instruction">La sección tiene vídeo:</p>
+                                <select data-input="input--intro__video" class="select-box select-box--small">
+                                    <option value="yes" class="select-box__option">Sí</option>
+                                    <option value="no" class="select-box__option">No</option>
+                                </select>
+                            </div>
+                            <div>
+                                <p class="html-gen-instruction">Número del vídeo (01, 02, 03 etc.):</p>
+                                <input data-input="input--intro__video-nr" type="text" class="html-gen-input" placeholder="(ej. 01)">
+                            </div>
+                            <div>
+                                <p class="html-gen-instruction">La url del vídeo es:</p>
+                                <input data-input="input--intro__video-url" type="text" class="html-gen-input">
+                            </div>
+                            <!--====== ADD TEXT ======-->
+                            <div class="form__selection form__selection--add-elements d-flex">
+                                <p class="html-gen-instruction">Agrega elemento:</p>
+                                <select data-input="input--intro-add-input" class="select-box select-box--small">
+                                    <option value="p" class="select-box__option">p (Texto)</option>
+                                    <option value="observa" class="select-box__option">Observa:</option>
+                                    <option value="img" class="select-box__option">img (Imagen)</option>
+                                    <option value="ul" class="select-box__option">ul (Lista)</option>
+                                    <option value="learnbox" class="select-box__option">Learnbox (Regla)</option>
+                                    <option value="quote" class="select-box__option">Quote (Tip)</option>
+                                </select>
+                                <button data-btn="btn--intro-add-input" class="html-gen-btn btn-add-element"><i class="fas fa-plus-circle"></i></button>
+                            </div>
+                            <div data-form="form--add-objective"></div>
+                        </div>
+                    </div>
+                </form>
+                <!--====== BUTTONS ======-->
+                <div class="html-gen-btn-container d-flex jc-center">
+                    <button data-btn="btn--add-section" class="html-gen-btn btn-submit-general">Agrega sección</button>
+                </div>
+            </div>
+                
+
+            <!--====== INTRODUCTION ======-->
+            <div class="html-gen-box">
+                <div class="d-flex jc-space">
+                    <h3 class="html-gen-sutitle">Introducción</h3>
+                    <button data-btn="btn--toggle-general" class="html-gen-btn"><i class="fas fa-edit"></i></button>
+                </div>
+                <form data-form="afafsfas" class="html-gen-form hidden-html-gen">
+                    <div class="form__selection d-flex">
+                        <p class="html-gen-instruction">La introducción tiene video:</p>
+                        <select data-input="input--intro-video" class="select-box select-box--small">
+                            <option value="1" class="select-box__option">Sí</option>
+                            <option value="2" class="select-box__option">No</option>
+                        </select>
+                    </div>
+                    <div>
+                        <p class="html-gen-instruction">Elige un título:</p>
+                        <input data-input="input--intro-title" type="text" class="html-gen-input">
+                    </div>
+                    <div class="d-flex jc-center">
+                        <button data-btn="btn--create-intro" class="html-gen-btn">Crear introducción</button>
+                        <button data-btn="btn--delete-intro" class="html-gen-btn btn-delete">Elimina introducción</button>
+                    </div>
+                </form>
+            </div> <!--====== / GENERATOR SETTINGS======-->
+
+        </div>
+
+        <div class="html-gen-container">
+            <div class="html-gen-box">
+                <textarea class="output--html" data-output="output--html" name="output--html"></textarea>
+            </div>
+        </div>
+
+        
+        <main class="pattern">
+
+            <!--=======Article 01=======-->
+            <article class="block">
+                <div class="real-block shadow">
+
+                
+
+                    
+                </div>
+            </article>
+            
+        </main>
+
+        <footer class="site-footer">
+            <img class="footer-logo" src="../../img/fibonacho.png" alt="">
+            <div class="footer-title">fibonacho</div>
+            <p class="copyright">Copyright 2020</p>
+            <p>• • •</p>
+        </footer>
+
+        <script src="../../script/html-generator.js"></script>
+
+    </body>
+
+    <!-- jQuery -->
+    <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>-->
+
+    <!-- JS -->
+    <!--<script src="../js/script.js"></script>-->
+
+</html>
