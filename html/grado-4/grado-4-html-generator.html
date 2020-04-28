@@ -62,7 +62,7 @@
                     </div>
                     <div>
                         <p class="html-gen-instruction">Elige una imagen como "hero image":</p>
-                        <input data-input="input--hero-img" stype="text" class="html-gen-input">
+                        <input data-input="input--hero-img" stype="text" class="html-gen-input" placeholder="(Escribe su 'url' aqui.)">
                     </div>
                     <div>
                         <p class="html-gen-instruction">Describe la imagen "hero image":</p>
@@ -129,24 +129,26 @@
                             </select>
                         </div>
                         <div data-form="form--intro" class="html-gen-intro hidden-html-gen">
-                            <div class="form__selection d-flex">
-                                <p class="html-gen-instruction">La introducción tiene vídeo:</p>
-                                <select data-input="input--intro__video" class="select-box select-box--small">
-                                    <option value="no" class="select-box__option">No</option>
-                                    <option value="yes" class="select-box__option">Sí</option>
-                                </select>
-                            </div>
                             <div>
                                 <p class="html-gen-instruction">Elige un título para la introducción:</p>
                                 <input data-input="input--intro__title" type="text" class="html-gen-input">
                             </div>
-                            <div>
-                                <p class="html-gen-instruction">Número del vídeo (01, 02, 03 etc.):</p>
-                                <input data-input="input--intro__video-nr" type="text" class="html-gen-input">
+                            <div class="form__selection d-flex">
+                                <p class="html-gen-instruction">La introducción tiene vídeo:</p>
+                                <select data-input="input--intro__video" class="select-box select-box--small">
+                                    <option value="yes" class="select-box__option">Sí</option>
+                                    <option value="no" class="select-box__option">No</option>
+                                </select>
                             </div>
-                            <div>
-                                <p class="html-gen-instruction">La url del vídeo es:</p>
-                                <input data-input="input--intro__video-url" type="text" class="html-gen-input">
+                            <div data-form="form--intro-video" class="">
+                                <div>
+                                    <p class="html-gen-instruction">Número del vídeo (01, 02, 03 etc.):</p>
+                                    <input data-input="input--intro__video-nr" type="text" class="html-gen-input">
+                                </div>
+                                <div>
+                                    <p class="html-gen-instruction">La url del vídeo es:</p>
+                                    <input data-input="input--intro__video-url" type="text" class="html-gen-input">
+                                </div>
                             </div>
                             <!--====== ADD TEXT ======-->
                             <div class="form__selection form__selection--add-elements d-flex">
@@ -175,7 +177,7 @@
                             <p class="html-gen-instruction">Elige un título para los objetivos:</p>
                             <input data-input="input--objectives__title" type="text" class="html-gen-input">
                         </div>
-                        <div class="form__selection form__selection--add-elements d-flex">
+                        <div class="form__selection form__selection--add-list-items d-flex">
                             <p class="html-gen-instruction">Agrega objetivo:</p>
                             <button data-btn="btn--add-objective" class="html-gen-btn btn-add-element"><i class="fas fa-plus-circle"></i></button>
                         </div>
@@ -229,7 +231,7 @@
             <!--====== GENERAL SETTINGS ======-->
             <div class="html-gen-box html-gen-box--new-form">
                 <div class="d-flex jc-space">
-                    <h3 class="html-gen-subtitle">Agrega sección</h3>
+                    <h3 class="html-gen-subtitle">Agrega capítulo</h3>
                     <button data-btn="btn--section-add-input" class="html-gen-btn btn-add-element"><i class="fas fa-plus-circle"></i></button>
                 </div>
             </div>
@@ -238,14 +240,14 @@
             <div data-form="form--section-add-input"></div>
 
 
-            <!--====== GENERAL SETTINGS======-->
+            <!--====== NEW SECTION ======-->
             <div class="html-gen-box">
                 <div class="d-flex jc-space">
                     <h3 class="html-gen-subtitle">Sección 01</h3>
                     <button class="html-gen-btn btn-general-toggle"><i class="fas fa-edit"></i></button>
                 </div>
                 <form data-form="form--general" class="html-gen-form "> <!--hidden-html-gen-->
-                    <div>
+                    <!-- <div>
                         <p class="html-gen-instruction">Elige un título para la sección:</p>
                         <input data-input="input--intro__title" type="text" class="html-gen-input">
                     </div>
@@ -267,9 +269,9 @@
                     <div>
                         <p class="html-gen-instruction">La url del vídeo es:</p>
                         <input data-input="input--intro__video-url" type="text" class="html-gen-input">
-                    </div>
+                    </div> -->
                     <!--====== ADD TEXT ======-->
-                    <div class="form__selection form__selection--add-elements d-flex">
+                    <!-- <div class="form__selection form__selection--add-elements d-flex">
                         <p class="html-gen-instruction">Agrega elemento:</p>
                         <select data-input="input--intro-add-input" class="select-box select-box--small">
                             <option value="p" class="select-box__option">p (Texto)</option>
@@ -281,7 +283,7 @@
                         </select>
                         <button data-btn="btn--intro-add-input" class="html-gen-btn btn-add-element"><i class="fas fa-plus-circle"></i></button>
                     </div>
-                    <div data-form="form--add-objective"></div>
+                    <div data-form="form--add-objective"></div> -->
                     <!--====== ADD SUBSECTION ======-->
                     <h3 class="html-gen-subtitle html-gen-subtitle--more">Subsecciones</h3>
                     <div class="form__selection form__selection--add-list-items d-flex">
@@ -382,7 +384,7 @@
             <article class="block">
                 <div class="real-block shadow">
 
-                
+                    
 
                     
                 </div>
