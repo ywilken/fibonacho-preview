@@ -24,10 +24,27 @@
                         <li><a href="#site-courses">Cursos</a></li>
                         <li><a href="#site-about">Quien soy</a></li>
                         <li><a href="#site-contact">Contacto</a></li>
+                        <li><a data-btn="btn--login-open" class="btn-user-login"><i class="fas fa-user"></i></a></li>
                     </ul>
                 </nav>
             </div>
         </header>
+
+        <div data-form="form--login-window" class="login-admin login-hidden">
+            <div class="login-background"></div>
+            <div class="login-window">
+                <h2 class="login-title">Login</h2>
+                <p data-btn="btn--login-close" class="login-close"><i class="fas fa-times"></i></p>
+                <form>
+                    <input data-input="input--login-username" class="input-login" type="text" aria-label="nombre de usuario" placeholder="nombre de usuario">
+                    <input data-input="input--login-password" class="input-login" type="password" aria-label="contraseña" placeholder="contraseña">
+                    <button data-btn="btn--login-submit" class="input-login input-btn">enviar</button>
+                </form>
+                <p data-message="message--no-username" class="login-error-message login-error-message-hidden">Escribe tu nombre de usuario.</p>
+                <p data-message="message--no-password" class="login-error-message login-error-message-hidden">Escribe tu contraseña.</p>
+                <p data-message="message--login-data-incorrect" class="login-error-message login-error-message-hidden">Lo sentimos, usuario o contraseña incorrecto.</p>
+            </div>
+        </div>
         
         <main>
             <!--=======Hero Section=======-->
@@ -120,7 +137,7 @@
         </footer>
 
         
-        
+        <script src="script/index-login.js"></script>
     </body>
 
 </html>

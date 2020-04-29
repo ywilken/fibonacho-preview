@@ -784,10 +784,18 @@ label #cancel:hover{
     transition: color 250ms;
 }
 
+.main-nav li a.btn-user-login {
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
 .main-nav li a:focus,
 .main-nav li a:hover {
     color: #ff7665;
 }
+
+
 
 @media (min-width: 775px) {
     .container {
@@ -1129,6 +1137,155 @@ a .site-courses__icon {
     margin-left: auto;
     margin-right: auto;
     top: 0.4em;
+}
+
+/*==================
+    LOGIN
+  ==================*/
+
+.login-hidden {
+    display: none;
+}
+
+.login-error-message-hidden {
+    display: none;
+}
+
+.login-background {
+    position: fixed;
+    background: black;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    z-index: 1000;
+    opacity: 0.5;
+}
+
+.login-window {
+    position: fixed;
+    width: 40%;
+    left: 30%;
+    top: 25%;
+    margin: 0 auto;
+    background: rgba(0,0,0,0.8);
+    opacity: 1;
+    z-index: 1001;
+    border-radius: 10px;
+    padding: 2em 0;
+}
+
+.login-title {
+    color: white;
+}
+
+.input-login {
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+    background: black;
+    border: none;
+    border: 1.5px solid #ff7665;
+    margin-bottom: 1em;
+    border-radius: 25px;
+    padding: 0.75em 1.75em;
+    transition: 500ms ease-in-out all;
+    font-size: 1rem;
+    color: #ff7665;
+    text-align: center;
+    letter-spacing: 1.6px;
+    font-family: inherit;
+}
+
+.input-login::placeholder {
+    color: #ff7665;
+    opacity: 0.4;
+}
+
+.input-login:focus,
+.input-login:hover {
+    width: 65%;
+    background: #ff7665;
+    color: black;
+}
+
+.input-login:focus::placeholder,
+.input-login:hover::placeholder {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+
+.input-btn ::before {
+    content: "";
+    height: 4px;
+    width: 100%;
+    background: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+    border: 1px solid white;
+
+}
+
+.input-btn {
+    background: #ff7665;
+    font-weight: 700;
+    color: black;
+    margin-top: 2rem;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.input-btn:hover {
+    background: rgba(255, 118, 101, 0.8);
+    font-weight: 700;
+    /* color: #ff7665; */
+}
+
+/* .input-btn:focus,
+.input-btn:hover {
+    opacity: 0.7;
+} */
+
+
+.login-close {
+    color: white;
+    cursor: pointer;
+    position: absolute;;
+    top: 10px;
+    right: 20px;
+    opacity: 0.2;
+    transition: ease-in-out 500ms;
+}
+
+.login-close:focus,
+.login-close:hover {
+    opacity: 1;
+    color: #ff7665;
+}
+
+.login-error-message {
+    color: rgba(255,255,255,0.5);
+    border-top: 1px solid rgba(255,255,255,0.2);
+    text-align: center;
+    padding-top: 0.25rem;
+    font-size: 0.875rem;
+}
+
+
+@media (max-width: 800px) {
+    .login-window {
+        width: 60%;
+        left: 20%;
+    }
+}
+
+
+@media (max-width: 600px) {
+    .login-window {
+        width: 90%;
+        left: 5%;
+    }
 }
 
 /*==================
@@ -1884,6 +2041,7 @@ HTML GENERATOR
     background: #b4b4b4;
     padding: 0.5em;
     border-radius: 8px;
+    margin-top: 1rem;
 }
 
 .form__selection--add-list-items {
