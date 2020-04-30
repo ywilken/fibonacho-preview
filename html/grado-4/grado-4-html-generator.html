@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,19 +50,26 @@
                     </div>
                     <div>
                         <p class="html-gen-instruction">Elige un título:</p>
-                        <input data-input="input--title" type="text" class="html-gen-input">
+                        <input data-input="input--title" type="text" class="html-gen-input" spellcheck="false">
                     </div>
                     <div>
                         <p class="html-gen-instruction">Elige un subtítulo:</p>
-                        <input data-input="input--subtitle" type="text" class="html-gen-input">
+                        <input data-input="input--subtitle" type="text" class="html-gen-input" spellcheck="false">
                     </div>
                     <div>
                         <p class="html-gen-instruction">Elige una imagen como "hero image":</p>
-                        <input data-input="input--hero-img" stype="text" class="html-gen-input" placeholder="(Escribe su 'url' aqui.)">
+                        <input data-input="input--hero-img" stype="text" class="html-gen-input" placeholder="(Escribe su 'url' aqui.)" spellcheck="false">
                     </div>
                     <div>
                         <p class="html-gen-instruction">Describe la imagen "hero image":</p>
-                        <input data-input="input--hero-img-alt" stype="text" class="html-gen-input">
+                        <input data-input="input--hero-img-alt" stype="text" class="html-gen-input" spellcheck="false">
+                    </div>
+                    <div class="form__selection d-flex">
+                        <p class="html-gen-instruction">¿Numerar capítulos y vídeos automáticamente?</p>
+                        <select data-input="input--automatic-numbering" class="select-box select-box--small">
+                            <option value="yes" class="select-box__option">Sí</option>
+                            <option value="no" class="select-box__option">No</option>
+                        </select>
                     </div>
                     <!--====== Ajustes de imagen ======-->
                     <div class="d-flex jc-start">
@@ -76,15 +83,15 @@
                         </div>
                         <div>
                             <p class="html-gen-instruction">Las imagenes se guardará en la carpeta:</p>
-                            <input data-input="input--img-folder" stype="text" class="html-gen-input" placeholder="(ej. multiplicacion)">
+                            <input data-input="input--img-folder" stype="text" class="html-gen-input" placeholder="(ej. multiplicacion)" spellcheck="false">
                         </div>
                         <div>
                             <p class="html-gen-instruction">Las imagenes se llamaran:</p>
-                            <input data-input="input--img-name" stype="text" class="html-gen-input" placeholder="(ej. multiplicar)">
+                            <input data-input="input--img-name" stype="text" class="html-gen-input" placeholder="(ej. multiplicar)" spellcheck="false">
                         </div>
                         <div>
                             <p class="html-gen-instruction">Las imagenes iniciaran con el número:</p>
-                            <input data-input="input--img-number" stype="text" class="html-gen-input" placeholder="(ej. 1)">
+                            <input data-input="input--img-number" stype="text" class="html-gen-input" placeholder="(ej. 1)" spellcheck="false">
                         </div>
                         <div class="form__selection d-flex">
                             <p class="html-gen-instruction">Las imagenes son del formato:</p>
@@ -127,7 +134,7 @@
                         <div data-form="form--intro" class="html-gen-intro hidden-html-gen">
                             <div>
                                 <p class="html-gen-instruction">Elige un título para la introducción:</p>
-                                <input data-input="input--intro__title" type="text" class="html-gen-input">
+                                <input data-input="input--intro__title" type="text" class="html-gen-input" spellcheck="false">
                             </div>
                             <div class="form__selection d-flex">
                                 <p class="html-gen-instruction">La introducción tiene vídeo:</p>
@@ -137,13 +144,13 @@
                                 </select>
                             </div>
                             <div data-form="form--intro-video" class="">
-                                <div>
+                                <div data-form="form--intro-video-nr" class="hidden-html-gen">
                                     <p class="html-gen-instruction">Número del vídeo (01, 02, 03 etc.):</p>
-                                    <input data-input="input--intro__video-nr" type="text" class="html-gen-input">
+                                    <input data-input="input--intro__video-nr" type="text" class="html-gen-input" spellcheck="false">
                                 </div>
                                 <div>
                                     <p class="html-gen-instruction">La url del vídeo es:</p>
-                                    <input data-input="input--intro__video-url" type="text" class="html-gen-input">
+                                    <input data-input="input--intro__video-url" type="text" class="html-gen-input" spellcheck="false">
                                 </div>
                             </div>
                             <!--====== ADD TEXT ======-->
@@ -169,36 +176,54 @@
                         <button data-btn="btn--objectives-toggle" class="html-gen-btn html-gen-btn-inside"><i class="fas fa-pen"></i></button>
                     </div>
                     <div data-form="form--objectives" class="hidden-html-gen">
-                        <div>
-                            <p class="html-gen-instruction">Elige un título para los objetivos:</p>
-                            <input data-input="input--objectives__title" type="text" class="html-gen-input">
+                        <div class="form__selection d-flex">
+                            <p class="html-gen-instruction">¿Hay objetivos?</p>
+                            <select data-input="input--has-objetives" class="select-box select-box--small">
+                                <option value="yes" class="select-box__option">Sí</option>
+                                <option value="no" class="select-box__option">No</option>
+                            </select>
                         </div>
-                        <div class="form__selection form__selection--add-list-items d-flex">
-                            <p class="html-gen-instruction">Agrega objetivo:</p>
-                            <button data-btn="btn--add-objective" class="html-gen-btn btn-add-element"><i class="fas fa-plus-circle"></i></button>
+                        <div data-form="form--has-objectives">
+                            <div>
+                                <p class="html-gen-instruction">Elige un título para los objetivos:</p>
+                                <input data-input="input--objectives__title" type="text" class="html-gen-input" spellcheck="false">
+                            </div>
+                            <div class="form__selection form__selection--add-list-items d-flex">
+                                <p class="html-gen-instruction">Agrega objetivo:</p>
+                                <button data-btn="btn--add-objective" class="html-gen-btn btn-add-element"><i class="fas fa-plus-circle"></i></button>
+                            </div>
+                            <div data-form="form--add-objective"></div>
                         </div>
-                        <div data-form="form--add-objective"></div>
                     </div>
                     <!--====== OPTIONAL TEXT ======-->
                     <div class="d-flex jc-start">
                         <h3 class="html-gen-subtitle html-gen-subtitle--more">Explicaciones Addicionales (Opcional)</h3>
-                        <button data-btn="btn--objectives-toggle" class="html-gen-btn html-gen-btn-inside"><i class="fas fa-pen"></i></button>
+                        <button data-btn="btn--optional-text-toggle" class="html-gen-btn html-gen-btn-inside"><i class="fas fa-pen"></i></button>
                     </div>
-                    <div data-form="form--objectives" class="">
+                    <div data-form="form--optional-text" class="hidden-html-gen">
                         <!--====== ADD TEXT ======-->
-                        <div class="form__selection form__selection--add-elements d-flex">
-                            <p class="html-gen-instruction">Agrega elemento:</p>
-                            <select data-input="input--intro-add-input" class="select-box select-box--small">
-                                <option value="p" class="select-box__option">p (Texto)</option>
-                                <option value="observa" class="select-box__option">Observa:</option>
-                                <option value="img" class="select-box__option">img (Imagen)</option>
-                                <option value="ul" class="select-box__option">ul (Lista)</option>
-                                <option value="learnbox" class="select-box__option">Learnbox (Regla)</option>
-                                <option value="quote" class="select-box__option">Quote (Tip)</option>
+                        <div class="form__selection d-flex">
+                            <p class="html-gen-instruction">¿Hay texto explicativo después de los objetivos?</p>
+                            <select data-input="input--has-optional-text" class="select-box select-box--small">
+                                <option value="no" class="select-box__option">No</option>
+                                <option value="yes" class="select-box__option">Sí</option>
                             </select>
-                            <button data-btn="btn--intro-add-input" class="html-gen-btn btn-add-element"><i class="fas fa-plus-circle"></i></button>
                         </div>
-                        <div data-form="form--add-objective"></div>
+                        <div data-form="form--has-optional-text" class="hidden-html-gen">
+                            <div class="form__selection form__selection--add-elements d-flex">
+                                <p class="html-gen-instruction">Agrega elemento:</p>
+                                <select data-input="input--add-optional-text" class="select-box select-box--small">
+                                    <option value="p" class="select-box__option">p (Texto)</option>
+                                    <option value="observa" class="select-box__option">Observa:</option>
+                                    <option value="img" class="select-box__option">img (Imagen)</option>
+                                    <option value="ul" class="select-box__option">ul (Lista)</option>
+                                    <option value="learnbox" class="select-box__option">Learnbox (Regla)</option>
+                                    <option value="quote" class="select-box__option">Quote (Tip)</option>
+                                </select>
+                                <button data-btn="btn--add-optional-text" class="html-gen-btn btn-add-element"><i class="fas fa-plus-circle"></i></button>
+                            </div>
+                            <div data-form="form--add-optional-text"></div>
+                        </div>
                     </div>
                 </form>
                 <!-- <div>
@@ -340,38 +365,153 @@
             </div> -->
                 
 
-            <!--====== INTRODUCTION ======-->
+            <!--====== MATERIAL EXTRA & RESOURCES ======-->
             <div class="html-gen-box">
                 <div class="d-flex jc-space">
-                    <h3 class="html-gen-sutitle">Material Extra & Créditos</h3>
-                    <button data-btn="btn--toggle-general" class="html-gen-btn"><i class="fas fa-edit"></i></button>
+                    <h3 class="html-gen-subtitle">Material Extra & Créditos</h3>
+                    <button data-btn="btn--resources-toggle" class="html-gen-btn"><i class="fas fa-edit"></i></button>
                 </div>
-                <form data-form="afafsfas" class="html-gen-form hidden-html-gen">
-                    <div class="form__selection d-flex">
-                        <p class="html-gen-instruction">La introducción tiene video:</p>
-                        <select data-input="input--intro-video" class="select-box select-box--small">
-                            <option value="1" class="select-box__option">Sí</option>
-                            <option value="2" class="select-box__option">No</option>
-                        </select>
+                
+                <form data-form="form--resources" class="html-gen-form hidden-html-gen">
+                    <!--====== Extra: Resources Material ======-->
+                    <div class="d-flex jc-start">
+                        <h3 class="html-gen-subtitle html-gen-subtitle--more">Extra: Material</h3>
+                        <!--VISIBLE--><button data-btn="btn--resources-material-toggle" class="html-gen-btn html-gen-btn-inside"><i class="fas fa-pen"></i></button>
                     </div>
-                    <div>
-                        <p class="html-gen-instruction">Elige un título:</p>
-                        <input data-input="input--intro-title" type="text" class="html-gen-input">
+                    <div data-form="form--resources-material" class="hidden-html-gen">
+                        <div class="form__selection d-flex">
+                            <p class="html-gen-instruction">¿Hay material addicional?</p>
+                            <!--VISIBLE--><select data-input="input--has-resources-material" class="select-box select-box--small">
+                                <option value="yes" class="select-box__option">Sí</option>
+                                <option value="no" class="select-box__option">No</option>
+                            </select>
+                        </div>
+
+                        <div data-form="form--has-resources-material">
+                            <div class="form__selection form__selection--add-list-items d-flex">
+                                <p class="html-gen-instruction">Agrega material:</p>
+                                <!--VISIBLE--><button data-btn="btn--add-resources-material" class="html-gen-btn btn-add-element"><i class="fas fa-plus-circle"></i></button>
+                            </div>
+                            <!--VISIBLE--><div data-form="form--add-resources-material"></div>
+                            
+                            
+                            
+                            <!--====== / Extra: Resources Material (in markup)======-->
+                            <div class="form--resources-item">
+                                <div>
+                                    <p class="html-gen-instruction">M1: La url que lleva al material es:</p>
+                                    <input data-input="input--intro-title" type="text" class="html-gen-input">
+                                </div>
+                                <div class="d-flex jc-space">
+                                    <textarea class="input--text-area-resources" data-input="input--textarea" name="output--html" spellcheck="false" placeholder="1) Ingresa tu texto aquí. 2) Después elige la parte que debe servir como enlace y da click en el button para confirmar tu selección."></textarea>
+                                    <button data-btn="btn--get-textarea" class="html-gen-btn btn-add-element-from-textarea"><i class="fas fa-link"></i></button>
+                                </div>
+                                <div class="form__selection textarea-preview">
+                                    <p class="html-gen-instruction textarea-preview__title">Como enlace se usara la parte:</p>
+                                    <p class="textarea-preview__text" data-output="output--img-direction">parte que debe</p>
+                                </div>
+                            </div>
+
+                            <div class="form--resources-item">
+                                <div>
+                                    <p class="html-gen-instruction">M2: La url que lleva al material es:</p>
+                                    <input data-input="input--intro-title" type="text" class="html-gen-input">
+                                </div>
+                                <div class="d-flex jc-space">
+                                    <textarea class="input--text-area-resources" data-input="input--textarea" name="output--html" spellcheck="false" placeholder="1) Ingresa tu texto aquí. 2) Después elige la parte que debe servir como enlace y da click en el button para confirmar tu selección."></textarea>
+                                    <button data-btn="btn--get-textarea" class="html-gen-btn btn-add-element-from-textarea"><i class="fas fa-link"></i></button>
+                                </div>
+                                <div class="form__selection textarea-preview">
+                                    <p class="html-gen-instruction textarea-preview__title">Como enlace se usara la parte:</p>
+                                    <p class="textarea-preview__text" data-output="output--img-direction">parte que debe</p>
+                                </div>
+                            </div>
+
+
+
+                        </div> <!--/has resources material-->
+                    </div> <!--/resources material-->
+
+                    
+
+                    <!--====== Extra: Resources Videos ======-->
+                    <div class="d-flex jc-start">
+                        <h3 class="html-gen-subtitle html-gen-subtitle--more">Extra: Vídeos</h3>
+                        <!--VISIBLE--><button data-btn="btn--resources-video-toggle" class="html-gen-btn html-gen-btn-inside"><i class="fas fa-pen"></i></button>
                     </div>
-                    <div class="d-flex jc-center">
-                        <button data-btn="btn--create-intro" class="html-gen-btn">Crear introducción</button>
-                        <button data-btn="btn--delete-intro" class="html-gen-btn btn-delete">Elimina introducción</button>
+                    <div data-form="form--resources-video" class="hidden-html-gen">
+                        <div class="form__selection d-flex">
+                            <p class="html-gen-instruction">¿Hay vídeos addicionales?</p>
+                            <!--VISIBLE--><select data-input="input--has-resources-video" class="select-box select-box--small">
+                                <option value="yes" class="select-box__option">Sí</option>
+                                <option value="no" class="select-box__option">No</option>
+                            </select>
+                        </div>
+
+                        <div data-form="form--has-resources-video">
+                            <div class="form__selection form__selection--add-list-items d-flex">
+                                <p class="html-gen-instruction">Agrega vídeos:</p>
+                                <!--VISIBLE--><button data-btn="btn--add-resources-video" class="html-gen-btn btn-add-element"><i class="fas fa-plus-circle"></i></button>
+                            </div>
+                            <!--VISIBLE--><div data-form="form--add-resources-video" class="form--resources-item"></div>
+                            <!--====== / Extra: Resources Videos (end in markup)======-->
+                            <div class="form--resources-item">
+                                <div>
+                                    <p class="html-gen-instruction">M1:<!--Resource Count--> La url que lleva al vídeo es:</p>
+                                    <input data-input="VIDEO-URL" type="text" class="html-gen-input">
+                                </div>
+                                <div class="d-flex jc-space">
+                                    <!--DI--><textarea class="input--text-area-resources" data-input="TEXT-MATERIAL" spellcheck="false" placeholder="1) Ingresa tu texto aquí. 2) Después elige la parte que debe servir como enlace y da click en el button para confirmar tu selección."></textarea>
+                                    <!--DB--><button data-btn="GET-DATA-FROM-TEXTAREA" class="html-gen-btn btn-add-element-from-textarea"><i class="fas fa-link"></i></button>
+                                </div>
+                                <div class="form__selection textarea-preview">
+                                    <p class="html-gen-instruction textarea-preview__title">Como enlace se usara la parte:</p>
+                                    <!--DO--><p class="textarea-preview__text" data-output="OUTPUT_SELECTED_TEXT">parte que debe</p>
+                                </div>
+                            </div>
+                        </div> <!--/has resources videos-->
+                    </div> <!--/resources videos-->
+
+                    <!--====== Extra: Credits ======-->
+                    <div class="d-flex jc-start">
+                        <h3 class="html-gen-subtitle html-gen-subtitle--more">Extra: Créditos</h3>
+                        <!--VISIBLE--><button data-btn="btn--resources-credits-toggle" class="html-gen-btn html-gen-btn-inside"><i class="fas fa-pen"></i></button>
                     </div>
+                    <div data-form="form--resources-credits" class="hidden-html-gen">
+                        <div class="form__selection d-flex">
+                            <p class="html-gen-instruction">¿Hay créditos?</p>
+                            <!--VISIBLE--><select data-input="input--has-resources-credits" class="select-box select-box--small">
+                                <option value="yes" class="select-box__option">Sí</option>
+                                <option value="no" class="select-box__option">No</option>
+                            </select>
+                        </div>
+
+                        <div data-form="form--has-resources-credits">
+                            <div class="form__selection form__selection--add-list-items d-flex">
+                                <p class="html-gen-instruction">Agrega crédito:</p>
+                                <!--VISIBLE--><button data-btn="btn--add-resources-credits" class="html-gen-btn btn-add-element"><i class="fas fa-plus-circle"></i></button>
+                            </div>
+                            <!--VISIBLE--><div data-form="form--add-resources-credits" class="form--resources-item"></div>
+                        </div> <!--/has resources credits-->
+                    </div> <!--/resources credits-->
+
                 </form>
-            </div> <!--====== / GENERATOR SETTINGS======-->
+                 <!--====== BUTTONS ======-->
+                 <div class="html-gen-btn-container d-flex jc-center">
+                    <!--VISIBLE--><button data-btn="btn--create-resources" class="html-gen-btn btn-submit-general">Agrega material</button>
+                </div>
+            </div> <!--====== / RESOURCES======-->
 
         </div>
 
+        <!--=======HTML CODE OUTPUT=======-->
         <div class="html-gen-container">
             <div class="html-gen-box">
-                <textarea class="output--html" data-output="output--html" name="output--html"></textarea>
+                <textarea class="output--html" data-output="output--html" name="output--html" spellcheck="false"></textarea>
             </div>
         </div>
+
+        <div class="html-preview-line"></div>
 
         
         <main class="pattern">

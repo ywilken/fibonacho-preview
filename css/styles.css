@@ -2075,9 +2075,34 @@ HTML GENERATOR
 .html-gen-input {
     border-radius: 10px;
     width: 100%;
+    min-width: 100%;
     max-width: 100%;
     padding: 0.5em;
     border: 1px solid gray;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+input.html-gen-input {
+    transition: ease-in-out 500ms background-color;
+    outline-color: purple;
+}
+
+input.html-gen-input:focus,
+input.html-gen-input:hover {
+    background-color: #f1c3ff;
+    color: purple;
+}
+
+textarea.html-gen-input {
+    transition: ease-in-out 500ms background-color;
+    outline-color: rgb(0, 94, 0);
+}
+
+textarea.html-gen-input:focus,
+textarea.html-gen-input:hover {
+    background-color: #d1ffd3;
+    color: green;
 }
 
 /* ===== BUTTONS ===== */
@@ -2128,6 +2153,76 @@ HTML GENERATOR
     pointer-events: none;
 }
 
+.btn-add-element-from-textarea {
+    margin-left: 1em;
+    margin-right: 0.5rem;
+    border-color: rgb(102, 102, 102);
+    background-image: linear-gradient(120deg, rgb(161, 161, 161), rgb(71, 71, 71));
+    padding: 0.25em 1em;
+    align-self: flex-start;
+    width: 50px;
+}
+
+.btn-add-element-from-textarea i {
+    pointer-events: none;
+}
+
+/* ===== Resources Textareas ===== */
+
+.form--resources-item {
+    padding-top: 0.75em;
+    padding-bottom: 0.25em;
+}
+
+.input--text-area-resources {
+    /* min-width: 90%;
+    max-width: 90%; */
+    width: 100%;
+    min-height: 60px;
+    padding: 0.25rem 0.5rem;
+    border-radius: 10px;
+    background-color: #d0d8ff;
+    font-family: inherit;
+    font-size: 0.875rem;
+    color: rgb(2, 62, 141);
+    font-weight: 900;
+    outline-color: blue;
+    transition: 500ms ease-in-out background-color;
+}
+
+.input--text-area-resources:focus,
+.input--text-area-resources:hover {
+    background-color: #b3bfff;
+}
+
+.input--text-area-resources::placeholder {
+    opacity: 0.6;
+    font-weight: 400;
+}
+
+.textarea-preview {
+    padding: 0.5rem 0.75rem;
+    background-color: rgba(182, 182, 182, 0.1);
+    /* background-color: transparent; */
+    border: 1px gray dotted;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.textarea-preview__title {
+    font-size: 1rem;
+    opacity: 0.4;
+}
+
+.textarea-preview__text {
+    margin-bottom: 0;
+    font-size: 1rem;
+    font-weight: 900;
+    margin-left: 1rem;
+    color: rgb(231, 158, 48);
+    letter-spacing: 1.05px;
+}
+
 /* ===== HTML OUTPUT ===== */
 
 .output--img-direction {
@@ -2139,8 +2234,20 @@ HTML GENERATOR
 }
 
 .output--html {
-    width: 100%;
+    min-width: 100%;
     max-width: 100%;
+    background: black;
+    color: gray;
+    padding: 1em;
+    border-radius: 5px;
+}
+
+
+.html-preview-line {
+    height: 5px;
+    width: 100vw;
+    background: black;
+    box-shadow: 0 0 5px 2px rgba(144, 144, 238, 0.2);
 }
 
 /* ===== HIDE-CLASS ===== */

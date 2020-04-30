@@ -1,3 +1,30 @@
+/* // Test for selecting text from text areas
+const inputTextarea =  document.querySelector(`[data-input="input--textarea"]`);
+const btnGetTextarea = document.querySelector(`[data-btn="btn--get-textarea"]`);
+
+function getTextfromTextarea() {
+    const inputTextarea_value = inputTextarea.value;
+    console.log(inputTextarea_value);
+    const inputTextarea_selectionStart = inputTextarea.selectionStart;
+    console.log(inputTextarea_selectionStart);
+    const inputTextarea_selectionEnd = inputTextarea.selectionEnd;
+    console.log(inputTextarea_selectionEnd);
+    const highlightedText = inputTextarea_value.substring(inputTextarea_selectionStart, inputTextarea_selectionEnd);
+    console.log(highlightedText);
+    const beforeHighlightedText = inputTextarea_value.substring(0, inputTextarea_selectionStart);
+    console.log(beforeHighlightedText);
+    const afterHighlightedText = inputTextarea_value.substring(inputTextarea_selectionEnd);
+    console.log(afterHighlightedText);
+}
+
+btnGetTextarea.addEventListener('click', getText);
+
+function getText(e) {
+    e.preventDefault();
+    getTextfromTextarea();
+} */
+
+
 /*==================
 VARIABLES
 ==================*/
@@ -15,6 +42,13 @@ const inputIntroVideo_Url = document.querySelector('[data-input="input--intro__v
 const inputIntroVideo_Nr = document.querySelector('[data-input="input--intro__video-nr"]');
 const inputIntroAddInput = document.querySelector('[data-input="input--intro-add-input"]');
 const inputObjectivesTitle = document.querySelector('[data-input="input--objectives__title"]');
+const inputHasObjectives = document.querySelector('[data-input="input--has-objetives"]');
+const inputOptionalIntroText = document.querySelector('[data-input="input--add-optional-text"]');
+const inputHasOptionalText = document.querySelector('[data-input="input--has-optional-text"]');
+// Resources
+const inputHasResourcesMaterial = document.querySelector('[data-input="input--has-resources-material"]');
+const inputHasResourcesVideo = document.querySelector('[data-input="input--has-resources-video"]');
+const inputHasResourcesCredits = document.querySelector('[data-input="input--has-resources-credits"]');
 
 
 /*=== Image Settings ===*/
@@ -26,6 +60,14 @@ let imageCount;
 const inputImgFormat = document.querySelector('[data-input="input--img-format"]');
 const inputHeroImgFormat = document.querySelector('[data-input="input--hero-img-format"]');
 
+/*=== Video Settings ===*/
+const inputAutomaticNumbering = document.querySelector('[data-input="input--automatic-numbering"]');
+const formIntroVideoNrContainer = document.querySelector('[data-form="form--intro-video-nr"]');
+let videoCount;
+
+/*=== Video Settings ===*/
+let chapterCount = 1;
+
 /*=== Output HTML ===*/
 const outputHtml = document.querySelector('[data-output="output--html"]');
 const outputImgDirection = document.querySelector('[data-output="output--img-direction"]');
@@ -36,6 +78,7 @@ const btnSubmitGeneral = document.querySelector('[data-btn="btn--create-document
 const btnDeleteAll = document.querySelector('[data-btn="btn--delete-all"]');
 const btnIntroAddInput = document.querySelector('[data-btn="btn--intro-add-input"]');
 const btnAddObjective = document.querySelector('[data-btn="btn--add-objective"]');
+const btnAddOptionalIntroText = document.querySelector('[data-btn="btn--add-optional-text"]');
 const btnSectionAddInput = document.querySelector('[data-btn="btn--section-add-input"]');
 
 
@@ -44,7 +87,12 @@ const btnGeneralToggle = document.querySelector('.btn-general-toggle')
 const btnIntroToggle = document.querySelector('[data-btn="btn--intro-toggle"]');
 const btnImageSettingsToggle = document.querySelector('[data-btn="btn--image-settings-toggle"]');
 const btnObjectivesToggle = document.querySelector('[data-btn="btn--objectives-toggle"]');
-
+const btnOptionalIntroTextToggle = document.querySelector('[data-btn="btn--optional-text-toggle"]');
+// Resources
+const btnResourcesToggle = document.querySelector('[data-btn="btn--resources-toggle"]');
+const btnResourcesMaterialToggle = document.querySelector('[data-btn="btn--resources-material-toggle"]');
+const btnResourcesVideoToggle = document.querySelector('[data-btn="btn--resources-video-toggle"]');
+const btnResourcesCreditsToggle = document.querySelector('[data-btn="btn--resources-credits-toggle"]');
 
 /*=== Form ===*/
 const formGeneral = document.querySelector('[data-form="form--general"]');
@@ -53,9 +101,23 @@ const formIntroGeneral = document.querySelector('[data-form="form--intro-general
 const formIntro = document.querySelector('[data-form="form--intro"]');
 const formIntroVideo = document.querySelector('[data-form="form--intro-video"]');
 const formObjectives = document.querySelector('[data-form="form--objectives"]');
+// This is for the toggle option "has objectives"
+const formHasObjectives = document.querySelector('[data-form="form--has-objectives"]');
+const formOptionalIntroText = document.querySelector('[data-form="form--optional-text"]');
+// This is for the toggle option "has optional text"
+const formHasOptionalText = document.querySelector('[data-form="form--has-optional-text"]');
+// Resources
+const formResources = document.querySelector('[data-form="form--resources"]');
+const formResourcesMaterial = document.querySelector('[data-form="form--resources-material"]');
+const formHasResourcesMaterial = document.querySelector('[data-form="form--has-resources-material"]');
+const formResourcesVideo = document.querySelector('[data-form="form--resources-video"]');
+const formHasResourcesVideo = document.querySelector('[data-form="form--has-resources-video"]');
+const formResourcesCredits = document.querySelector('[data-form="form--resources-credits"]');
+const formHasResourcesCredits = document.querySelector('[data-form="form--has-resources-credits"]');
 
 const formIntroAddInputContainer = document.querySelector('[data-form="form--intro-add-input"]');
 const formAddObjectiveContainer = document.querySelector('[data-form="form--add-objective"]');
+const formAddOptionalIntroTextContainer = document.querySelector('[data-form="form--add-optional-text"]');
 const formAddSectionsContainer = document.querySelector('[data-form="form--section-add-input"]');
 
 /*=== Form: CHAPTER ===*/
@@ -63,7 +125,11 @@ let pageSectionInput_chapterNr = 1;
 
 /*=== Internal Arrays ===*/
 let introElementArray = [];
+let optionalTextElementArray = [];
 let sectionElementArray = [];
+let resourcesMaterialElementArray = [];
+let resourcesVideoElementArray = [];
+let resourcesCreditsElementArray = [];
 
 
 /*==================
@@ -73,23 +139,37 @@ btnSubmitGeneral.addEventListener('click', createDocument);
 btnDeleteAll.addEventListener('click', clearDocument);
 btnIntroAddInput.addEventListener('click', addIntroInput);
 btnAddObjective.addEventListener('click', addIntroInput);
+btnAddOptionalIntroText.addEventListener('click', addIntroInput);
 btnSectionAddInput.addEventListener('click', addSectionInput);
+// btnAddOptionalIntroText.addEventListener('click', (e) => {
+//     e.preventDefault();
+//     createOptionalIntroText();
+// }
 
 
 /*=== Toggle Edit Window ===*/
 btnGeneralToggle.addEventListener('click', () => formGeneral.classList.toggle('hidden-html-gen'));
+
 btnImageSettingsToggle.addEventListener('click', (e) => {
     e.preventDefault();
     formImageSettings.classList.toggle('hidden-html-gen');
 })
+
 btnIntroToggle.addEventListener('click', (e) => {
     e.preventDefault();
     formIntroGeneral.classList.toggle('hidden-html-gen');
 })
+
 btnObjectivesToggle.addEventListener('click', (e) => {
     e.preventDefault();
     formObjectives.classList.toggle('hidden-html-gen');
 })
+
+btnOptionalIntroTextToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    formOptionalIntroText.classList.toggle('hidden-html-gen');
+})
+
 inputIntro.addEventListener('click', () => {
     if(inputIntro.value === "yes") {
         formIntro.classList.remove('hidden-html-gen');
@@ -97,6 +177,7 @@ inputIntro.addEventListener('click', () => {
         formIntro.classList.add('hidden-html-gen');
     }
 });
+
 inputIntroVideo.addEventListener('click', () => {
     if(inputIntroVideo.value === "yes") {
         formIntroVideo.classList.remove('hidden-html-gen');
@@ -104,6 +185,136 @@ inputIntroVideo.addEventListener('click', () => {
         formIntroVideo.classList.add('hidden-html-gen');
     }
 });
+
+// This EventListener enables the automatic numbering of chapters and videos
+inputAutomaticNumbering.addEventListener('click', () => {
+    if(inputAutomaticNumbering.value === "yes") {
+        // Hide VideoNr in InputForm
+        formIntroVideoNrContainer.classList.add('hidden-html-gen');
+
+        // Hide VideoNr and ChapterNr in ChapterForms
+        sectionElementArray.forEach( item => {
+
+            for(let i=0; i<item.array.length; i++) {
+                // Hide ChapterNr in ChapterForms
+                if(item.array[i].type === "chapter-nr-form") {
+                    const formChapterNumber = document.querySelector(`[data-form="${item.array[i].id}"]`);
+                    formChapterNumber.classList.add('hidden-html-gen');
+                }
+                // Hide VideoNr in ChapterForms
+                if(item.array[i].type === "video-nr-form") {
+                    const formVideoNumber = document.querySelector(`[data-form="${item.array[i].id}"]`);
+                    formVideoNumber.classList.add('hidden-html-gen');
+                }
+                // Hide VideoNr in Subsections
+                if(item.array[i].type === "subsection") {
+                    console.log(item.array[i].array);
+                    item.array[i].array.forEach( subsectionItem => {
+                        if(subsectionItem.type === "video-nr-form") {
+                            const formVideoNumber = document.querySelector(`[data-form="${subsectionItem.id}"]`);
+                            formVideoNumber.classList.add('hidden-html-gen');
+                            console.log(formVideoNumber);
+                        }
+                    });
+                }
+            }
+        });
+    } else {
+        // Make visible VideoNr in InputForm
+        formIntroVideoNrContainer.classList.remove('hidden-html-gen');
+
+        // Make visible VideoNr in ChapterForms
+        sectionElementArray.forEach( item => {
+
+            for(let i=0; i<item.array.length; i++) {
+                // Make visible ChapterNr in ChapterForms
+                if(item.array[i].type === "chapter-nr-form") {
+                    const formChapterNumber = document.querySelector(`[data-form="${item.array[i].id}"]`);
+                    formChapterNumber.classList.remove('hidden-html-gen');
+                }
+                // Make visible VideoNr in ChapterForms
+                if(item.array[i].type === "video-nr-form") {
+                    const formVideoNumber = document.querySelector(`[data-form="${item.array[i].id}"]`);
+                    formVideoNumber.classList.remove('hidden-html-gen');
+                }
+                // Make Visible VideoNr in Subsections
+                if(item.array[i].type === "subsection") {
+                    console.log(item.array[i].array);
+                    item.array[i].array.forEach( subsectionItem => {
+                        if(subsectionItem.type === "video-nr-form") {
+                            const formVideoNumber = document.querySelector(`[data-form="${subsectionItem.id}"]`);
+                            formVideoNumber.classList.remove('hidden-html-gen');
+                            console.log(formVideoNumber);
+                        }
+                    });
+                }
+            }
+        });
+    }
+})
+
+inputHasObjectives.addEventListener('click', () => {
+    if(inputHasObjectives.value === "yes") {
+        formHasObjectives.classList.remove('hidden-html-gen');
+    } else{
+        formHasObjectives.classList.add('hidden-html-gen');
+    }
+});
+
+inputHasOptionalText.addEventListener('click', () => {
+    if(inputHasOptionalText.value === "yes") {
+        formHasOptionalText.classList.remove('hidden-html-gen');
+    } else{
+        formHasOptionalText.classList.add('hidden-html-gen');
+    }
+});
+
+// Resources
+btnResourcesToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    formResources.classList.toggle('hidden-html-gen');
+})
+
+btnResourcesMaterialToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    formResourcesMaterial.classList.toggle('hidden-html-gen');
+})
+
+inputHasResourcesMaterial.addEventListener('click', () => {
+    if(inputHasResourcesMaterial.value === "yes") {
+        formHasResourcesMaterial.classList.remove('hidden-html-gen');
+    } else{
+        formHasResourcesMaterial.classList.add('hidden-html-gen');
+    }
+});
+
+btnResourcesVideoToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    formResourcesVideo.classList.toggle('hidden-html-gen');
+})
+
+inputHasResourcesVideo.addEventListener('click', () => {
+    if(inputHasResourcesVideo.value === "yes") {
+        formHasResourcesVideo.classList.remove('hidden-html-gen');
+    } else{
+        formHasResourcesVideo.classList.add('hidden-html-gen');
+    }
+});
+
+btnResourcesCreditsToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    formResourcesCredits.classList.toggle('hidden-html-gen');
+})
+
+inputHasResourcesCredits.addEventListener('click', () => {
+    if(inputHasResourcesCredits.value === "yes") {
+        formHasResourcesCredits.classList.remove('hidden-html-gen');
+    } else{
+        formHasResourcesCredits.classList.add('hidden-html-gen');
+    }
+});
+
+
 
 /*==================
 FUNCTIONS
@@ -130,6 +341,7 @@ function createDocument(e) {
     // Create Section
     const  pageSection = createSection('chapter', '', 'Intro');
     imageCount = Number(inputImgNumber.value || 1);
+    videoCount = 1;
     outputImgDirection.innerText = `./../../img/${inputCourseNumber.value}/${inputImgFolder.value}/${inputImgName.value}-${imageCount}.${inputImgFormat.value}`;
     // Create Nivel
     createNivel();
@@ -142,55 +354,52 @@ function createDocument(e) {
     if(inputIntro.value === "yes") {
         createIntroVideoBtn(pageSection);
     
-    // console.log(introElementArray);
-    // ********* Create the elements for each of our added fields
-        introElementArray.forEach( (item) => {
-            // console.log(item);
-            // console.log(item.type);
-            let inputField;
-            switch(item.type) {
-                case "p":
-                    inputField = document.querySelector(`[data-input="${item.id}"]`);
-                    createSingleElement('p', 'main-text', inputField);
-                    // htmlElementClass = "main-text";
-                    break;
-                case "observa":
-                    inputField = document.querySelector(`[data-input="${item.id}"]`);
-                    createSingleElement('p', 'example', inputField);
-                    break;
-                case "img":
-                    inputField = document.querySelector(`[data-input="${item.id}"]`);
-                    inputField_Alt = document.querySelector(`[data-input="${item.id_2}"]`);
-                    createImage(inputField, 'img-diagram', inputField_Alt);
-                    break;
-                case "ul":
-                    inputField = document.querySelector(`[data-input="${item.id}"]`);
-                    createSingleElement('ul', 'main-list', inputField, item.array);
-                    console.log(item.id);
-                    console.log(item.array);
-                    // item.array.forEach( (child) => {
-                    //     console.log("Hi");
-                    //     console.log(child);
-                    //     createSingleElement('li', 'list-dot', child);
-                    // })
-                    break;
-                case "learnbox":
-                    inputField = document.querySelector(`[data-input="${item.id}"]`);
-                    createSingleElement('div', 'chapter-box', inputField);
-                    break;
-                case "quote":
-                    inputField = document.querySelector(`[data-input="${item.id}"]`);
-                    createSingleElement('p', 'main-text-quote', inputField);
-                    break;
-            }
-        });
+        // ********* Create the elements for each of our added fields
+        createDocument_addItems(introElementArray);
     }
-    if(inputObjectivesTitle.value !== "") {
+    if(inputHasObjectives.value === "yes") {
         createObjectives();
     }
+    if(inputHasOptionalText.value === "yes") {
+        createDocument_addItems(optionalTextElementArray);
+    }
+    
     createSectionHtmlEnd();
 }
 
+function createDocument_addItems(parentArray) {
+    // ********* Create the elements for each of our added fields
+    parentArray.forEach( (item) => {
+        let inputField;
+        switch(item.type) {
+            case "p":
+                inputField = document.querySelector(`[data-input="${item.id}"]`);
+                createSingleElement('p', 'main-text', inputField);
+                break;
+            case "observa":
+                inputField = document.querySelector(`[data-input="${item.id}"]`);
+                createSingleElement('p', 'example', inputField);
+                break;
+            case "img":
+                inputField = document.querySelector(`[data-input="${item.id}"]`);
+                inputField_Alt = document.querySelector(`[data-input="${item.id_2}"]`);
+                createImage(inputField, 'img-diagram', inputField_Alt);
+                break;
+            case "ul":
+                inputField = document.querySelector(`[data-input="${item.id}"]`);
+                createSingleElement('ul', 'main-list', inputField, item.array);
+                break;
+            case "learnbox":
+                inputField = document.querySelector(`[data-input="${item.id}"]`);
+                createSingleElement('div', 'chapter-box', inputField);
+                break;
+            case "quote":
+                inputField = document.querySelector(`[data-input="${item.id}"]`);
+                createSingleElement('p', 'main-text-quote', inputField);
+                break;
+        }
+    });
+}
 
 
 function createObjectives() {
@@ -274,7 +483,11 @@ function createIntroVideoBtn(pageSection) {
             pageElementVideoButton.href = inputIntroVideo_Url.value;
         }
         pageElementVideoButton.target = `_blank`;
-        pageElementVideoButton.innerText = `Vídeo ${inputIntroVideo_Nr.value}`;
+        if(inputAutomaticNumbering.value === "yes") {
+            pageElementVideoButton.innerText = `Vídeo 0${videoCount}`;
+        } else {
+            pageElementVideoButton.innerText = `Vídeo ${inputIntroVideo_Nr.value}`;
+        }
         pageElementContainerVideo.appendChild(pageElementVideoButton);
     }
     /*=== HTML Output ===*/
@@ -290,7 +503,12 @@ function createIntroVideoBtn(pageSection) {
         // </div> <!--=======/Title & Video Button=======-->
     if(inputIntroVideo.value === "yes"){
         let htmlElement;
-        htmlElement = document.createTextNode(`    <!--=======Title & Video Button=======-->\r    <div class="flex-video">\r        <div class="flex-video-title">\r            <div><span class="chapter__number">Introducción</span></div>\r            <h2 class="section-title">${inputIntroTitle.value}</h2>\r        </div>\r        <div class="flex-video-btn">\r            <a class="test-button shadow-btn" href="${inputIntroVideo_Url.value || "#"}" target="_blank">Vídeo ${inputIntroVideo_Nr.value}</a>\r        </div>\r    </div>\r`);
+        if(inputAutomaticNumbering.value === "yes") {
+            htmlElement = document.createTextNode(`    <!--=======Title & Video Button=======-->\r    <div class="flex-video">\r        <div class="flex-video-title">\r            <div><span class="chapter__number">Introducción</span></div>\r            <h2 class="section-title">${inputIntroTitle.value}</h2>\r        </div>\r        <div class="flex-video-btn">\r            <a class="test-button shadow-btn" href="${inputIntroVideo_Url.value || "#"}" target="_blank">Vídeo 0${videoCount}</a>\r        </div>\r    </div>\r`);
+            videoCount++;
+        } else {
+            htmlElement = document.createTextNode(`    <!--=======Title & Video Button=======-->\r    <div class="flex-video">\r        <div class="flex-video-title">\r            <div><span class="chapter__number">Introducción</span></div>\r            <h2 class="section-title">${inputIntroTitle.value}</h2>\r        </div>\r        <div class="flex-video-btn">\r            <a class="test-button shadow-btn" href="${inputIntroVideo_Url.value || "#"}" target="_blank">Vídeo ${inputIntroVideo_Nr.value}</a>\r        </div>\r    </div>\r`);
+        }
         outputHtml.appendChild(htmlElement);
     } else {
         let htmlElement;
@@ -302,9 +520,9 @@ function createIntroVideoBtn(pageSection) {
 }
 
 function addIntroInput(e) {
-    console.log(e);
-    console.log(e.target);
-    console.log(e.target.dataset.btn);
+    // console.log(e);
+    // console.log(e.target);
+    // console.log(e.target.dataset.btn);
 
     e.preventDefault();
     // let htmlElement;
@@ -313,6 +531,8 @@ function addIntroInput(e) {
     let htmlElementMessage_2;
     let htmlElementData_2;
     let htmlElementData_Array = [];
+    let inputField;
+    let parentArray;
     
     // let htmlElementClass;    
     // Define the cases
@@ -320,15 +540,26 @@ function addIntroInput(e) {
         htmlElementMessage = "Escribe el objetivo:";
         htmlElementData = Math.random();
         /*=== Saving our changes into an array ===*/
-        updateIntroElementArray("objective", htmlElementData)
+        updateIntroElementArray("objective", htmlElementData, '', '', introElementArray);
     } else {
-        switch(inputIntroAddInput.value.toLowerCase()) {
+        
+        // This code controls which option select is used
+        if (e.target.dataset.btn === "btn--add-optional-text") {
+            // Code
+            inputField = inputOptionalIntroText;
+            parentArray = optionalTextElementArray;
+        } else if (e.target.dataset.btn === "btn--intro-add-input") {
+            // Code
+            inputField = inputIntroAddInput;
+            parentArray = introElementArray;
+        }
+        switch(inputField.value.toLowerCase()) {
             case "p":
                 // htmlElement = "p";
                 htmlElementMessage = "Escribe el parágrafo:";
                 htmlElementData = Math.random();
                 /*=== Saving our changes into an array ===*/
-                updateIntroElementArray("p", htmlElementData)
+                updateIntroElementArray("p", htmlElementData, '', '', parentArray);
                 // htmlElementClass = "main-text";
                 break;
             case "observa":
@@ -336,7 +567,7 @@ function addIntroInput(e) {
                 htmlElementMessage = "Escribe qué vas a observar:";
                 htmlElementData = Math.random();
                 /*=== Saving our changes into an array ===*/
-                updateIntroElementArray("observa", htmlElementData)
+                updateIntroElementArray("observa", htmlElementData, '', '', parentArray)
                 // htmlElementClass = "main-text";
                 break;
             case "img":
@@ -346,7 +577,7 @@ function addIntroInput(e) {
                 htmlElementMessage_2 = "Describe la imagen:";
                 htmlElementData_2 = Math.random();
                 /*=== Saving our changes into an array ===*/
-                updateIntroElementArray("img", htmlElementData, htmlElementData_2)
+                updateIntroElementArray("img", htmlElementData, htmlElementData_2, '', parentArray)
                 // htmlElementClass = "main-text";
                 break;
             case "ul":
@@ -356,7 +587,7 @@ function addIntroInput(e) {
                 htmlElementMessage_2 = "Agrega un punto de la lista:";
                 htmlElementData_2 = Math.random();
                 /*=== Saving our changes into an array ===*/
-                updateIntroElementArray("ul", htmlElementData, "", htmlElementData_Array)
+                updateIntroElementArray("ul", htmlElementData, "", htmlElementData_Array, parentArray)
                 // htmlElementClass = "main-text";
                 break;
             case "learnbox":
@@ -365,7 +596,7 @@ function addIntroInput(e) {
                 htmlElementMessage = "La regla es:";
                 htmlElementData = Math.random();
                 /*=== Saving our changes into an array ===*/
-                updateIntroElementArray("learnbox", htmlElementData)
+                updateIntroElementArray("learnbox", htmlElementData, '', '', parentArray)
                 // htmlElementClass = "main-text";
                 break;
             case "quote":
@@ -374,7 +605,7 @@ function addIntroInput(e) {
                 htmlElementMessage = "El tip es:";
                 htmlElementData = Math.random();
                 /*=== Saving our changes into an array ===*/
-                updateIntroElementArray("quote", htmlElementData)
+                updateIntroElementArray("quote", htmlElementData, '', '', parentArray)
                 // htmlElementClass = "main-text";
                 break;
         }
@@ -387,28 +618,37 @@ function addIntroInput(e) {
     pageIntroInput_Title.classList.add('html-gen-instruction');
     pageIntroInput_Title.innerText = htmlElementMessage;
     // Create the input field
-    const  pageIntroInput_Field = document.createElement('input');
+    let pageIntroInput_Field;
+    if(inputField.value !== "img" && inputField.value !== "ul" && inputField.value !== "observa" ){
+        pageIntroInput_Field = document.createElement('textarea');
+    } else {
+        pageIntroInput_Field = document.createElement('input');
+    }
     pageIntroInput_Field.setAttribute('data-input', htmlElementData);
     pageIntroInput_Field.type = "text";
+    pageIntroInput_Field.spellcheck = false;
     pageIntroInput_Field.classList.add('html-gen-input');
     // Update the html container
     pageIntroInput.appendChild(pageIntroInput_Title);
     pageIntroInput.appendChild(pageIntroInput_Field);
-    switch(inputIntroAddInput.value.toLowerCase()) {
-        case "img":
-            /*=== Saving our changes into an array ===*/
-            addIntroInputSpecial(pageIntroInput, htmlElementMessage_2, htmlElementData_2)
-            break;
-        case "ul":
-            /*=== Saving our changes into an array ===*/
-            addButtonField(pageIntroInput, htmlElementMessage_2, htmlElementData_2, htmlElementData_Array);
-            // const addListItemButton = document.querySelector(`[data-input="${htmlElementData_2}"]`);
-            // addListItemButton.addEventListener('click', addListField);
-            break;
+    if (e.target.dataset.btn !== "btn--add-objective") {
+        switch(inputField.value.toLowerCase()) {
+            case "img":
+                /*=== Saving our changes into an array ===*/
+                addIntroInputSpecial(pageIntroInput, htmlElementMessage_2, htmlElementData_2)
+                break;
+            case "ul":
+                /*=== Saving our changes into an array ===*/
+                addButtonField(pageIntroInput, htmlElementMessage_2, htmlElementData_2, htmlElementData_Array);
+                // const addListItemButton = document.querySelector(`[data-input="${htmlElementData_2}"]`);
+                // addListItemButton.addEventListener('click', addListField);
+                break;
+        }
     }
     // Update the form
     console.log(htmlElementData_Array);
     console.log(introElementArray);
+    console.log(optionalTextElementArray);
     // if (e.target.dataset.btn)
     switch(e.target.dataset.btn) {
         case "btn--intro-add-input":
@@ -416,6 +656,10 @@ function addIntroInput(e) {
             break;
         case "btn--add-objective":
             formAddObjectiveContainer.appendChild(pageIntroInput);
+            break;
+        case "btn--add-optional-text":
+            formAddOptionalIntroTextContainer.appendChild(pageIntroInput);
+            break;
     }
     
 }
@@ -426,7 +670,7 @@ function addIntroInputSpecial(container, message, data) {
     pageIntroInput_Title.classList.add('html-gen-instruction');
     pageIntroInput_Title.innerText = message;
     // Create the input field
-    const  pageIntroInput_Field = document.createElement('input');
+    const  pageIntroInput_Field = document.createElement('textarea');
     pageIntroInput_Field.setAttribute('data-input', data);
     pageIntroInput_Field.type = "text";
     pageIntroInput_Field.classList.add('html-gen-input');
@@ -439,97 +683,7 @@ function addIntroInputSpecial(container, message, data) {
 function addSectionInput(e) {
     e.preventDefault();
     addSectionInput_Form();
-
-    /* let myParentObject = [];
-    testOnObjects(myParentObject);
-    testOnObjects(myParentObject);
-    testOnObjects(myParentObject);
-    console.log(myParentObject);
-
-    let myParentObject_2 = [];
-    testOnObjects(myParentObject_2);
-    testOnObjects(myParentObject_2);
-    console.log(myParentObject_2);
-
-    sectionElementArray.push(myParentObject);
-    sectionElementArray.push(myParentObject_2);
-    console.log(sectionElementArray);
-
-    sectionElementArray.forEach(item => {
-        console.log("hi");
-    });
-    console.log(sectionElementArray[0]);
- */
-
-
 }
-
-// function testOnObjects(myParentObject) {
-    
-//     // let myChildObject = {};
-//     // myChildObject = updateSectionElementArray("p", "0001", "", "", myChildObject, myParentObject);
-//     // console.log(myChildObject);
-
-//     // myParentObject.push(myChildObject);
-//     // console.log(myParentObject);
-
-//     // sectionElementArray.push(myParentObject);
-//     // console.log(sectionElementArray);
-//     // console.log(sectionElementArray[0][0]);
-
-    
-//     const myObject = updateSectionElementArray("p", "0001", "", "", "", "");
-//     console.log(myObject);
-//     return myParentObject.push(myObject);
-// }
-
-// function updateSectionElementArray(type, id, id_2, itemList, childArray, parentArray) {
-//     let childObject = {};
-//     childObject.type = type;
-//     childObject.id = id;
-//     if(id_2 !== "") {
-//         childObject.id_2 = id_2;
-//     }
-//     if(itemList !== "") {
-//         childObject.array = itemList;
-//     }
-//     console.log(childObject);
-//     return childObject;
-//     const parentArrayUpdated = parentArray.push(childArray);
-//     return parentArrayUpdated;
-//     console.log(parentArray);
-// }
-
-// function testOnObjects() {
-//     let myParentObject = [];
-//     let myChildObject = {};
-//     myChildObject = updateSectionElementArray("p", "0001", "", "", myChildObject, myParentObject);
-//     console.log(myChildObject);
-
-//     myParentObject.push(myChildObject);
-//     console.log(myParentObject);
-
-//     sectionElementArray.push(myParentObject);
-//     console.log(sectionElementArray);
-//     console.log(sectionElementArray[0][0]);
-// }
-
-// function updateSectionElementArray(type, id, id_2, itemList, childArray, parentArray) {
-//     // let htmlElementObject = {};
-//     childArray.type = type;
-//     childArray.id = id;
-//     if(id_2 !== "") {
-//         childArray.id_2 = id_2;
-//     }
-//     if(itemList !== "") {
-//         childArray.array = itemList;
-//     }
-//     console.log(childArray);
-//     return childArray;
-//     const parentArrayUpdated = parentArray.push(childArray);
-//     return parentArrayUpdated;
-//     console.log(parentArray);
-// }
 
 /*====== CHAPTER: CREATE INPUT FORM - Create the new sectionInputForm ======*/
 function addSectionInput_Form() {
@@ -581,8 +735,14 @@ function addSectionInput_Form() {
                 htmlElementData = Math.random();
                 addSectionInput_Form_Elements('input', 'html-gen-input', '', pageSectionInput_placeholder, '', 'data-input', htmlElementData, 'text');
                 updateSectionElement_childContainer('h2', htmlElementData, '', htmlElementList_container, '')
-            // Create the input [section number] field
-            pageSectionInput_placeholder = addSectionInput_Form_Elements('div', '', '', pageSectionInput_form, '', '', '', '');
+            // Create the input [chapter number] field
+            htmlElementData = Math.random();
+            if(inputAutomaticNumbering.value === "yes") {
+                pageSectionInput_placeholder = addSectionInput_Form_Elements('div', 'hidden-html-gen', '', pageSectionInput_form, '', 'data-form', htmlElementData, '');
+            } else {
+                pageSectionInput_placeholder = addSectionInput_Form_Elements('div', '', '', pageSectionInput_form, '', 'data-form', htmlElementData, '');
+            }
+            updateSectionElement_childContainer('chapter-nr-form', htmlElementData, '', htmlElementList_container, '')
             addSectionInput_Form_Elements('p', 'html-gen-instruction', '', pageSectionInput_placeholder, 'Número del capítulo (1, 2, 3 etc.):', '', '', '');
             htmlElementData = Math.random();
             addSectionInput_Form_Elements('input', 'html-gen-input', '', pageSectionInput_placeholder, '(ej. 1)', 'data-input', htmlElementData, 'text');
@@ -605,7 +765,14 @@ function addSectionInput_Form() {
                     }
                 });
                 // Create the input [video number] field
-                pageSectionInput_placeholder = addSectionInput_Form_Elements('div', '', '', pageSectionInput_placeholderVideoDiv, '', '', '', '');
+                // pageSectionInput_placeholder = addSectionInput_Form_Elements('div', '', '', pageSectionInput_placeholderVideoDiv, '', '', '', '');
+                htmlElementData = Math.random();
+                if(inputAutomaticNumbering.value === "yes") {
+                    pageSectionInput_placeholder = addSectionInput_Form_Elements('div', 'hidden-html-gen', '', pageSectionInput_placeholderVideoDiv, '', 'data-form', htmlElementData, '');
+                } else {
+                    pageSectionInput_placeholder = addSectionInput_Form_Elements('div', '', '', pageSectionInput_placeholderVideoDiv, '', 'data-form', htmlElementData, '');
+                }
+                updateSectionElement_childContainer('video-nr-form', htmlElementData, '', htmlElementList_container, '')
                 addSectionInput_Form_Elements('p', 'html-gen-instruction', '', pageSectionInput_placeholder, 'Número del vídeo (01, 02, 03 etc.):', '', '', '');
                 htmlElementData = Math.random();
                 addSectionInput_Form_Elements('input', 'html-gen-input', '', pageSectionInput_placeholder, '(ej. 01)', 'data-input', htmlElementData, 'text');
@@ -770,7 +937,14 @@ function addSectionInput_Form() {
                             }
                         });
                         // Create the input [video number] field
-                        pageSectionInput_placeholder = addSectionInput_Form_Elements('div', '', '', pageSectionInput_placeholderVideoDiv, '', '', '', '');
+                        // pageSectionInput_placeholder = addSectionInput_Form_Elements('div', '', '', pageSectionInput_placeholderVideoDiv, '', '', '', '');
+                        htmlElementData = Math.random();
+                        if(inputAutomaticNumbering.value === "yes") {
+                            pageSectionInput_placeholder = addSectionInput_Form_Elements('div', 'hidden-html-gen', '', pageSectionInput_placeholderVideoDiv, '', 'data-form', htmlElementData, '');
+                        } else {
+                            pageSectionInput_placeholder = addSectionInput_Form_Elements('div', '', '', pageSectionInput_placeholderVideoDiv, '', 'data-form', htmlElementData, '');
+                        }
+                        /*UPDATE => */ updateSectionElement_childContainer('video-nr-form', htmlElementData, '', htmlElementList_containerSubsection, '')
                         addSectionInput_Form_Elements('p', 'html-gen-instruction', '', pageSectionInput_placeholder, 'Número del vídeo (01, 02, 03 etc.):', '', '', '');
                         htmlElementData = Math.random();
                         addSectionInput_Form_Elements('input', 'html-gen-input', '', pageSectionInput_placeholder, '(ej. 01)', 'data-input', htmlElementData, 'text');
@@ -896,7 +1070,6 @@ function addSectionInput_Form() {
 
 
         /*====== (4) Create the container "button" ======*/
-        const myArray = "45";
         const  pageSectionInput_btnDiv = addSectionInput_Form_Elements('div', 'html-gen-btn-container', 'd-flex', pageSectionInput, '', '', '', 'jc-center');
             // Create the submit button
             htmlElementData_submitBtn = Math.random();
@@ -1093,14 +1266,21 @@ function createSectionVideoBtn(item, parent) {
                             // Create the title container
                             const createSectionVideoBtn_div_title = addSectionInput_Form_Elements('div', 'flex-video-title', '', createSectionVideoBtn_divContainer, '', '', '', '');
                             const createSectionVideoBtn_div_titleMessage = document.querySelector(`[data-input="${item[i].id}"]`).value;
-                            addSectionInput_Form_Elements('h2', 'section-title', '', createSectionVideoBtn_div_title, createSectionVideoBtn_div_titleMessage, '', '', `<span class="chapter__number">(${createSectionVideoBtn_chapterNr})</span>`);
+                            let chapterNr;
+                                    if(inputAutomaticNumbering.value === "yes") {
+                                        chapterNr = `${chapterCount}`;
+                                    } else {
+                                        chapterNr = createSectionVideoBtn_chapterNr;
+                                    }
+                            addSectionInput_Form_Elements('h2', 'section-title', '', createSectionVideoBtn_div_title, createSectionVideoBtn_div_titleMessage, '', '', `<span class="chapter__number">(${chapterNr})</span>`);
                             // UPLOAD HTML COMMENTS - this uploads the title part:
                             createSectionComments('div','flex-video','','','1','newLine','','Title & Video Button', '');
                             createSectionComments('div','flex-video-title','','','2','newLine','','', '');
                             createSectionComments('h2','section-title','', '','3','','','', '');
-                            createSectionComments('span','chapter__number','', `(${createSectionVideoBtn_chapterNr})`,'','','','', 'closing');
+                            createSectionComments('span','chapter__number','', `(${chapterNr})`,'','','','', 'closing');
                             createSectionComments('h2','','', createSectionVideoBtn_div_titleMessage,'','newLine','','', 'only');
                             createSectionComments('div','','', '','2','newLine','','', 'only');
+                            chapterCount++;
                             // This is the selector for the value:
                             // console.log(document.querySelector(`[data-input="${item[i].id}"]`).value);
                             break;
@@ -1123,12 +1303,19 @@ function createSectionVideoBtn(item, parent) {
                             for(let i=0; i<item.length; i++) {
                                 if(item[i].type === "video-url") {
                                     const createSectionVideoBtn_videoUrl = document.querySelector(`[data-input="${item[i].id}"]`).value;
-                                    addSectionInput_Form_Elements('a', 'test-button', 'shadow-btn', createSectionVideoBtn_div_video, `Vídeo ${createSectionVideoBtn_videoNr}`, '', '', '', createSectionVideoBtn_videoUrl);
+                                    let sectionVideoNr;
+                                    if(inputAutomaticNumbering.value === "yes") {
+                                        sectionVideoNr = `0${videoCount}`;
+                                    } else {
+                                        sectionVideoNr = createSectionVideoBtn_videoNr;
+                                    }
+                                    addSectionInput_Form_Elements('a', 'test-button', 'shadow-btn', createSectionVideoBtn_div_video, `Vídeo ${sectionVideoNr}`, '', '', '', createSectionVideoBtn_videoUrl);
                                     // UPLOAD HTML COMMENTS - this uploads the button part:
                                     createSectionComments('div','flex-video-btn','','','2','newLine','','', '');
-                                    createSectionComments('a','test-button','shadow-btn', `Vídeo ${createSectionVideoBtn_videoNr}`,'3','newLine', createSectionVideoBtn_videoUrl,'', 'closing');
+                                    createSectionComments('a','test-button','shadow-btn', `Vídeo ${sectionVideoNr}`,'3','newLine', createSectionVideoBtn_videoUrl,'', 'closing');
                                     createSectionComments('div','','', '','2','newLine','','', 'only');
                                     createSectionComments('div','','', '','1','newLine','','', 'only');
+                                    videoCount++;
                                 }
                             }
                             break;
@@ -1148,12 +1335,18 @@ function createSectionVideoBtn(item, parent) {
                             const createSectionVideoBtn_chapterNr = createSectionVideoBtn_chapterNrId.value;
                             // Create the title container
                             const createSectionVideoBtn_div_titleMessage = document.querySelector(`[data-input="${item[i].id}"]`).value;
-                            addSectionInput_Form_Elements('h2', 'section-title', '', createSectionVideoBtn_onlyTitle, createSectionVideoBtn_div_titleMessage, '', '', `<span class="chapter__number">(${createSectionVideoBtn_chapterNr})</span>`);
+                            let chapterNr;
+                                    if(inputAutomaticNumbering.value === "yes") {
+                                        chapterNr = `${chapterCount}`;
+                                    } else {
+                                        chapterNr = createSectionVideoBtn_chapterNr;
+                                    }
+                            addSectionInput_Form_Elements('h2', 'section-title', '', createSectionVideoBtn_onlyTitle, createSectionVideoBtn_div_titleMessage, '', '', `<span class="chapter__number">(${chapterNr})</span>`);
                             
                             // UPLOAD HTML COMMENTS - this uploads the title part:
                             createSectionComments('','','','','1','','','Title', 'onlyComment');
                             createSectionComments('h2','section-title','', '','1','','','', '');
-                            createSectionComments('span','chapter__number','', `(${createSectionVideoBtn_chapterNr})`,'','','','', 'closing');
+                            createSectionComments('span','chapter__number','', `(${chapterNr})`,'','','','', 'closing');
                             createSectionComments('h2','','', createSectionVideoBtn_div_titleMessage,'','newLine','','', 'only');
                             break;
                         }
@@ -1209,12 +1402,19 @@ function createSubSectionVideoBtn(hasVideo, subchapterNr, item, parent) {
                     for(let i=0; i<item.length; i++) {
                         if(item[i].type === "video-url") {
                             const createSectionVideoBtn_videoUrl = document.querySelector(`[data-input="${item[i].id}"]`).value;
-                            addSectionInput_Form_Elements('a', 'test-button', 'shadow-btn', createSectionVideoBtn_div_video, `Vídeo ${createSectionVideoBtn_videoNr}`, '', '', '', createSectionVideoBtn_videoUrl);
+                            let sectionVideoNr;
+                                if(inputAutomaticNumbering.value === "yes") {
+                                    sectionVideoNr = `0${videoCount}`;
+                                } else {
+                                    sectionVideoNr = createSectionVideoBtn_videoNr;
+                                }
+                            addSectionInput_Form_Elements('a', 'test-button', 'shadow-btn', createSectionVideoBtn_div_video, `Vídeo ${sectionVideoNr}`, '', '', '', createSectionVideoBtn_videoUrl);
                             // UPLOAD HTML COMMENTS - this uploads the button part:
                             createSectionComments('div','flex-video-btn','','','2','newLine','','', '');
-                            createSectionComments('a','test-button','shadow-btn', `Vídeo ${createSectionVideoBtn_videoNr}`,'3','newLine', createSectionVideoBtn_videoUrl,'', 'closing');
+                            createSectionComments('a','test-button','shadow-btn', `Vídeo ${sectionVideoNr}`,'3','newLine', createSectionVideoBtn_videoUrl,'', 'closing');
                             createSectionComments('div','','', '','2','newLine','','', 'only');
                             createSectionComments('div','','', '','1','newLine','','', 'only');
+                            videoCount++;
                         }
                     }
                     break;
@@ -1493,12 +1693,10 @@ function addButtonField(container, message, data, listItem) {
     pageIntroInput_Btn.addEventListener('click', test)
     function test(e) {
         e.preventDefault();
-        console.log("I'm a list item");
+
         
         const listItemId = Math.random();
         listItem.push(listItemId);
-        console.log(listItem);
-        console.log(introElementArray);
         addIntroInputSpecial(container, message, listItemId);
     };
     // Create the icon
@@ -1524,7 +1722,7 @@ function addButtonField(container, message, data, listItem) {
 //     console.log(listItem);
 // }
 
-function updateIntroElementArray(type, id, id_2, itemList) {
+function updateIntroElementArray(type, id, id_2, itemList, parentArray) {
     let htmlElementObject = {};
     htmlElementObject.type = type;
     htmlElementObject.id = id;
@@ -1534,7 +1732,12 @@ function updateIntroElementArray(type, id, id_2, itemList) {
     if(itemList !== "") {
         htmlElementObject.array = itemList;
     }
-    introElementArray.push(htmlElementObject);
+    if(parentArray !== "") {
+        parentArray.push(htmlElementObject);
+    } else{
+        introElementArray.push(htmlElementObject);
+    }
+    
     console.log(introElementArray);
 }
 
