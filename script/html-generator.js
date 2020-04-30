@@ -24,10 +24,57 @@ function getText(e) {
     getTextfromTextarea();
 } */
 
+// const globalInputFields = document.querySelectorAll('.html-gen-input');
+// console.log(globalInputFields);
+// globalInputFields.forEach( item => {
+//     item.addEventListener('click', () => {
+//         if (item.value !=="") {
+//             item.classList.add('html-gen-input-filled');
+//         } else {
+//             item.classList.remove('html-gen-input-filled');
+//         }
+//     });
+// });
 
+// function globalInputChangeColor() {
+//     console.log(globalInputFields.length);
+//     // for(let i=0; i<globalInputFields.length; i++) {
+//     //     globalInputFields[i].addEventListener('onselect', () => {
+//     //         if (globalInputFields[i].value !=="") {
+//     //             globalInputFields[i].classList.add('html-gen-input-filled');
+//     //         } else {
+//     //             globalInputFields[i].classList.remove('html-gen-input-filled');
+//     //         }
+//     //     });
+//     // }
+//     globalInputFields.forEach( item => {
+//         item.addEventListener('click', () => {
+//             if (item.value !=="") {
+//                 item.classList.add('html-gen-input-filled');
+//             } else {
+//                 item.classList.remove('html-gen-input-filled');
+//             }
+//     })
+// }
+
+// globalInputChangeColor();
 /*==================
 VARIABLES
 ==================*/
+
+/*=== Global Input Field Selector ===*/
+let globalInputFields = document.querySelectorAll('.html-gen-input').forEach( item => {
+    // This changes the color of filled input fields
+    item.addEventListener('change', (e) => {
+        if (e.target.value !=="") {
+            e.target.classList.add('html-gen-input-filled');
+        } else {
+            e.target.classList.remove('html-gen-input-filled');
+        }
+    });
+});
+
+
 /*=== DOM & Input Fields ===*/
 const htmlCode = document.querySelector('.real-block');
 const inputNivel = document.querySelector('[data-input="input--nivel"]');
@@ -619,14 +666,21 @@ function addIntroInput(e) {
     pageIntroInput_Title.innerText = htmlElementMessage;
     // Create the input field
     let pageIntroInput_Field;
-    if(inputField.value !== "img" && inputField.value !== "ul" && inputField.value !== "observa" ){
-        pageIntroInput_Field = document.createElement('textarea');
-    } else {
+    if (e.target.dataset.btn === "btn--add-objective") {
         pageIntroInput_Field = document.createElement('input');
+    } else {
+        if(inputField.value !== "img" && inputField.value !== "ul" && inputField.value !== "observa"){
+            pageIntroInput_Field = document.createElement('textarea');
+        } else {
+            pageIntroInput_Field = document.createElement('input');
+        }
     }
+    
     pageIntroInput_Field.setAttribute('data-input', htmlElementData);
     pageIntroInput_Field.type = "text";
     pageIntroInput_Field.spellcheck = false;
+    // This EventListener changes the color of the input field as soon as text is entered
+    pageIntroInput_Field.addEventListener('change', highlightGlobalInputField);
     pageIntroInput_Field.classList.add('html-gen-input');
     // Update the html container
     pageIntroInput.appendChild(pageIntroInput_Title);
@@ -664,6 +718,16 @@ function addIntroInput(e) {
     
 }
 
+
+function highlightGlobalInputField(e) {
+    if (e.target.value !=="") {
+        e.target.classList.add('html-gen-input-filled');
+    } else {
+        e.target.classList.remove('html-gen-input-filled');
+    }
+};
+
+
 function addIntroInputSpecial(container, message, data) {
     // Create the title
     const  pageIntroInput_Title = document.createElement('p');
@@ -673,6 +737,8 @@ function addIntroInputSpecial(container, message, data) {
     const  pageIntroInput_Field = document.createElement('textarea');
     pageIntroInput_Field.setAttribute('data-input', data);
     pageIntroInput_Field.type = "text";
+    // This EventListener changes the color of the input field as soon as text is entered
+    pageIntroInput_Field.addEventListener('change', highlightGlobalInputField);
     pageIntroInput_Field.classList.add('html-gen-input');
      // Update the html container
     container.appendChild(pageIntroInput_Title);
@@ -814,7 +880,7 @@ function addSectionInput_Form() {
                         pageSectionInput_placeholderSelect_div = addSectionInput_Form_Elements('div', '', '', pageSectionInput_form, '', '', '', '');
                         addSectionInput_Form_Elements('p', 'html-gen-instruction', '', pageSectionInput_placeholderSelect_div, 'Escribe el parágrafo:', '', '', '');
                         htmlElementData = Math.random();
-                        addSectionInput_Form_Elements('input', 'html-gen-input', '', pageSectionInput_placeholderSelect_div, '', 'data-input', htmlElementData, 'text');
+                        addSectionInput_Form_Elements('textarea', 'html-gen-input', '', pageSectionInput_placeholderSelect_div, '', 'data-input', htmlElementData, 'text');
                         // Upload element to array:
                         updateSectionElement_childContainer('p', htmlElementData, '', htmlElementList_container, '')
                         break;
@@ -833,7 +899,7 @@ function addSectionInput_Form() {
                         addSectionInput_Form_Elements('input', 'html-gen-input', '', pageSectionInput_placeholderSelect_div, '(Nota: Esta url sirve solo para la prevista.)', 'data-input', htmlElementData, 'text');
                         addSectionInput_Form_Elements('p', 'html-gen-instruction', '', pageSectionInput_placeholderSelect_div, 'Describe la imagen:', '', '', '');
                         htmlElementData_2 = Math.random();
-                        addSectionInput_Form_Elements('input', 'html-gen-input', '', pageSectionInput_placeholderSelect_div, '', 'data-input', htmlElementData_2, 'text');
+                        addSectionInput_Form_Elements('textarea', 'html-gen-input', '', pageSectionInput_placeholderSelect_div, '', 'data-input', htmlElementData_2, 'text');
                         // Upload element to array:
                         updateSectionElement_childContainer('img', htmlElementData, htmlElementData_2, htmlElementList_container, '')
                         break;
@@ -860,7 +926,7 @@ function addSectionInput_Form() {
                             
                             addSectionInput_Form_Elements('p', 'html-gen-instruction', '', pageSectionInput_placeholderSelect_div_2, `L${htmlElementData_listIndex_options}: Escribe el punto:`, '', '', '');
                             htmlElementData_option = Math.random();
-                            addSectionInput_Form_Elements('input', 'html-gen-input', '', pageSectionInput_placeholderSelect_div_2, '', 'data-input', htmlElementData_option, 'text');
+                            addSectionInput_Form_Elements('textarea', 'html-gen-input', '', pageSectionInput_placeholderSelect_div_2, '', 'data-input', htmlElementData_option, 'text');
                             htmlElementList_optionsContainer.push(htmlElementData_option);
                             // /* UPDATE => */ updateSectionElement_childContainer('li', htmlElementData_option, '', htmlElementList_optionsContainer, '', '');
                         });
@@ -877,7 +943,7 @@ function addSectionInput_Form() {
                 
                         addSectionInput_Form_Elements('p', 'html-gen-instruction', '', pageSectionInput_placeholderSelect_div, 'La regla es:', '', '', '');
                         htmlElementData = Math.random();
-                        addSectionInput_Form_Elements('input', 'html-gen-input', '', pageSectionInput_placeholderSelect_div, '', 'data-input', htmlElementData, 'text');
+                        addSectionInput_Form_Elements('textarea', 'html-gen-input', '', pageSectionInput_placeholderSelect_div, '', 'data-input', htmlElementData, 'text');
                         // Upload element to array:
                         updateSectionElement_childContainer('learnbox', htmlElementData, '', htmlElementList_container, '')
                         break;
@@ -885,7 +951,7 @@ function addSectionInput_Form() {
                         pageSectionInput_placeholderSelect_div = addSectionInput_Form_Elements('div', '', '', pageSectionInput_form, '', '', '', '');
                         addSectionInput_Form_Elements('p', 'html-gen-instruction', '', pageSectionInput_placeholderSelect_div, 'El tip es:', '', '', '');
                         htmlElementData = Math.random();
-                        addSectionInput_Form_Elements('input', 'html-gen-input', '', pageSectionInput_placeholderSelect_div, '', 'data-input', htmlElementData, 'text');
+                        addSectionInput_Form_Elements('textarea', 'html-gen-input', '', pageSectionInput_placeholderSelect_div, '', 'data-input', htmlElementData, 'text');
                         updateSectionElement_childContainer('quote', htmlElementData, '', htmlElementList_container, '')
                         break;
                 }
@@ -980,7 +1046,7 @@ function addSectionInput_Form() {
                                     pageSectionInput_subsection_placeholderSelect_div = addSectionInput_Form_Elements('div', '', '', pageSectionInput_subsection_form, '', '', '', '');
                                     addSectionInput_Form_Elements('p', 'html-gen-instruction', '', pageSectionInput_subsection_placeholderSelect_div, 'Escribe el parágrafo:', '', '', '');
                                     htmlElementData = Math.random();
-                                    addSectionInput_Form_Elements('input', 'html-gen-input', '', pageSectionInput_subsection_placeholderSelect_div, '', 'data-input', htmlElementData, 'text');
+                                    addSectionInput_Form_Elements('textarea', 'html-gen-input', '', pageSectionInput_subsection_placeholderSelect_div, '', 'data-input', htmlElementData, 'text');
                                     // Upload element to array:
                                     updateSectionElement_childContainer('p', htmlElementData, '', htmlElementList_container, '')
                                     break;
@@ -999,7 +1065,7 @@ function addSectionInput_Form() {
                                     addSectionInput_Form_Elements('input', 'html-gen-input', '', pageSectionInput_subsection_placeholderSelect_div, '(Nota: Esta url sirve solo para la prevista.)', 'data-input', htmlElementData, 'text');
                                     addSectionInput_Form_Elements('p', 'html-gen-instruction', '', pageSectionInput_subsection_placeholderSelect_div, 'Describe la imagen:', '', '', '');
                                     htmlElementData_2 = Math.random();
-                                    addSectionInput_Form_Elements('input', 'html-gen-input', '', pageSectionInput_subsection_placeholderSelect_div, '', 'data-input', htmlElementData_2, 'text');
+                                    addSectionInput_Form_Elements('textarea', 'html-gen-input', '', pageSectionInput_subsection_placeholderSelect_div, '', 'data-input', htmlElementData_2, 'text');
                                     // Upload element to array:
                                     updateSectionElement_childContainer('img', htmlElementData, htmlElementData_2, htmlElementList_container, '')
                                     break;
@@ -1026,7 +1092,7 @@ function addSectionInput_Form() {
                                         
                                         addSectionInput_Form_Elements('p', 'html-gen-instruction', '', pageSectionInput_subsection_placeholderSelect_div_2, `L${htmlElementData_subsection_listIndex_options}: Escribe el punto:`, '', '', '');
                                         htmlElementData_option = Math.random();
-                                        addSectionInput_Form_Elements('input', 'html-gen-input', '', pageSectionInput_subsection_placeholderSelect_div_2, '', 'data-input', htmlElementData_option, 'text');
+                                        addSectionInput_Form_Elements('textarea', 'html-gen-input', '', pageSectionInput_subsection_placeholderSelect_div_2, '', 'data-input', htmlElementData_option, 'text');
                                         htmlElementList_optionsContainer.push(htmlElementData_option);
                                         // /* UPDATE => */ updateSectionElement_childContainer('li', htmlElementData_option, '', htmlElementList_optionsContainer, '', '');
                                     });
@@ -1043,7 +1109,7 @@ function addSectionInput_Form() {
                             
                                     addSectionInput_Form_Elements('p', 'html-gen-instruction', '', pageSectionInput_subsection_placeholderSelect_div, 'La regla es:', '', '', '');
                                     htmlElementData = Math.random();
-                                    addSectionInput_Form_Elements('input', 'html-gen-input', '', pageSectionInput_subsection_placeholderSelect_div, '', 'data-input', htmlElementData, 'text');
+                                    addSectionInput_Form_Elements('textarea', 'html-gen-input', '', pageSectionInput_subsection_placeholderSelect_div, '', 'data-input', htmlElementData, 'text');
                                     // Upload element to array:
                                     updateSectionElement_childContainer('learnbox', htmlElementData, '', htmlElementList_container, '')
                                     break;
@@ -1051,7 +1117,7 @@ function addSectionInput_Form() {
                                     pageSectionInput_subsection_placeholderSelect_div = addSectionInput_Form_Elements('div', '', '', pageSectionInput_subsection_form, '', '', '', '');
                                     addSectionInput_Form_Elements('p', 'html-gen-instruction', '', pageSectionInput_subsection_placeholderSelect_div, 'El tip es:', '', '', '');
                                     htmlElementData = Math.random();
-                                    addSectionInput_Form_Elements('input', 'html-gen-input', '', pageSectionInput_subsection_placeholderSelect_div, '', 'data-input', htmlElementData, 'text');
+                                    addSectionInput_Form_Elements('textarea', 'html-gen-input', '', pageSectionInput_subsection_placeholderSelect_div, '', 'data-input', htmlElementData, 'text');
                                     updateSectionElement_childContainer('quote', htmlElementData, '', htmlElementList_container, '')
                                     break;
                             }
@@ -1624,7 +1690,10 @@ function createSectionComments(tagName, className_1, className_2, message, space
 /*====== CHAPTER: CREATE FORM INPUT ELEMENTS - Create inputElements for sectionInputForm ======*/
 function addSectionInput_Form_Elements(tagName, className_1, className_2, parent, message, dataAttribute, htmlElementData, type, link, comment) {
     const  pageSectionInput_Form_Element = document.createElement(tagName);
-    if(tagName === "input" && message !== "") {
+    if(tagName === "input" || tagName === "textarea") {
+        pageSectionInput_Form_Element.spellcheck = false;
+    };
+    if((tagName === "input" && message !== "") || (tagName === "textarea" && message !== "")) {
         pageSectionInput_Form_Element.placeholder = message;
     };
     if(tagName === "option" && type !== "") {

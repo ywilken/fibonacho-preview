@@ -2096,14 +2096,25 @@ input.html-gen-input:hover {
 
 textarea.html-gen-input {
     transition: ease-in-out 500ms background-color;
-    outline-color: rgb(0, 94, 0);
+    outline-color: orange;
 }
 
 textarea.html-gen-input:focus,
 textarea.html-gen-input:hover {
+    background-color: #ffe8c5;
+    color: rgb(160, 72, 0);
+}
+
+.html-gen-input-filled {
     background-color: #d1ffd3;
     color: green;
 }
+
+/* textarea.html-gen-input:focus,
+textarea.html-gen-input:hover {
+    background-color: #d1ffd3;
+    color: green;
+} */
 
 /* ===== BUTTONS ===== */
 .html-gen-btn-container{
