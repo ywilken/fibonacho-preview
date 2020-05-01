@@ -96,6 +96,8 @@ const inputHasOptionalText = document.querySelector('[data-input="input--has-opt
 const inputHasResourcesMaterial = document.querySelector('[data-input="input--has-resources-material"]');
 const inputHasResourcesVideo = document.querySelector('[data-input="input--has-resources-video"]');
 const inputHasResourcesCredits = document.querySelector('[data-input="input--has-resources-credits"]');
+const inputResourcesMaterial_title = document.querySelector('[data-input="input--resources-material__title"]');
+const inputResourcesVideo_title = document.querySelector('[data-input="input--resources-video__title"]');
 
 
 /*=== Image Settings ===*/
@@ -127,7 +129,10 @@ const btnIntroAddInput = document.querySelector('[data-btn="btn--intro-add-input
 const btnAddObjective = document.querySelector('[data-btn="btn--add-objective"]');
 const btnAddOptionalIntroText = document.querySelector('[data-btn="btn--add-optional-text"]');
 const btnSectionAddInput = document.querySelector('[data-btn="btn--section-add-input"]');
-
+// Resources
+const btnSubmitResources = document.querySelector('[data-btn="btn--create-resources"]');
+const btnResourcesMaterialAddInput = document.querySelector('[data-btn="btn--add-resources-material"]');
+const btnResourcesVideoAddInput = document.querySelector('[data-btn="btn--add-resources-video"]');
 
 /*=== Toggle Buttons ===*/
 const btnGeneralToggle = document.querySelector('.btn-general-toggle')
@@ -166,6 +171,12 @@ const formIntroAddInputContainer = document.querySelector('[data-form="form--int
 const formAddObjectiveContainer = document.querySelector('[data-form="form--add-objective"]');
 const formAddOptionalIntroTextContainer = document.querySelector('[data-form="form--add-optional-text"]');
 const formAddSectionsContainer = document.querySelector('[data-form="form--section-add-input"]');
+const formAddResourcesMaterialContainer = document.querySelector('[data-form="form--add-resources-material"]');
+const formAddResourcesVideoContainer = document.querySelector('[data-form="form--add-resources-video"]');
+
+/*=== Resources: Count ===*/
+let resourcesMaterialCount = 1;
+let resourcesVideoCount = 1;
 
 /*=== Form: CHAPTER ===*/
 let pageSectionInput_chapterNr = 1;
@@ -188,6 +199,11 @@ btnIntroAddInput.addEventListener('click', addIntroInput);
 btnAddObjective.addEventListener('click', addIntroInput);
 btnAddOptionalIntroText.addEventListener('click', addIntroInput);
 btnSectionAddInput.addEventListener('click', addSectionInput);
+// Resources
+btnResourcesMaterialAddInput.addEventListener('click', addResourcesInput);
+btnResourcesVideoAddInput.addEventListener('click', addResourcesInput);
+
+btnSubmitResources.addEventListener('click', createDocumentResources);
 // btnAddOptionalIntroText.addEventListener('click', (e) => {
 //     e.preventDefault();
 //     createOptionalIntroText();
@@ -744,6 +760,364 @@ function addIntroInputSpecial(container, message, data) {
     container.appendChild(pageIntroInput_Title);
     container.appendChild(pageIntroInput_Field);
 }
+
+/*==================
+RESOURCES
+==================*/
+
+                // <!--=======Link: Resources=======-->
+                // <div class="resources resources-extra-material">
+                //     <p class="list-dot">En este enlace podrás encontrar  
+                //     <a href="https://fichasparaimprimir.com/fracciones-propias-e-impropias-tercero-primaria/" target="_blank">
+                //         una ficha para trabajar las fracciones propias e impropias</a>
+                //         creada por <b>Fichasparaimprimir.com</b>.</p>
+                // </div>
+
+function createDocumentResources(e) {
+    e.preventDefault();
+    /* ===RESOURCES MATERIAL=== */
+        
+        if (inputHasResourcesMaterial.value === "yes") {
+            // Create Section
+            const  pageSection = createSection('resources', 'resources-margin', 'Extra: Resources Material');
+            // Add links if approved
+            createResourcesTitle("material", pageSection);
+            createLinkItemFromArray(resourcesMaterialElementArray, pageSection);
+            // Create Section End
+            createSectionHtmlEnd();
+        }
+        
+        if (inputHasResourcesVideo.value === "yes") {
+            // Create Section
+            const  pageSection = createSection('resources', 'resources-margin', 'Extra: Resources Videos');
+            // Add links if approved
+            createResourcesTitle("video", pageSection);
+            createLinkItemFromArray(resourcesVideoElementArray, pageSection);
+            // Create Section End
+            createSectionHtmlEnd();
+        }
+        
+}
+
+function createResourcesTitle(type, parentElement) {
+    let inputMessage;
+    let inputIconHtml;
+    // Define from which variable the title should be fetched
+    if(type === "material") {
+        inputMessage = inputResourcesMaterial_title.value;
+        inputIconHtml = `<i class="fas fa-graduation-cap"></i>`;
+    } else if (type === "video") {
+        inputMessage = inputResourcesVideo_title.value;
+        inputIconHtml = `<i class="fas fa-video"></i>`;
+    }
+
+    // Create the <h2> title
+    const resourceElement_title = createSingleResourceElement('h2', 'section-title', '', parentElement);
+    // Create the <span> and innerText (textNodes are used to use the appendChild() methdo)
+    const resourceElement_span = createSingleResourceElement('span', 'chapter__number', '', '');
+    resourceElement_span.innerHTML = inputIconHtml;
+    const inputMessage_textNode = document.createTextNode(inputMessage);
+    resourceElement_title.appendChild(resourceElement_span);
+    resourceElement_title.appendChild(inputMessage_textNode);
+
+
+    // UPLOAD HTML COMMENTS - this uploads the title part:
+    createSectionComments('h2','section-title','','','1','','','','');
+    createSectionComments('span','chapter__number','', `${inputIconHtml}` ,'','','','', 'yes');
+    createSectionComments('h2','','', `${inputMessage}` ,'','newLine','','', 'only');
+}
+
+
+
+function createLinkItemFromArray(sourceArray, parentElement) {
+    let resourceUrlValue;
+    let resourceLinkCount = 1;
+    let resourceOnlyText;
+    // We iterate through the array that contains the link items
+    sourceArray.forEach( parentItem => {
+        // Then we iterate through the link item itself
+        parentItem.forEach( childItem => {
+            // WE save the url
+            if(childItem.type === "a") {
+                resourceOnlyText = document.querySelector(`[data-input="${childItem.id}"]`).value;
+                    // console.log(resourceOnlyText);
+            }
+            if(childItem.type === "url") {
+                    // console.log(childItem)
+                const resourceUrl_input = document.querySelector(`[data-input="${childItem.id}"]`);
+                return resourceUrlValue = resourceUrl_input.value;
+                    // console.log(resourceUrl_input.value);
+            }
+            // Here we select the "btnSelectLink"
+            if(childItem.type === "btnSelectLink") {
+                // console.log(childItem.linkText.before)
+
+                // And we detect the messages that are saved with the "btnSelectLink"
+                let linkMessageBefore;
+                let linkMessage;
+                let linkMessageAfter;
+                if (childItem.linkText !== undefined) {
+                    linkMessageBefore = (childItem.linkText.before || "");
+                    linkMessage = (childItem.linkText.link || "");
+                    linkMessageAfter = (childItem.linkText.after || "");
+                } else {
+                    linkMessageBefore = "";
+                    linkMessage = "";
+                    linkMessageAfter ="";
+                }
+                
+                // Now we create <div> container, <p> and <a> tags
+                const resourceElement_div = createSingleResourceElement('div', 'resources', 'resources-extra-material', parentElement);
+                const resourceElement_p = createSingleResourceElement('p', 'list-dot', '', resourceElement_div);
+                const resourceElement_a = createSingleResourceElement('a', '', '', '');
+                // Then we customize the <a> tag
+                    // console.log(resourceUrlValue)
+                resourceElement_a.href = (resourceUrlValue || "#");
+                resourceElement_a.target = "_blank";
+                resourceElement_a.innerText = linkMessage;
+                // We save the before and after message as text nodes, so we cann use the appendChild() method
+                const linkMessageBefore_textNode = document.createTextNode(linkMessageBefore);
+                const linkMessageAfter_textNode = document.createTextNode(linkMessageAfter);
+                // Finally we append the messages (depending on the fact if a link was selected)
+                if (linkMessage !== "") {
+                    resourceElement_p.appendChild(linkMessageBefore_textNode);
+                    resourceElement_p.appendChild(resourceElement_a);
+                    resourceElement_p.appendChild(linkMessageAfter_textNode);
+                } else {
+                    const resourceOnlyText_textNode = document.createTextNode(resourceOnlyText);
+                    resourceElement_p.appendChild(resourceOnlyText_textNode);
+                }
+
+                // UPLOAD HTML COMMENTS - this uploads the title part:
+                createSectionComments('div','resources','resources-extra-material','','1','newLine','',`Resource-Link 0${resourceLinkCount}:`, '');
+                if(linkMessageBefore !== "") {
+                    createSectionComments('p','list-dot','',`${linkMessageBefore}`,'2','','','', '');
+                } else {
+                    createSectionComments('p','list-dot','',`${resourceOnlyText}`,'2','','','', '');
+                }
+                if(linkMessage !== "") {
+                    // Custom Link:
+                const htmlElement = document.createTextNode(`<a href="${(resourceUrlValue || '#')}" target="_blank">${linkMessage}<a>`);
+                outputHtml.appendChild(htmlElement);
+                }
+                createSectionComments('p','','',`${linkMessageAfter}`,'','newLine','','', 'only');
+                createSectionComments('div','','', ``,'1','newLine','','', 'only');
+                // Iterate counter
+                resourceLinkCount++;
+            }
+        });
+    });
+}
+
+function createSingleResourceElement(tagName, className_1, className_2, parent, innerText_HTML) {
+    const pageElement = document.createElement(tagName);
+    if(className_1 !== "") {
+        pageElement.classList.add(className_1);
+    }
+    if(className_2 !== "") {
+        pageElement.classList.add(className_2);
+    }
+    if(parent !== "") {
+        parent.appendChild(pageElement);
+    }
+    return pageElement;
+}
+
+// function createDocument(e) {
+//     e.preventDefault();
+//     clearPreviewHtml(e);
+//     // Create Section
+//     const  pageSection = createSection('chapter', '', 'Intro');
+//     imageCount = Number(inputImgNumber.value || 1);
+//     videoCount = 1;
+//     outputImgDirection.innerText = `./../../img/${inputCourseNumber.value}/${inputImgFolder.value}/${inputImgName.value}-${imageCount}.${inputImgFormat.value}`;
+//     // Create Nivel
+//     createNivel();
+//     // Create Title
+//     createSingleElement('h1', 'chapter-title', inputTitle);
+//     // Create Subtitle
+//     createSingleElement('p', 'subtitle', inputSubtitle);
+//     // Create Hero-Image
+//     createHeroImage(inputHeroImage, inputHeroImageAlt);
+//     if(inputIntro.value === "yes") {
+//         createIntroVideoBtn(pageSection);
+    
+//         // ********* Create the elements for each of our added fields
+//         createDocument_addItems(introElementArray);
+//     }
+//     if(inputHasObjectives.value === "yes") {
+//         createObjectives();
+//     }
+//     if(inputHasOptionalText.value === "yes") {
+//         createDocument_addItems(optionalTextElementArray);
+//     }
+    
+//     createSectionHtmlEnd();
+// }
+
+/*====== Add Resources Button (btnSectionAddInput) ======*/
+function addResourcesInput(e) {
+    e.preventDefault();
+    // Variables
+    let pageElementContainer;
+    let pageResourcesInput_div;
+    let pageResourcesInput_btn;
+    let pageResourcesInput_input;
+    let pageResourcesInput_textarea;
+    let pageResourcesInput_preview;
+    let resourcesCount;
+    let htmlElementList_container = [];  /* Array contains the wohle input compound */
+    let parentArray;                     /* This is the parentArray */
+    let htmlElementData;
+    let htmlElementData_2;
+    // Conditions
+    if(e.target.dataset.btn === "btn--add-resources-material") {
+        pageElementContainer = formAddResourcesMaterialContainer;
+        resourcesCount = `M${resourcesMaterialCount}:`;
+        parentArray = resourcesMaterialElementArray;
+    } else if (e.target.dataset.btn === "btn--add-resources-video") {
+        pageElementContainer = formAddResourcesVideoContainer;
+        resourcesCount = `V${resourcesVideoCount}:`;
+        parentArray = resourcesVideoElementArray;
+    }
+    // const btnResourcesVideoAddInput = document.querySelector('[data-btn="btn--add-resources-video"]');
+
+
+    // Create Input Fields
+    /*====== Create the container "form--resources-item" ======*/
+    const  pageResourcesInput = document.createElement('div');
+    pageResourcesInput.classList.add('form--resources-item');
+        /*====== (1) URL: - Create the url input ======*/
+            pageResourcesInput_div = addSectionInput_Form_Elements('div', '', '', pageResourcesInput, '', '', '', '');
+            addSectionInput_Form_Elements('p', 'html-gen-instruction', '', pageResourcesInput_div, `${resourcesCount} La url que lleva al material es:`, '', '', '');
+            htmlElementData = Math.random();
+            pageResourcesInput_input = addSectionInput_Form_Elements('input', 'html-gen-input', '', pageResourcesInput_div, '', 'data-input', htmlElementData, 'text');
+            pageResourcesInput_input.spellcheck = false;
+            // This EventListener changes the color of the input field as soon as text is entered
+            pageResourcesInput_input.addEventListener('change', highlightGlobalInputField);
+            // Upload element to array:
+            updateSectionElement_childContainer('url', htmlElementData, '', htmlElementList_container, '')
+        /*====== (2) TEXTAREA: - Create the textarea for the link text ======*/
+            pageResourcesInput_div = addSectionInput_Form_Elements('div', 'd-flex', 'jc-space', pageResourcesInput, '', '', '', '');
+            // Textarea
+            htmlElementData = Math.random();
+            pageResourcesInput_textarea = addSectionInput_Form_Elements('textarea', 'input--text-area-resources', '', pageResourcesInput_div, '1) Ingresa tu texto aquí. 2) Después elige la parte que debe servir como enlace y da click en el button para confirmar tu selección.', 'data-input', htmlElementData, 'text');
+            pageResourcesInput_textarea.spellcheck = false;
+            // Upload element to array:
+            updateSectionElement_childContainer('a', htmlElementData, '', htmlElementList_container)
+            // Button
+            htmlElementData_2 = Math.random();
+            pageResourcesInput_btn = addSectionInput_Form_Elements('button', 'html-gen-btn', 'btn-add-element-from-textarea', pageResourcesInput_div, '<i class="fas fa-link"></i>', 'data-btn', htmlElementData_2, 'text');
+            pageResourcesInput_btn.addEventListener('click', getSelectedLink);
+            // This EventListener changes the color of the input field as soon as text is entered
+            // pageResourcesInput_btn.addEventListener('change', highlightGlobalInputField);
+            // Upload element to array:
+            updateSectionElement_childContainer('btnSelectLink', htmlElementData_2, '', htmlElementList_container, '')
+        /*====== (3) SELECTED LINK PREVIEW: - Create the preview box to display selection ======*/
+            pageResourcesInput_div = addSectionInput_Form_Elements('div', 'form__selection', 'textarea-preview', pageResourcesInput, '', '', '', '');
+            addSectionInput_Form_Elements('p', 'html-gen-instruction', 'textarea-preview__title', pageResourcesInput_div, `Como enlace se usara la parte:`, '', '', '');
+            // Preview box
+            htmlElementData = Math.random();
+            pageResourcesInput_preview = addSectionInput_Form_Elements('p', 'textarea-preview__text', '', pageResourcesInput_div, '', 'data-output', htmlElementData, '');
+            updateSectionElement_childContainer('preview', htmlElementData, '', htmlElementList_container, [])
+
+// {/* <div class="form__selection textarea-preview">
+// //         <p class="html-gen-instruction textarea-preview__title">Como enlace se usara la parte:</p>
+// //         <p class="textarea-preview__text" data-output="">.......</p>
+// //     </div> */}
+
+    // Iterate the counter
+    if(e.target.dataset.btn === "btn--add-resources-material") {
+        resourcesMaterialCount++;
+    } else if(e.target.dataset.btn === "btn--add-resources-video") {
+        resourcesVideoCount++;
+    }
+    // Upload our container to the html
+    pageElementContainer.appendChild(pageResourcesInput);
+    parentArray.push(htmlElementList_container);
+    
+
+    console.log(parentArray);
+}
+
+function getSelectedLink(e) {
+    e.preventDefault();
+    /* // Getting to the sibling of e.target:
+    console.log(e.target);
+    console.log(e.target.parentNode);
+    console.log(e.target.parentNode.children);
+    console.log(e.target.parentNode.children[0]);
+    console.log(e.target.parentNode.children[0].value); */
+
+    // Variables
+    // Selecting the textarea
+    const inputTextarea = e.target.parentNode.children[0];
+    // Getting the selected text
+    const inputTextarea_value = e.target.parentNode.children[0].value;
+    const inputTextarea_selectionStart = inputTextarea.selectionStart;
+    const inputTextarea_selectionEnd = inputTextarea.selectionEnd;
+    const selectedText = inputTextarea_value.substring(inputTextarea_selectionStart, inputTextarea_selectionEnd);
+    const beforeSelectedText = inputTextarea_value.substring(0, inputTextarea_selectionStart);
+    const afterSelectedText = inputTextarea_value.substring(inputTextarea_selectionEnd);
+
+
+    const parentHtmlContainer = e.target.parentNode.parentNode.parentNode;
+    let parentArray;
+    let childObject = {};
+    if (parentHtmlContainer.dataset.form === "form--add-resources-material") {
+        parentArray = resourcesMaterialElementArray;
+    } else if (parentHtmlContainer.dataset.form === "form--add-resources-video") {
+        parentArray = resourcesVideoElementArray;
+    }
+    for(let i=0; i<parentArray.length; i++) {
+        parentArray[i].forEach( item => {
+                                // console.log(item)
+                                // console.log(item.id);
+                                // console.log(e.target.dataset.btn)
+            // Important "e.target" data is a string, our id is saved as a number
+            // Therefore we need the Number() method
+            if(item.id === Number(e.target.dataset.btn)){
+                // We upload the corresponding data to our "btnSelectedLink" object
+                // We save the data under the "linkText" key
+                childObject = {
+                    "before": `${beforeSelectedText}`,
+                    "link": `${selectedText}`,
+                    "after": `${afterSelectedText}`
+                }
+                item.linkText = childObject;
+
+                // Finally we update the corresponding preview box
+                // Important the markup cannot change because we use set numbers
+                const outputTextPreviewField_Element = e.target.parentNode.parentNode.children[2].children[1];
+                const outputTextPreviewField = document.querySelector(`[data-output="${outputTextPreviewField_Element.dataset.output}"]`);
+                // If any of our 3 text variables contains text information, pass it to our text output field
+                if((beforeSelectedText !== "") || (selectedText !== "") || (afterSelectedText !== "")) {
+                    outputTextPreviewField.innerHTML = `${beforeSelectedText}<span>${selectedText}</span>${afterSelectedText}`;
+                } else{
+                    outputTextPreviewField.innerHTML = "";
+                }
+
+                // If the field has information, change its background color and color to green
+                if(outputTextPreviewField.innerHTML !== "") {
+                    outputTextPreviewField.parentNode.classList.add('textarea-preview-filled');
+                    outputTextPreviewField.classList.add('textarea-preview__text-filled');
+                } else if (outputTextPreviewField.innerHTML === "") {
+                    outputTextPreviewField.parentNode.classList.remove('textarea-preview-filled');
+                    outputTextPreviewField.classList.remove('textarea-preview__text-filled');
+                }
+            }
+        });
+    }
+                    // console.log(e.target.parentNode.parentNode.parentNode);
+                    // console.log(e.target.parentNode.parentNode);
+    // This is our text output field:
+    // console.log(e.target.parentNode.parentNode.children[2].children[1]);
+}
+        
+
+/*================== // RESOURCES ==================*/
+
+
 
 /*====== Add Section Button (btnSectionAddInput) ======*/
 function addSectionInput(e) {
@@ -1708,7 +2082,7 @@ function addSectionInput_Form_Elements(tagName, className_1, className_2, parent
     if(tagName === "div" && type !== "") {
         pageSectionInput_Form_Element.classList.add(type);
     };
-    if((message !== "" && tagName !== "button") || (message !== "" && tagName !== "h2")) {
+    if((message !== "" && tagName !== "button") && (message !== "" && tagName !== "h2") && (message !== "" && tagName !== "textarea")) {
         pageSectionInput_Form_Element.innerText = message;
     };
     if(message !== "" && tagName === "button" ) {

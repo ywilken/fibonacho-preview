@@ -2220,19 +2220,37 @@ textarea.html-gen-input:hover {
     margin-top: 1rem;
 }
 
+.textarea-preview-filled {
+    background-color: #d1ffd3;
+    color: green;
+}
+
 .textarea-preview__title {
     font-size: 1rem;
-    opacity: 0.4;
+    color: rgba(0,0,0,0.4);
 }
 
 .textarea-preview__text {
     margin-bottom: 0;
     font-size: 1rem;
-    font-weight: 900;
+    font-weight: 400;
     margin-left: 1rem;
-    color: rgb(231, 158, 48);
+    color: rgb(48, 97, 231);
     letter-spacing: 1.05px;
 }
+
+.textarea-preview__text-filled {
+    color: green;
+}
+
+
+.textarea-preview__text span {
+    font-weight: 900;
+    color: rgb(231, 158, 48);
+    color: rgb(48, 97, 231);
+}
+
+
 
 /* ===== HTML OUTPUT ===== */
 

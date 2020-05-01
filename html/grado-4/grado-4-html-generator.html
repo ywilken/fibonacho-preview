@@ -388,6 +388,10 @@
                         </div>
 
                         <div data-form="form--has-resources-material">
+                            <div>
+                                <p class="html-gen-instruction">Elige un título para el material extra:</p>
+                                <input data-input="input--resources-material__title" type="text" class="html-gen-input" spellcheck="false" placeholder="Material extra para trabajar (...) :">
+                            </div>
                             <div class="form__selection form__selection--add-list-items d-flex">
                                 <p class="html-gen-instruction">Agrega material:</p>
                                 <!--VISIBLE--><button data-btn="btn--add-resources-material" class="html-gen-btn btn-add-element"><i class="fas fa-plus-circle"></i></button>
@@ -397,7 +401,7 @@
                             
                             
                             <!--====== / Extra: Resources Material (in markup)======-->
-                            <div class="form--resources-item">
+                            <!-- <div class="form--resources-item">
                                 <div>
                                     <p class="html-gen-instruction">M1: La url que lleva al material es:</p>
                                     <input data-input="input--intro-title" type="text" class="html-gen-input">
@@ -407,26 +411,10 @@
                                     <button data-btn="btn--get-textarea" class="html-gen-btn btn-add-element-from-textarea"><i class="fas fa-link"></i></button>
                                 </div>
                                 <div class="form__selection textarea-preview">
-                                    <p class="html-gen-instruction textarea-preview__title">Como enlace se usara la parte:</p>
-                                    <p class="textarea-preview__text" data-output="output--img-direction">parte que debe</p>
+                                    <p class="html-gen-instruction textarea-preview__title">Como enlace se usara el texto naranjada:</p>
+                                    <p class="textarea-preview__text" data-output="">parte que debe <span>this is the link</span> parte que no Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum similique modi, cum ab deserunt adipisci aut. Praesentium odio explicabo voluptate ipsum offici</p>
                                 </div>
-                            </div>
-
-                            <div class="form--resources-item">
-                                <div>
-                                    <p class="html-gen-instruction">M2: La url que lleva al material es:</p>
-                                    <input data-input="input--intro-title" type="text" class="html-gen-input">
-                                </div>
-                                <div class="d-flex jc-space">
-                                    <textarea class="input--text-area-resources" data-input="input--textarea" name="output--html" spellcheck="false" placeholder="1) Ingresa tu texto aquí. 2) Después elige la parte que debe servir como enlace y da click en el button para confirmar tu selección."></textarea>
-                                    <button data-btn="btn--get-textarea" class="html-gen-btn btn-add-element-from-textarea"><i class="fas fa-link"></i></button>
-                                </div>
-                                <div class="form__selection textarea-preview">
-                                    <p class="html-gen-instruction textarea-preview__title">Como enlace se usara la parte:</p>
-                                    <p class="textarea-preview__text" data-output="output--img-direction">parte que debe</p>
-                                </div>
-                            </div>
-
+                            </div> -->
 
 
                         </div> <!--/has resources material-->
@@ -449,26 +437,30 @@
                         </div>
 
                         <div data-form="form--has-resources-video">
+                            <div>
+                                <p class="html-gen-instruction">Elige un título para los vídeos addicionales:</p>
+                                <input data-input="input--resources-video__title" type="text" class="html-gen-input" spellcheck="false" placeholder="(ej. Video de orientación:)">
+                            </div>
                             <div class="form__selection form__selection--add-list-items d-flex">
                                 <p class="html-gen-instruction">Agrega vídeos:</p>
                                 <!--VISIBLE--><button data-btn="btn--add-resources-video" class="html-gen-btn btn-add-element"><i class="fas fa-plus-circle"></i></button>
                             </div>
                             <!--VISIBLE--><div data-form="form--add-resources-video" class="form--resources-item"></div>
                             <!--====== / Extra: Resources Videos (end in markup)======-->
-                            <div class="form--resources-item">
-                                <div>
-                                    <p class="html-gen-instruction">M1:<!--Resource Count--> La url que lleva al vídeo es:</p>
-                                    <input data-input="VIDEO-URL" type="text" class="html-gen-input">
-                                </div>
-                                <div class="d-flex jc-space">
-                                    <!--DI--><textarea class="input--text-area-resources" data-input="TEXT-MATERIAL" spellcheck="false" placeholder="1) Ingresa tu texto aquí. 2) Después elige la parte que debe servir como enlace y da click en el button para confirmar tu selección."></textarea>
-                                    <!--DB--><button data-btn="GET-DATA-FROM-TEXTAREA" class="html-gen-btn btn-add-element-from-textarea"><i class="fas fa-link"></i></button>
-                                </div>
-                                <div class="form__selection textarea-preview">
-                                    <p class="html-gen-instruction textarea-preview__title">Como enlace se usara la parte:</p>
-                                    <!--DO--><p class="textarea-preview__text" data-output="OUTPUT_SELECTED_TEXT">parte que debe</p>
-                                </div>
-                            </div>
+                                        <!-- <div class="form--resources-item">
+                                            <div>
+                                                <p class="html-gen-instruction">M1: La url que lleva al vídeo es:</p>
+                                                <input data-input="VIDEO-URL" type="text" class="html-gen-input">
+                                            </div>
+                                            <div class="d-flex jc-space">
+                                                <textarea class="input--text-area-resources" data-input="TEXT-MATERIAL" spellcheck="false" placeholder="1) Ingresa tu texto aquí. 2) Después elige la parte que debe servir como enlace y da click en el button para confirmar tu selección."></textarea>
+                                            <button data-btn="GET-DATA-FROM-TEXTAREA" class="html-gen-btn btn-add-element-from-textarea"><i class="fas fa-link"></i></button>
+                                            </div>
+                                            <div class="form__selection textarea-preview">
+                                                <p class="html-gen-instruction textarea-preview__title">Como enlace se usara la parte:</p>
+                                                <p class="textarea-preview__text" data-output="OUTPUT_SELECTED_TEXT">parte que debe</p>
+                                            </div>
+                                        </div> -->
                         </div> <!--/has resources videos-->
                     </div> <!--/resources videos-->
 
@@ -498,7 +490,7 @@
                 </form>
                  <!--====== BUTTONS ======-->
                  <div class="html-gen-btn-container d-flex jc-center">
-                    <!--VISIBLE--><button data-btn="btn--create-resources" class="html-gen-btn btn-submit-general">Agrega material</button>
+                    <!--VISIBLE--><button data-btn="btn--create-resources" class="html-gen-btn btn-submit-general">Agrega material extra</button>
                 </div>
             </div> <!--====== / RESOURCES======-->
 
