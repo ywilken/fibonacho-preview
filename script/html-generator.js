@@ -1,63 +1,15 @@
-/* // Test for selecting text from text areas
-const inputTextarea =  document.querySelector(`[data-input="input--textarea"]`);
-const btnGetTextarea = document.querySelector(`[data-btn="btn--get-textarea"]`);
+// // Possible solution for freepik links
+// const myString = `<a href="https://unsplash.com/@neryfabiola_">Photo by Nery Montenegro</a>`;
+// const myStringBeginning = myString.slice(0,2);
+// const myStringTarget = ` target="_blank"`;
+// const myStringEnd = myString.slice(2);
+// console.log(myStringBeginning)
+// console.log(myStringEnd)
+// const newString = myStringBeginning + myStringTarget + myStringEnd;
+// console.log(newString);
 
-function getTextfromTextarea() {
-    const inputTextarea_value = inputTextarea.value;
-    console.log(inputTextarea_value);
-    const inputTextarea_selectionStart = inputTextarea.selectionStart;
-    console.log(inputTextarea_selectionStart);
-    const inputTextarea_selectionEnd = inputTextarea.selectionEnd;
-    console.log(inputTextarea_selectionEnd);
-    const highlightedText = inputTextarea_value.substring(inputTextarea_selectionStart, inputTextarea_selectionEnd);
-    console.log(highlightedText);
-    const beforeHighlightedText = inputTextarea_value.substring(0, inputTextarea_selectionStart);
-    console.log(beforeHighlightedText);
-    const afterHighlightedText = inputTextarea_value.substring(inputTextarea_selectionEnd);
-    console.log(afterHighlightedText);
-}
 
-btnGetTextarea.addEventListener('click', getText);
 
-function getText(e) {
-    e.preventDefault();
-    getTextfromTextarea();
-} */
-
-// const globalInputFields = document.querySelectorAll('.html-gen-input');
-// console.log(globalInputFields);
-// globalInputFields.forEach( item => {
-//     item.addEventListener('click', () => {
-//         if (item.value !=="") {
-//             item.classList.add('html-gen-input-filled');
-//         } else {
-//             item.classList.remove('html-gen-input-filled');
-//         }
-//     });
-// });
-
-// function globalInputChangeColor() {
-//     console.log(globalInputFields.length);
-//     // for(let i=0; i<globalInputFields.length; i++) {
-//     //     globalInputFields[i].addEventListener('onselect', () => {
-//     //         if (globalInputFields[i].value !=="") {
-//     //             globalInputFields[i].classList.add('html-gen-input-filled');
-//     //         } else {
-//     //             globalInputFields[i].classList.remove('html-gen-input-filled');
-//     //         }
-//     //     });
-//     // }
-//     globalInputFields.forEach( item => {
-//         item.addEventListener('click', () => {
-//             if (item.value !=="") {
-//                 item.classList.add('html-gen-input-filled');
-//             } else {
-//                 item.classList.remove('html-gen-input-filled');
-//             }
-//     })
-// }
-
-// globalInputChangeColor();
 /*==================
 VARIABLES
 ==================*/
@@ -112,15 +64,18 @@ const inputHeroImgFormat = document.querySelector('[data-input="input--hero-img-
 /*=== Video Settings ===*/
 const inputAutomaticNumbering = document.querySelector('[data-input="input--automatic-numbering"]');
 const formIntroVideoNrContainer = document.querySelector('[data-form="form--intro-video-nr"]');
-let videoCount;
+let videoCount = 1;
 
 /*=== Video Settings ===*/
 let chapterCount = 1;
+// Checkpoint
+let pageCheckpointInput_checkpointNr = 1;
 
 /*=== Output HTML ===*/
 const outputHtml = document.querySelector('[data-output="output--html"]');
 const outputImgDirection = document.querySelector('[data-output="output--img-direction"]');
-
+/*=== Preview HTML ===*/
+const previewInputHtml = document.querySelector('[data-input="input--preview-html"]');
 
 /*=== Buttons ===*/
 const btnSubmitGeneral = document.querySelector('[data-btn="btn--create-document"]');
@@ -129,10 +84,19 @@ const btnIntroAddInput = document.querySelector('[data-btn="btn--intro-add-input
 const btnAddObjective = document.querySelector('[data-btn="btn--add-objective"]');
 const btnAddOptionalIntroText = document.querySelector('[data-btn="btn--add-optional-text"]');
 const btnSectionAddInput = document.querySelector('[data-btn="btn--section-add-input"]');
+// Checkpoint
+const btnCheckpointAddInput = document.querySelector('[data-btn="btn--checkpoint-add-input"]');
 // Resources
 const btnSubmitResources = document.querySelector('[data-btn="btn--create-resources"]');
 const btnResourcesMaterialAddInput = document.querySelector('[data-btn="btn--add-resources-material"]');
 const btnResourcesVideoAddInput = document.querySelector('[data-btn="btn--add-resources-video"]');
+const btnResourcesCreditsAddInput = document.querySelector('[data-btn="btn--add-resources-credits"]');
+// Output HTML
+const btnCopyHtmlCode = document.querySelector('[data-btn="btn--copy-html-code"]');
+// Preview HTML
+const btnPreviewHtmlCode = document.querySelector('[data-btn="btn--preview-html-code"]');
+const btnPreviewHtmlCode_copy = document.querySelector('[data-btn="btn--preview-html-code-copy"]');
+const btnPreviewHtmlCodeToggle = document.querySelector('[data-btn="btn-add-preview-html"]');
 
 /*=== Toggle Buttons ===*/
 const btnGeneralToggle = document.querySelector('.btn-general-toggle')
@@ -166,17 +130,28 @@ const formResourcesVideo = document.querySelector('[data-form="form--resources-v
 const formHasResourcesVideo = document.querySelector('[data-form="form--has-resources-video"]');
 const formResourcesCredits = document.querySelector('[data-form="form--resources-credits"]');
 const formHasResourcesCredits = document.querySelector('[data-form="form--has-resources-credits"]');
+// Preview
+const formPreviewHtml = document.querySelector('[data-form="form--preview-html"]');
 
 const formIntroAddInputContainer = document.querySelector('[data-form="form--intro-add-input"]');
 const formAddObjectiveContainer = document.querySelector('[data-form="form--add-objective"]');
 const formAddOptionalIntroTextContainer = document.querySelector('[data-form="form--add-optional-text"]');
+// Chapter
 const formAddSectionsContainer = document.querySelector('[data-form="form--section-add-input"]');
+// Checkpoint
+const formAddCheckpointContainer = document.querySelector('[data-form="form--checkpoint-add-input"]');
+// Resources
 const formAddResourcesMaterialContainer = document.querySelector('[data-form="form--add-resources-material"]');
 const formAddResourcesVideoContainer = document.querySelector('[data-form="form--add-resources-video"]');
+const formAddResourcesCreditsContainer = document.querySelector('[data-form="form--add-resources-credits"]');
+
+
+
 
 /*=== Resources: Count ===*/
 let resourcesMaterialCount = 1;
 let resourcesVideoCount = 1;
+let resourcesCreditsCount = 1;
 
 /*=== Form: CHAPTER ===*/
 let pageSectionInput_chapterNr = 1;
@@ -185,6 +160,7 @@ let pageSectionInput_chapterNr = 1;
 let introElementArray = [];
 let optionalTextElementArray = [];
 let sectionElementArray = [];
+let checkpointElementArray = [];
 let resourcesMaterialElementArray = [];
 let resourcesVideoElementArray = [];
 let resourcesCreditsElementArray = [];
@@ -199,9 +175,11 @@ btnIntroAddInput.addEventListener('click', addIntroInput);
 btnAddObjective.addEventListener('click', addIntroInput);
 btnAddOptionalIntroText.addEventListener('click', addIntroInput);
 btnSectionAddInput.addEventListener('click', addSectionInput);
+btnCheckpointAddInput.addEventListener('click', addCheckpointInput);
 // Resources
 btnResourcesMaterialAddInput.addEventListener('click', addResourcesInput);
 btnResourcesVideoAddInput.addEventListener('click', addResourcesInput);
+btnResourcesCreditsAddInput.addEventListener('click', addResourcesInput)
 
 btnSubmitResources.addEventListener('click', createDocumentResources);
 // btnAddOptionalIntroText.addEventListener('click', (e) => {
@@ -231,6 +209,11 @@ btnObjectivesToggle.addEventListener('click', (e) => {
 btnOptionalIntroTextToggle.addEventListener('click', (e) => {
     e.preventDefault();
     formOptionalIntroText.classList.toggle('hidden-html-gen');
+})
+
+btnPreviewHtmlCodeToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    formPreviewHtml.classList.toggle('hidden-html-gen');
 })
 
 inputIntro.addEventListener('click', () => {
@@ -377,11 +360,40 @@ inputHasResourcesCredits.addEventListener('click', () => {
     }
 });
 
+// Output HTML
+
+btnCopyHtmlCode.addEventListener('click', () => {
+    outputHtml.select();
+    document.execCommand('copy');
+})
+
+btnPreviewHtmlCode.addEventListener('click', previewHtmlCode);
+
+btnPreviewHtmlCode_copy.addEventListener('click', () => {
+    previewInputHtml.select();
+    document.execCommand('copy');
+    // document.execCommand('paste');
+    // console.log(previewInputHtml.textContent);
+});
+
 
 
 /*==================
 FUNCTIONS
 ==================*/
+function previewHtmlCode(e) {
+    clearPreviewHtml();
+    // let outputValue = outputHtml.value;
+    // let outputValue = document.createTextNode(outputHtml.value);
+    // console.log(outputHtml.value);    
+    // htmlCode.innerHTML = outputValue;
+    // console.log(e.target);
+    // console.log(e.target.parentNode.parentNode.children[0].children[0]);
+    // let outputValue = outputHtml.value;
+    htmlCode.innerHTML = previewInputHtml.value;
+    // console.log(outputValue)
+    // htmlCode.insertAdjacentHTML('afterbegin', outputValue);
+}
 
 function clearDocument(e) {
     e.preventDefault();
@@ -553,17 +565,7 @@ function createIntroVideoBtn(pageSection) {
         }
         pageElementContainerVideo.appendChild(pageElementVideoButton);
     }
-    /*=== HTML Output ===*/
-        // <!--=======Title & Video Button=======-->
-        // <div class="flex-video">
-        //     <div class="flex-video-title">
-        //         <div><span class="chapter__number">Introducción</span></div>
-        //         <h2 class="section-title">¿Qué es la fracción de un número y para qué nos sirve?</h2>
-        //     </div>
-        //     <div class="flex-video-btn">
-        //         <a class="test-button shadow-btn" href="#" target="_blank">Vídeo 01</a>
-        //     </div>
-        // </div> <!--=======/Title & Video Button=======-->
+    
     if(inputIntroVideo.value === "yes"){
         let htmlElement;
         if(inputAutomaticNumbering.value === "yes") {
@@ -765,14 +767,6 @@ function addIntroInputSpecial(container, message, data) {
 RESOURCES
 ==================*/
 
-                // <!--=======Link: Resources=======-->
-                // <div class="resources resources-extra-material">
-                //     <p class="list-dot">En este enlace podrás encontrar  
-                //     <a href="https://fichasparaimprimir.com/fracciones-propias-e-impropias-tercero-primaria/" target="_blank">
-                //         una ficha para trabajar las fracciones propias e impropias</a>
-                //         creada por <b>Fichasparaimprimir.com</b>.</p>
-                // </div>
-
 function createDocumentResources(e) {
     e.preventDefault();
     /* ===RESOURCES MATERIAL=== */
@@ -796,6 +790,16 @@ function createDocumentResources(e) {
             // Create Section End
             createSectionHtmlEnd();
         }
+
+        if (inputHasResourcesCredits.value === "yes") {
+            // Create Section
+            const  pageSection = createSection('resources', 'resources-margin', 'Extra: Credits');
+             // Add links if approved
+             createResourcesTitle("credits", pageSection);
+             createCreditItemFromArray(resourcesCreditsElementArray, pageSection);
+            // Create Section End
+            createSectionHtmlEnd();
+        }
         
 }
 
@@ -809,6 +813,9 @@ function createResourcesTitle(type, parentElement) {
     } else if (type === "video") {
         inputMessage = inputResourcesVideo_title.value;
         inputIconHtml = `<i class="fas fa-video"></i>`;
+    } else if (type === "credits") {
+        inputMessage = "Créditos de las figuras:";
+        inputIconHtml = `<i class="fas fa-external-link-alt"></i>`
     }
 
     // Create the <h2> title
@@ -827,6 +834,63 @@ function createResourcesTitle(type, parentElement) {
     createSectionComments('h2','','', `${inputMessage}` ,'','newLine','','', 'only');
 }
 
+
+
+
+function createCreditItemFromArray(sourceArray, parentElement) {
+    console.log(resourcesCreditsElementArray)
+
+    // We iterate through the array that contains the credit items
+    sourceArray.forEach( item => {
+        // console.log(item);
+        // console.log(item[0].type);
+
+        // Then we iterate through the childArray
+        for (let i=0; i<item.length; i++) {
+            if(item[i].type === "credit") {
+                // Let us get the corresponding values for message and slice position
+                const creditItem_message = document.querySelector(`[data-input="${item[i].id}"]`).value;
+                const creditItem_slicePosition = document.querySelector(`[data-input="${item[i].id_2}"]`).value;
+                // Variables for the slice process
+                let creditItem_messageChanged;
+                let creditItem_messageStart;
+                let creditItem_messageTarget = `target="_blank" `;
+                let creditItem_messageEnd;
+
+                if(Number(creditItem_slicePosition) > 0) {
+                    creditItem_messageStart = creditItem_message.slice(0, creditItem_slicePosition);
+                    creditItem_messageEnd = creditItem_message.slice(creditItem_slicePosition);
+                    creditItem_messageChanged = creditItem_messageStart + creditItem_messageTarget + creditItem_messageEnd;
+                } else {
+                    creditItem_messageChanged = creditItem_message;
+                }
+
+                // Now we create <div> container, and place our <a> as innerHTMl inside
+                const resourceElement_div = createSingleResourceElement('div', 'resources', 'list-dot', parentElement);
+                resourceElement_div.innerHTML = creditItem_messageChanged;
+
+                // UPLOAD HTML COMMENTS - this uploads the title part:
+                createSectionComments('div','resources','list-dot','','1','newLine','','', '');
+                // Custom Link:
+                const htmlElement = document.createTextNode(`        ${creditItem_messageChanged}\r`);
+                outputHtml.appendChild(htmlElement);
+                createSectionComments('div','','', ``,'1','newLine','','', 'only');
+                // Iterate counter
+            }
+        }
+
+        /* // Possible solution for freepik links
+        const myString = `<a href="https://unsplash.com/@neryfabiola_">Photo by Nery Montenegro</a>`;
+        const myStringBeginning = myString.slice(0,2);
+        const myStringTarget = ` target="_blank"`;
+        const myStringEnd = myString.slice(2);
+        console.log(myStringBeginning)
+        console.log(myStringEnd)
+        const newString = myStringBeginning + myStringTarget + myStringEnd;
+        console.log(newString); */
+        
+    });
+}
 
 
 function createLinkItemFromArray(sourceArray, parentElement) {
@@ -897,7 +961,7 @@ function createLinkItemFromArray(sourceArray, parentElement) {
                 }
                 if(linkMessage !== "") {
                     // Custom Link:
-                const htmlElement = document.createTextNode(`<a href="${(resourceUrlValue || '#')}" target="_blank">${linkMessage}<a>`);
+                const htmlElement = document.createTextNode(`<a href="${(resourceUrlValue || '#')}" target="_blank">${linkMessage}</a>`);
                 outputHtml.appendChild(htmlElement);
                 }
                 createSectionComments('p','','',`${linkMessageAfter}`,'','newLine','','', 'only');
@@ -909,7 +973,7 @@ function createLinkItemFromArray(sourceArray, parentElement) {
     });
 }
 
-function createSingleResourceElement(tagName, className_1, className_2, parent, innerText_HTML) {
+function createSingleResourceElement(tagName, className_1, className_2, parent, innerText_Html) {
     const pageElement = document.createElement(tagName);
     if(className_1 !== "") {
         pageElement.classList.add(className_1);
@@ -923,51 +987,20 @@ function createSingleResourceElement(tagName, className_1, className_2, parent, 
     return pageElement;
 }
 
-// function createDocument(e) {
-//     e.preventDefault();
-//     clearPreviewHtml(e);
-//     // Create Section
-//     const  pageSection = createSection('chapter', '', 'Intro');
-//     imageCount = Number(inputImgNumber.value || 1);
-//     videoCount = 1;
-//     outputImgDirection.innerText = `./../../img/${inputCourseNumber.value}/${inputImgFolder.value}/${inputImgName.value}-${imageCount}.${inputImgFormat.value}`;
-//     // Create Nivel
-//     createNivel();
-//     // Create Title
-//     createSingleElement('h1', 'chapter-title', inputTitle);
-//     // Create Subtitle
-//     createSingleElement('p', 'subtitle', inputSubtitle);
-//     // Create Hero-Image
-//     createHeroImage(inputHeroImage, inputHeroImageAlt);
-//     if(inputIntro.value === "yes") {
-//         createIntroVideoBtn(pageSection);
-    
-//         // ********* Create the elements for each of our added fields
-//         createDocument_addItems(introElementArray);
-//     }
-//     if(inputHasObjectives.value === "yes") {
-//         createObjectives();
-//     }
-//     if(inputHasOptionalText.value === "yes") {
-//         createDocument_addItems(optionalTextElementArray);
-//     }
-    
-//     createSectionHtmlEnd();
-// }
-
 /*====== Add Resources Button (btnSectionAddInput) ======*/
 function addResourcesInput(e) {
     e.preventDefault();
     // Variables
     let pageElementContainer;
+    let resourcesCount;
+    let parentArray; /* This is the parentArray */
+
     let pageResourcesInput_div;
     let pageResourcesInput_btn;
     let pageResourcesInput_input;
     let pageResourcesInput_textarea;
     let pageResourcesInput_preview;
-    let resourcesCount;
-    let htmlElementList_container = [];  /* Array contains the wohle input compound */
-    let parentArray;                     /* This is the parentArray */
+    let htmlElementList_container = [];  /* Array contains the whole input compound */
     let htmlElementData;
     let htmlElementData_2;
     // Conditions
@@ -979,6 +1012,10 @@ function addResourcesInput(e) {
         pageElementContainer = formAddResourcesVideoContainer;
         resourcesCount = `V${resourcesVideoCount}:`;
         parentArray = resourcesVideoElementArray;
+    } else if (e.target.dataset.btn === "btn--add-resources-credits") {
+        pageElementContainer = formAddResourcesCreditsContainer;
+        resourcesCount = `C${resourcesCreditsCount}:`;
+        parentArray = resourcesCreditsElementArray;
     }
     // const btnResourcesVideoAddInput = document.querySelector('[data-btn="btn--add-resources-video"]');
 
@@ -987,39 +1024,71 @@ function addResourcesInput(e) {
     /*====== Create the container "form--resources-item" ======*/
     const  pageResourcesInput = document.createElement('div');
     pageResourcesInput.classList.add('form--resources-item');
-        /*====== (1) URL: - Create the url input ======*/
-            pageResourcesInput_div = addSectionInput_Form_Elements('div', '', '', pageResourcesInput, '', '', '', '');
-            addSectionInput_Form_Elements('p', 'html-gen-instruction', '', pageResourcesInput_div, `${resourcesCount} La url que lleva al material es:`, '', '', '');
-            htmlElementData = Math.random();
-            pageResourcesInput_input = addSectionInput_Form_Elements('input', 'html-gen-input', '', pageResourcesInput_div, '', 'data-input', htmlElementData, 'text');
-            pageResourcesInput_input.spellcheck = false;
-            // This EventListener changes the color of the input field as soon as text is entered
-            pageResourcesInput_input.addEventListener('change', highlightGlobalInputField);
-            // Upload element to array:
-            updateSectionElement_childContainer('url', htmlElementData, '', htmlElementList_container, '')
-        /*====== (2) TEXTAREA: - Create the textarea for the link text ======*/
-            pageResourcesInput_div = addSectionInput_Form_Elements('div', 'd-flex', 'jc-space', pageResourcesInput, '', '', '', '');
-            // Textarea
-            htmlElementData = Math.random();
-            pageResourcesInput_textarea = addSectionInput_Form_Elements('textarea', 'input--text-area-resources', '', pageResourcesInput_div, '1) Ingresa tu texto aquí. 2) Después elige la parte que debe servir como enlace y da click en el button para confirmar tu selección.', 'data-input', htmlElementData, 'text');
-            pageResourcesInput_textarea.spellcheck = false;
-            // Upload element to array:
-            updateSectionElement_childContainer('a', htmlElementData, '', htmlElementList_container)
-            // Button
-            htmlElementData_2 = Math.random();
-            pageResourcesInput_btn = addSectionInput_Form_Elements('button', 'html-gen-btn', 'btn-add-element-from-textarea', pageResourcesInput_div, '<i class="fas fa-link"></i>', 'data-btn', htmlElementData_2, 'text');
-            pageResourcesInput_btn.addEventListener('click', getSelectedLink);
-            // This EventListener changes the color of the input field as soon as text is entered
-            // pageResourcesInput_btn.addEventListener('change', highlightGlobalInputField);
-            // Upload element to array:
-            updateSectionElement_childContainer('btnSelectLink', htmlElementData_2, '', htmlElementList_container, '')
-        /*====== (3) SELECTED LINK PREVIEW: - Create the preview box to display selection ======*/
-            pageResourcesInput_div = addSectionInput_Form_Elements('div', 'form__selection', 'textarea-preview', pageResourcesInput, '', '', '', '');
-            addSectionInput_Form_Elements('p', 'html-gen-instruction', 'textarea-preview__title', pageResourcesInput_div, `Como enlace se usara la parte:`, '', '', '');
-            // Preview box
-            htmlElementData = Math.random();
-            pageResourcesInput_preview = addSectionInput_Form_Elements('p', 'textarea-preview__text', '', pageResourcesInput_div, '', 'data-output', htmlElementData, '');
-            updateSectionElement_childContainer('preview', htmlElementData, '', htmlElementList_container, [])
+        
+            /*====== EXTRA-MATERIAL: ======*/
+            if (e.target.dataset.btn !== "btn--add-resources-credits") {
+                /*====== (1) URL: - Create the url input // For the credits it is the credit input ======*/
+                    pageResourcesInput_div = addSectionInput_Form_Elements('div', '', '', pageResourcesInput, '', '', '', '');
+                    addSectionInput_Form_Elements('p', 'html-gen-instruction', '', pageResourcesInput_div, `${resourcesCount} La url que lleva al material es:`, '', '', '');
+                    htmlElementData = Math.random();
+                    pageResourcesInput_input = addSectionInput_Form_Elements('input', 'html-gen-input', '', pageResourcesInput_div, '', 'data-input', htmlElementData, 'text');
+                    pageResourcesInput_input.spellcheck = false;
+                    // This EventListener changes the color of the input field as soon as text is entered
+                    pageResourcesInput_input.addEventListener('change', highlightGlobalInputField);
+                    // Upload element to array:
+                    updateSectionElement_childContainer('url', htmlElementData, '', htmlElementList_container, '')
+                /*====== (2) TEXTAREA: - Create the textarea for the link text ======*/
+                    pageResourcesInput_div = addSectionInput_Form_Elements('div', 'd-flex', 'jc-space', pageResourcesInput, '', '', '', '');
+                    // Textarea
+                    htmlElementData = Math.random();
+                    pageResourcesInput_textarea = addSectionInput_Form_Elements('textarea', 'input--text-area-resources', '', pageResourcesInput_div, '1) Ingresa tu texto aquí. 2) Después elige la parte que debe servir como enlace y da click en el button para confirmar tu selección.', 'data-input', htmlElementData, 'text');
+                    pageResourcesInput_textarea.spellcheck = false;
+                    // Upload element to array:
+                    updateSectionElement_childContainer('a', htmlElementData, '', htmlElementList_container)
+                    // Button
+                    htmlElementData_2 = Math.random();
+                    pageResourcesInput_btn = addSectionInput_Form_Elements('button', 'html-gen-btn', 'btn-add-element-from-textarea', pageResourcesInput_div, '<i class="fas fa-link"></i>', 'data-btn', htmlElementData_2, 'text');
+                    pageResourcesInput_btn.addEventListener('click', getSelectedLink);
+                    // This EventListener changes the color of the input field as soon as text is entered
+                    // pageResourcesInput_btn.addEventListener('change', highlightGlobalInputField);
+                    // Upload element to array:
+                    updateSectionElement_childContainer('btnSelectLink', htmlElementData_2, '', htmlElementList_container, '')
+                /*====== (3) SELECTED LINK PREVIEW: - Create the preview box to display selection ======*/
+                    pageResourcesInput_div = addSectionInput_Form_Elements('div', 'form__selection', 'textarea-preview', pageResourcesInput, '', '', '', '');
+                    addSectionInput_Form_Elements('p', 'html-gen-instruction', 'textarea-preview__title', pageResourcesInput_div, `Como enlace se usara la parte:`, '', '', '');
+                    // Preview box
+                    htmlElementData = Math.random();
+                    pageResourcesInput_preview = addSectionInput_Form_Elements('p', 'textarea-preview__text', '', pageResourcesInput_div, '', 'data-output', htmlElementData, '');
+                    updateSectionElement_childContainer('preview', htmlElementData, '', htmlElementList_container, [])
+            } else if (e.target.dataset.btn === "btn--add-resources-credits") {
+
+            /*====== CREDITS: ======*/
+                /*====== (1) CREDIT: - Create the credit input ======*/
+                    pageResourcesInput_div = addSectionInput_Form_Elements('div', '', '', pageResourcesInput, '', '', '', '');
+                    addSectionInput_Form_Elements('p', 'html-gen-instruction', '', pageResourcesInput_div, `${resourcesCount} El código  del crédito es:`, '', '', '');
+                    htmlElementData = Math.random();
+                    pageResourcesInput_input = addSectionInput_Form_Elements('input', 'html-gen-input', '', pageResourcesInput_div, '', 'data-input', htmlElementData, 'text');
+                    pageResourcesInput_input.spellcheck = false;
+                    pageResourcesInput_input.placeholder = "El código debe empezar directamente (sin espacios).";
+                    // This EventListener changes the color of the input field as soon as text is entered
+                    pageResourcesInput_input.addEventListener('change', highlightGlobalInputField);
+                    // Upload element to array:
+                    // updateSectionElement_childContainer('credit', htmlElementData, '', htmlElementList_container, '')
+                /*====== (2) NUMBER: - Select the position where we split it ======*/
+                    pageResourcesInput_div = addSectionInput_Form_Elements('div', '', '', pageResourcesInput, '', '', '', '');
+                    addSectionInput_Form_Elements('p', 'html-gen-instruction', '', pageResourcesInput_div, `¿En que posición quieres agregar el atributo (target="_blank")?`, '', '', '');
+                    htmlElementData_2 = Math.random();
+                    pageResourcesInput_input = addSectionInput_Form_Elements('input', 'html-gen-input', 'html-gen-input-filled', pageResourcesInput_div, '', 'data-input', htmlElementData_2, 'text');
+                    pageResourcesInput_input.spellcheck = false;
+                    pageResourcesInput_input.type = "number";
+                    pageResourcesInput_input.value = "3";
+                    pageResourcesInput_input.placeholder = "Solo se acepataran números. Un 0 significa que no quieres agregar el atributo.";
+                    // This EventListener changes the color of the input field as soon as text is entered
+                    pageResourcesInput_input.addEventListener('change', highlightGlobalInputField);
+                    // Upload element to array with information of both:
+                    // (1) htmlElementData = credit (2)     htmlElementData_2 = position where we splice
+                    updateSectionElement_childContainer('credit', htmlElementData, htmlElementData_2, htmlElementList_container, '')
+            }
 
 // {/* <div class="form__selection textarea-preview">
 // //         <p class="html-gen-instruction textarea-preview__title">Como enlace se usara la parte:</p>
@@ -1031,8 +1100,10 @@ function addResourcesInput(e) {
         resourcesMaterialCount++;
     } else if(e.target.dataset.btn === "btn--add-resources-video") {
         resourcesVideoCount++;
+    } else if(e.target.dataset.btn === "btn--add-resources-credits") {
+        resourcesCreditsCount++;
     }
-    // Upload our container to the html
+    // Upload our container to the html preview
     pageElementContainer.appendChild(pageResourcesInput);
     parentArray.push(htmlElementList_container);
     
@@ -1117,7 +1188,189 @@ function getSelectedLink(e) {
 
 /*================== // RESOURCES ==================*/
 
+/*==================
+CHECKPOINT
+==================*/
+ 
+function createDocumentCheckpoint(e) {
+    e.preventDefault();
+    /* ===Checkpoint=== */
+    // Create Section
+    const  pageSection = createSection('chapter', 'chapter-new', 'Video & PDF Button');
+    // Add checkpoint if approved
+    createCheckpointItem(pageSection, e.target);
+    // Create Section End
+    createSectionHtmlEnd();
+}
 
+function createCheckpointItem(parentElement, btnSubmit) {
+                // console.log(pageSection);
+                // console.log(btnSubmit);
+    // Variables
+    let btnSubmit_authenticated = false;
+    let createCheckpoint_urlVideo;
+    let createCheckpoint_urlWorkshop;
+    // Ireate through checkpointArray
+    checkpointElementArray.forEach(item => {
+                        // console.log(item);
+        for (let i=0; i<item.length; i++){
+                        // console.log(item[i].type);
+            if(item[i].type === "btnCheckpoint" && item[i].id === Number(btnSubmit.dataset.btn)) {
+                // console.log("I am the button");
+                // console.log(item[i].id);
+                // console.log(btnSubmit.dataset.btn);
+                btnSubmit_authenticated = true;
+            }
+            if(item[i].type === "urlVideo") {
+                createCheckpoint_urlVideo = item[i].id;
+            }
+            if(item[i].type === "urlWorkshop") {
+                createCheckpoint_urlWorkshop = item[i].id;
+            }
+        }
+
+        // Now we create all the elements for our html preview
+        // But only if data corresponds to the button we clicked on
+        if(btnSubmit_authenticated) {
+            // Variables
+            const createCheckpoint_urlVideoValue = document.querySelector(`[data-input="${createCheckpoint_urlVideo}"]`).value;
+            const createCheckpoint_urlWorkshopValue = document.querySelector(`[data-input="${createCheckpoint_urlWorkshop}"]`).value;
+            // First we create a <div> container
+            const resourceElement_div = createSingleCheckpointElement('div', 'flex-video-container', '', '');
+            // First we create the <p> title and the <div> container for the buttons
+            createSingleCheckpointElement('p', 'text-summary', '', resourceElement_div, '¡Tiempo para un repaso!');
+            const resourceElement_divButtons = createSingleCheckpointElement('div', 'flex-video', 'flex-video-last', resourceElement_div);
+            // === Create the video button
+                const resourceElement_divVideoButton = createSingleCheckpointElement('div', 'flex-video-btn-last', '', resourceElement_divButtons);
+                // Create a custom Video Link
+                const resourceElement_divVideoLink = createSingleCheckpointElement('a', 'video-button', 'video-button-last', resourceElement_divVideoButton);
+                resourceElement_divVideoLink.classList.add('video-button-inverted','shadow-btn');
+                resourceElement_divVideoLink.href = (createCheckpoint_urlVideoValue || "#");
+                resourceElement_divVideoLink.target = "_blank";
+                resourceElement_divVideoLink.innerText = `Vídeo 0${videoCount}`;
+                
+            // === Create the workshop button
+                const resourceElement_divWorkshopButton = createSingleCheckpointElement('div', 'flex-video-btn-last', '', resourceElement_divButtons);
+                // Create a custom Workshop Link
+                const resourceElement_divWorkshopLink = createSingleCheckpointElement('a', 'video-button', 'video-button-last', resourceElement_divWorkshopButton);
+                resourceElement_divWorkshopLink.classList.add('video-button-inverted','shadow-btn', 'video-button--broader');
+                resourceElement_divWorkshopLink.href = (createCheckpoint_urlWorkshopValue || "#");
+                resourceElement_divWorkshopLink.target = "_blank";
+                resourceElement_divWorkshopLink.innerText = `Taller`;
+
+             // === Upload the <div> container to our html preview
+            parentElement.appendChild(resourceElement_div);
+
+            // === UPLOAD HTML COMMENTS - this uploads the title part:
+            createSectionComments('div','flex-video-container','','','1','newLine','','', '');
+            createSectionComments('p','text-summary','',`¡Tiempo para un repaso!`,'2','newLine','','', 'closing');
+            createSectionComments('div','flex-video','flex-video-last','','2','newLine','','', '');
+            // Video Button
+            createSectionComments('','','','','3','newLine','','Button: Video', 'onlyComment');
+            createSectionComments('div','flex-video-btn-last','','','3','newLine','','', '');
+                // Custom Link:
+                const htmlElement = document.createTextNode(`                <a class="video-button video-button-last video-button-inverted shadow-btn" href="${(createCheckpoint_urlVideoValue || '#')}" target="_blank">Vídeo 0${videoCount}</a>\r`);
+                outputHtml.appendChild(htmlElement);
+            createSectionComments('div','','', ``,'3','newLine','','', 'only');
+            // Workshop Button
+            createSectionComments('','','','','3','newLine','','Button: Workshop', 'onlyComment');
+            createSectionComments('div','flex-video-btn-last','','','3','newLine','','', '');
+                // Custom Link:
+                const htmlElement_2 = document.createTextNode(`                <a class="video-button video-button--broader video-button-last video-button-inverted shadow-btn" href="${(createCheckpoint_urlWorkshopValue || '#')}" target="_blank">Taller</a>\r`);
+                outputHtml.appendChild(htmlElement_2);
+            createSectionComments('div','','', ``,'3','newLine','','', 'only');
+            // Closing
+            createSectionComments('div','','', ``,'2','newLine','','', 'only');
+            createSectionComments('div','','', ``,'1','newLine','','', 'only');
+
+            // Last step: We iterate the video count
+            videoCount++;
+           
+        }
+
+        // console.log(btnSubmit_authenticated);
+        // console.log(createCheckpoint_urlVideo);
+        // console.log(createCheckpoint_urlWorkshop);
+    });
+}
+
+function createSingleCheckpointElement(tagName, className_1, className_2, parent, innerText, innerHTML) {
+    const pageElement = document.createElement(tagName);
+    if(className_1 !== "") {
+        pageElement.classList.add(className_1);
+    }
+    if(className_2 !== "") {
+        pageElement.classList.add(className_2);
+    }
+    if(innerText !== "" && innerText !== undefined) {
+        pageElement.innerText = innerText;
+    }
+    if(parent !== "") {
+        parent.appendChild(pageElement);
+    }
+    return pageElement;
+}
+
+
+function addCheckpointInput(e) {
+    e.preventDefault();
+    addCheckpointInput_Form();
+}
+
+function addCheckpointInput_Form() {
+    // Variables
+    let pageCheckpointInput_placeholder;
+    let htmlElementData;
+    let htmlElementList_container = [];  /* Array contains the whole input compound */
+
+
+    /*====== Create the container "html-gen-box" ======*/
+    const  pageCheckpointInput = document.createElement('div');
+    pageCheckpointInput.classList.add('html-gen-box');
+
+    /*====== (1) GENERAL: - Create a div container ======*/
+        const pageCheckpointInput_titleDiv = addSectionInput_Form_Elements('div', 'd-flex', 'jc-space', pageCheckpointInput, '', '', '', '');
+        // Create a title inside the div container 
+        addSectionInput_Form_Elements('h3', 'html-gen-subtitle', '', pageCheckpointInput_titleDiv, `Repaso & Dudas ${pageCheckpointInput_checkpointNr}`, '', '', '');
+        pageCheckpointInput_checkpointNr++;
+        // Create a button inside the div container
+        const pageCheckpointInput_toggleBtn = addSectionInput_Form_Elements('button', 'html-gen-btn', 'btn-general-toggle', pageCheckpointInput_titleDiv, '<i class="fas fa-edit"></i>', '', '', '');
+        pageCheckpointInput_toggleBtn.addEventListener('click', () => {
+            pageCheckpointInput_form.classList.toggle('hidden-html-gen');
+        });
+    /*====== (2) CHECKPOINT: - Create the container "form" ======*/
+        const pageCheckpointInput_form = addSectionInput_Form_Elements('form', 'html-gen-form', 'hidden-html-gen', pageCheckpointInput, '', '', '', '');
+        // Create the input [video: url] field
+            pageCheckpointInput_placeholder = addSectionInput_Form_Elements('div', '', '', pageCheckpointInput_form, '', '', '', '');
+            addSectionInput_Form_Elements('p', 'html-gen-instruction', '', pageCheckpointInput_placeholder, 'La url del vídeo es:', '', '', '');
+            htmlElementData = Math.random();
+            addSectionInput_Form_Elements('input', 'html-gen-input', '', pageCheckpointInput_placeholder, '', 'data-input', htmlElementData, 'text');
+            updateSectionElement_childContainer('urlVideo', htmlElementData, '', htmlElementList_container, '')
+        // Create the input [video: url] field
+            pageCheckpointInput_placeholder = addSectionInput_Form_Elements('div', '', '', pageCheckpointInput_form, '', '', '', '');
+            addSectionInput_Form_Elements('p', 'html-gen-instruction', '', pageCheckpointInput_placeholder, 'La url del taller es:', '', '', '');
+            htmlElementData = Math.random();
+            addSectionInput_Form_Elements('input', 'html-gen-input', '', pageCheckpointInput_placeholder, '', 'data-input', htmlElementData, 'text');
+            updateSectionElement_childContainer('urlWorkshop', htmlElementData, '', htmlElementList_container, '')
+    /*====== (4) Create the container "button" ======*/
+    // Work on me !!!!!!!!!!!!!!!!!!!
+            const pageCheckpointInput_btnDiv = addSectionInput_Form_Elements('div', 'html-gen-btn-container', 'd-flex', pageCheckpointInput, '', '', '', 'jc-center');
+            // Create the submit button
+            htmlElementData_submitBtn = Math.random();
+            addSectionInput_Form_Elements('button', 'html-gen-btn', 'btn-submit-general', pageCheckpointInput_btnDiv, 'Agrega repaso y dudas', 'data-btn', htmlElementData_submitBtn,  '').addEventListener('click', createDocumentCheckpoint);
+            updateSectionElement_childContainer('btnCheckpoint', htmlElementData_submitBtn, '', htmlElementList_container, '')
+    /*====== Upload the container to the placeholder in the html file ======*/
+    formAddCheckpointContainer.appendChild(pageCheckpointInput);
+    checkpointElementArray.push(htmlElementList_container);
+    console.log(checkpointElementArray);
+}
+
+/*================== // CHECKPOINT ==================*/
+
+
+/*==================
+CHAPTERS (= sections)
+==================*/
 
 /*====== Add Section Button (btnSectionAddInput) ======*/
 function addSectionInput(e) {
@@ -1521,10 +1774,10 @@ function addSectionInput_Form() {
     htmlElementChapter_Object.id = htmlElementData_submitBtn;
     htmlElementChapter_Object.array = htmlElementList_container;
     sectionElementArray.push(htmlElementChapter_Object);
-    console.log(htmlElementChapter_Object.id);
-    console.log(htmlElementChapter_Object.array);
-    console.log(htmlElementChapter_Object);
-    console.log(sectionElementArray);
+    // console.log(htmlElementChapter_Object.id);
+    // console.log(htmlElementChapter_Object.array);
+    // console.log(htmlElementChapter_Object);
+    // console.log(sectionElementArray);
 
 
 

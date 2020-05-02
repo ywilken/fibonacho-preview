@@ -249,7 +249,7 @@
 
 
 
-            <!--====== GENERAL SETTINGS ======-->
+            <!--====== NEW CHAPTER ======-->
             <div class="html-gen-box html-gen-box--new-form">
                 <div class="d-flex jc-space">
                     <h3 class="html-gen-subtitle">Agrega capítulo</h3>
@@ -259,6 +259,18 @@
 
             <!--====== SPACE FOR NEW SECTION FORMS ======-->
             <div data-form="form--section-add-input"></div>
+
+
+            <!--====== NEW CHECKPOINT ======-->
+            <div class="html-gen-box html-gen-box--new-form">
+                <div class="d-flex jc-space">
+                    <h3 class="html-gen-subtitle">Agrega repaso y dudas</h3>
+                    <button data-btn="btn--checkpoint-add-input" class="html-gen-btn btn-add-element"><i class="fas fa-plus-circle"></i></button>
+                </div>
+            </div>
+
+            <!--====== SPACE FOR NEW SECTION FORMS ======-->
+            <div data-form="form--checkpoint-add-input"></div>
 
 
             <!--====== NEW SECTION ======-->
@@ -439,7 +451,7 @@
                         <div data-form="form--has-resources-video">
                             <div>
                                 <p class="html-gen-instruction">Elige un título para los vídeos addicionales:</p>
-                                <input data-input="input--resources-video__title" type="text" class="html-gen-input" spellcheck="false" placeholder="(ej. Video de orientación:)">
+                                <input data-input="input--resources-video__title" type="text" class="html-gen-input" spellcheck="false" placeholder="Video de orientación:">
                             </div>
                             <div class="form__selection form__selection--add-list-items d-flex">
                                 <p class="html-gen-instruction">Agrega vídeos:</p>
@@ -488,8 +500,8 @@
                     </div> <!--/resources credits-->
 
                 </form>
-                 <!--====== BUTTONS ======-->
-                 <div class="html-gen-btn-container d-flex jc-center">
+                <!--====== BUTTONS ======-->
+                <div class="html-gen-btn-container d-flex jc-center">
                     <!--VISIBLE--><button data-btn="btn--create-resources" class="html-gen-btn btn-submit-general">Agrega material extra</button>
                 </div>
             </div> <!--====== / RESOURCES======-->
@@ -498,11 +510,35 @@
 
         <!--=======HTML CODE OUTPUT=======-->
         <div class="html-gen-container">
-            <div class="html-gen-box">
+            <div class="html-gen-box html-gen-box--preview">
+                <h3 class="html-gen-subtitle html-gen-subtitle--more">HTML Código</h3>
                 <textarea class="output--html" data-output="output--html" name="output--html" spellcheck="false"></textarea>
+                <!--====== BUTTONS ======-->
+                <div class="html-gen-btn-container d-flex jc-center">
+                    <button data-btn="btn--copy-html-code" class="html-gen-btn html-gen-btn--copt-html ">Copiar código</button>
+                </div>
             </div>
+            <div data-btn="btn-add-preview-html" class="html-gen-triangle"></div>
         </div>
 
+        
+
+        <!--=======HTML CODE PREVIEWER=======-->
+        <div data-form="form--preview-html" class="html-gen-container hidden-html-gen">
+            <div class="html-gen-box html-gen-box--preview">
+                <div class="d-flex jc-space">
+                    <h3 class="html-gen-subtitle html-gen-subtitle--more">HTML Previewer</h3>
+                    <button data-btn="" class="html-gen-btn html-gen-btn--inverted"><i class="fas fa-edit"></i></button>
+                </div>
+                <!-- <h3 class="html-gen-subtitle html-gen-subtitle--more">HTML Previewer</h3> -->
+                <textarea class="input--preview-html" data-input="input--preview-html" name="output--html" spellcheck="false"></textarea>
+                <!--====== BUTTONS ======-->
+                <div class="html-gen-btn-container d-flex jc-center">
+                    <button data-btn="btn--preview-html-code-copy" class="html-gen-btn">Copiar código</button>
+                    <button data-btn="btn--preview-html-code" class="html-gen-btn btn-delete">Prevista</button>
+                </div>
+            </div>
+        </div>
         <div class="html-preview-line"></div>
 
         
