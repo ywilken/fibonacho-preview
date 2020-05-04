@@ -1,7 +1,8 @@
 
 // const myHeaders = new Headers();
+// https://fibonacho-preview.netlify.app/
 
-const myRequest = new Request('https://fibonacho-preview.netlify.app/script/excel.xls', {
+const myRequest = new Request('./excel.xls', {
   method: 'GET',
 //   headers: myHeaders,
   headers: {
@@ -12,7 +13,7 @@ const myRequest = new Request('https://fibonacho-preview.netlify.app/script/exce
   cache: 'default',
 });
 
-let _JsonData;
+// let _JsonData = [];
 
 
 fetch(myRequest)
@@ -35,42 +36,39 @@ fetch(myRequest)
     /* Get worksheet */
     var worksheet = workbook.Sheets[first_sheet_name];
 
-    _JsonData = XLSX.utils.sheet_to_json(worksheet, { raw: true });
+    var _JsonData = XLSX.utils.sheet_to_json(worksheet, { raw: true });
+    // var _JsonData = XLSX.utils.sheet_to_json(worksheet, { raw: true });
     /************************ End of conversion ************************/
 
-    // console.log(_JsonData);
+    console.log(_JsonData);
     return _JsonData;
 
-    $.each(_JsonData, function (index, value) {
+    // $.each(_JsonData, function (index, value) {
 
-        $('#showExcel').append(
+    //     $('#showExcel').append(
 
-            '<tr>' +
-                '<th scope="row">' +
-                    value['FIRST NAME'] +
-                '</th>' + 
-                '<td>' +
-                    value['LAST NAME'] +
-                '</td>' +  
-                '<td>' +
-                    '<span class="badge badge-primary badge-pill p-2">' +
-                        value.AGE +
-                    '</span>' +
-                '</td>' +
-                '<td>' +
-                    value.CLUB +
-                '</td>' +
-                '<td>' +
-                    value.CITY +
-                '</td>' +
-            '</tr>'
-        );
-    });
+    //         '<tr>' +
+    //             '<th scope="row">' +
+    //                 value['FIRST NAME'] +
+    //             '</th>' + 
+    //             '<td>' +
+    //                 value['LAST NAME'] +
+    //             '</td>' +  
+    //             '<td>' +
+    //                 '<span class="badge badge-primary badge-pill p-2">' +
+    //                     value.AGE +
+    //                 '</span>' +
+    //             '</td>' +
+    //             '<td>' +
+    //                 value.CLUB +
+    //             '</td>' +
+    //             '<td>' +
+    //                 value.CITY +
+    //             '</td>' +
+    //         '</tr>'
+    //     );
+    // });
 });
-
-console.log(_JsonData);
-
-
 
 // Access-Control-Allow-Origin: 'https://fibonacho-preview.netlify.app';
 
