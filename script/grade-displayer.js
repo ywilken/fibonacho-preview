@@ -36,7 +36,8 @@ fetch(myRequest)
     var _JsonData = XLSX.utils.sheet_to_json(worksheet, { raw: true });
     /************************ End of conversion ************************/
 
-    console.log(_JsonData);
+    // console.log(_JsonData);
+    return _JsonData;
 
     $.each(_JsonData, function (index, value) {
 
@@ -65,7 +66,7 @@ fetch(myRequest)
     });
 });
 
-
+console.log(_JsonData);
 
 
 
