@@ -1,6 +1,10 @@
 
+// Access-Control-Allow-Origin: 'https://fibonacho-preview.netlify.app';
+
 // read Excel file and convert to json format using fetch
-fetch('https://fibonacho-preview.netlify.app/script/excel.xls').then(function (res) {
+// fetch('http://127.0.0.1:5500/script/excel.xls').then(function (res) {
+
+fetch('https://github.com/ywilken/fibonacho-preview/blob/master/script/excel.xls').then(function (res) {
     /* get the data as a Blob */
     if (!res.ok) throw new Error("fetch failed");
     return res.arrayBuffer();
