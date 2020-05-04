@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fibonacho</title>
+        <link rel="shortcut icon" type="image/png" href="../img/favicon.png">
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Baloo+2:400,700|Caveat:400,700&display=swap" rel="stylesheet">        
+        <link href="../../css/styles.css" rel="stylesheet">
+        <script type="text/javascript" src="../../js/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" lang="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.15.1/xlsx.full.min.js"></script>
+</head>
+    <body>
+        <!--===SIDEBAR===-->
+        <!--=======Menu open/close=======-->
+        <input type="checkbox" id="check">
+        <label for="check">
+            <i class="fas fa-bars" id="btn"></i>
+            <i class="fas fa-times" id="cancel"></i>
+        </label>
+        <!--=======Sidebar Menu=======-->
+        <div class="sidebar">
+            <header>Grado 4/5</header>
+            <ul>
+                <li><a href="../../index.html"><i class="fas fa-home"></i>Home</a></li>
+                <!-- <li><a href="./grado-4.html"><i class="fas fa-meteor"></i>Todos los temas</a></li> -->
+                <!-- <li><a href="#" class="current-page">
+                    <div><i class="fas fa-user-astronaut"></i></div>
+                    <div>Fraccion de un # - Examen</div>
+                </a></li> -->
+                <li><a href="#" class="current-page"><i class="fas fa-user-astronaut"></i>Fraccion de un #</a></li>
+                <li><div class="go-back-link"><i class="fas fa-undo-alt"></i>Volver</div></li>
+                <!-- <li><a href="./grado-4-fraccion-de-numero.html"><i class="fas fa-undo-alt"></i>Volver</a></li> -->
+                <!-- <li><a href="./grado-4-fraccion-de-numero.html"><i class="fas fa-chevron-circle-right"></i>Siguiente</a></li>
+                <li><a href="./grado-4-fracciones-1.html"><i class="fas fa-chevron-circle-left"></i>Anterior</a></li> -->
+                <li><a href="../../index.html#site-contact"><i class="fas fa-envelope"></i>Contacto</a></li>
+            </ul>
+        </div>
+        
+        <main class="pattern pattern-overlay pattern-quiz">
+
+            <!--=======Article 01=======-->
+            <article class="block quiz-block">
+                <div class="real-block real-quiz-block shadow">
+                    
+                    <input type="file" id="fileUpload" accept=".xls,.xlsx" /><br />
+                    <button type="button" id="uploadExcel">Convert</button>
+                    <pre id="jsonData"></pre>
+
+
+                </div>
+            </article>
+
+
+        <!-- JS -->
+        <script src="../../script/grade-displayer.js"></script>
+
+        
+
+    </body>
+
+    <!--<script src="../js/script.js"></script>-->
+
+</html>
