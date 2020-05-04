@@ -12,6 +12,8 @@ const myRequest = new Request('https://fibonacho-preview.netlify.app/script/exce
   cache: 'default',
 });
 
+let _JsonData;
+
 
 fetch(myRequest)
 .then(function (res) {
@@ -33,7 +35,7 @@ fetch(myRequest)
     /* Get worksheet */
     var worksheet = workbook.Sheets[first_sheet_name];
 
-    var _JsonData = XLSX.utils.sheet_to_json(worksheet, { raw: true });
+    _JsonData = XLSX.utils.sheet_to_json(worksheet, { raw: true });
     /************************ End of conversion ************************/
 
     // console.log(_JsonData);
