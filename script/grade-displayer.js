@@ -1,6 +1,6 @@
 
 // read Excel file and convert to json format using fetch
-fetch('files/ExcelFileTest.xls').then(function (res) {
+fetch('http://oss.sheetjs.com/test_files/formula_stress_test.xlsx').then(function (res) {
     /* get the data as a Blob */
     if (!res.ok) throw new Error("fetch failed");
     return res.arrayBuffer();
