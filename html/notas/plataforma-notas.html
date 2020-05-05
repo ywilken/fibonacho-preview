@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fibonacho</title>
+        <link rel="shortcut icon" type="image/png" href="../img/favicon.png">
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Baloo+2:400,700|Caveat:400,700&display=swap" rel="stylesheet">  
+        <link href="../../css/styles.css" rel="stylesheet">
+        <!-- <script type="text/javascript" src="../../js/jquery-3.4.1.min.js"></script> -->
+        <script type="text/javascript" lang="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.15.1/xlsx.full.min.js"></script>
+</head>
+    <body>
+        <!--===SIDEBAR===-->
+        <!--=======Menu open/close=======-->
+        <input type="checkbox" id="check">
+        <label for="check">
+            <i class="fas fa-bars" id="btn"></i>
+            <i class="fas fa-times" id="cancel"></i>
+        </label>
+        <!--=======Sidebar Menu=======-->
+        <div class="sidebar">
+            <header>Grado 4/5</header>
+            <ul>
+                <li><a href="../../index.html"><i class="fas fa-home"></i>Home</a></li>
+                <!-- <li><a href="./grado-4.html"><i class="fas fa-meteor"></i>Todos los temas</a></li> -->
+                <!-- <li><a href="#" class="current-page">
+                    <div><i class="fas fa-user-astronaut"></i></div>
+                    <div>Fraccion de un # - Examen</div>
+                </a></li> -->
+                <li><a href="#" class="current-page"><i class="fas fa-user-graduate"></i>Tus Notas</a></li>
+                <!-- <li><div class="go-back-link"><i class="fas fa-undo-alt"></i>Volver</div></li> -->
+                <!-- <li><a href="./grado-4-fraccion-de-numero.html"><i class="fas fa-undo-alt"></i>Volver</a></li> -->
+                <!-- <li><a href="./grado-4-fraccion-de-numero.html"><i class="fas fa-chevron-circle-right"></i>Siguiente</a></li>
+                <li><a href="./grado-4-fracciones-1.html"><i class="fas fa-chevron-circle-left"></i>Anterior</a></li> -->
+                <li><a href="../../index.html#site-contact"><i class="fas fa-envelope"></i>Contacto</a></li>
+            </ul>
+        </div>
+        
+        <main class="pattern pattern-overlay pattern-quiz">
+
+            <div data-form="form--user-login-toggle" class="user-login-grades">
+                <div class="user-login-grades__btn-toggle">
+                    <i data-btn="btn--user-login-toggle" class="fas fa-chevron-circle-down user-login-grades__btn-toggle__icon"></i>
+                </div>
+                <form action="" >  
+                    <div class="user-login-form">
+                        <div class="form__selection d-flex fd-column fi-user-login">
+                            <label class="user-login-instruction">Elige tu grado:</label>
+                            <select data-input="input--course-nr" class="user-login-select-box">
+                                <!-- <option value="1" class="select-box__option" selected disabled class="option-disabled">Elige tu grado</option> -->
+                                <option value="1" class="select-box__option">Grado 1</option>
+                                <option value="2" class="select-box__option">Grado 2</option>
+                                <option value="3" class="select-box__option">Grado 3</option>
+                                <option value="4" class="select-box__option">Grado 4</option>
+                                <option value="5" class="select-box__option">Grado 5</option>
+                            </select>
+                        </div>
+                        <div class="form__selection d-flex fd-column fi-user-login">
+                            <label class="user-login-instruction">Elige un estudiante:</label>
+                            <select data-input="input--student-name" class="user-login-select-box">
+                                <!-- <option value="1" class="select-box__option" selected disabled>Elige el estudiante</option> -->
+                                <!-- <option value="2" class="select-box__option">Luisa Echeverri</option>
+                                <option value="3" class="select-box__option">Leonardo Barranquilla</option>
+                                <option value="4" class="select-box__option">Martha Mendoza</option>
+                                <option value="1" class="select-box__option">Juan Antonio Martinez</option>
+                                <option value="2" class="select-box__option">Luisa Echeverri</option>
+                                <option value="3" class="select-box__option">Leonardo Barranquilla</option>
+                                <option value="4" class="select-box__option">Martha Mendoza</option> -->
+                            </select>
+                        </div>
+                        <div class="dflex fd-column fi-user-login">
+                            <label class="user-login-instruction user-login-instruction--pin">PIN:</label>
+                            <input data-input="input--password" type="password" value="958744">
+                        </div>
+                    </div>   
+                    <button class="user-login-submit-btn" data-btn="btn--submit">
+                        <span class="user-login-submit-btn-text">Ingresar</span>
+                        <i class="fas fa-user-graduate"></i>
+                    </button>
+                </form>
+            </div>
+
+            <!--=======Grades=======-->
+            <article class="block ">
+                <div class="real-block grades-block shadow grades-box">
+                    
+                    <div data-form="form--grades-welcome">
+                        <i class="fas fa-user-graduate grades-welcome-icon"></i>
+                        <h2 class="grades-welcome-title">¡Bienvenidos al sistema de notas!</h2>
+                        <div class="grades-welcome-body">
+                            <p>Esto es un sistema que permite revisar las notas de los estudiantes. Para ingresar al sistema, selecione el grado y el nombre del estudiante en el formato abajo. Finalmente, confirme su seleccion ingresando el PIN unico de la cuenta respectiva.</p>
+                        </div>
+                    </div>
+                    
+                    <div data-form="form--grades" class="grades-hidden">
+                        <h2 class="grades-title"></h2>
+                        <div class="d-flex jc-space">
+                            <div class="grades-student-data">
+                                <p>Estudiante:</p> 
+                                <p data-output="output--full-name"></span></p>
+                            </div>
+                            <div class="grades-student-data">
+                                <p>Grado:</p>
+                                <p data-output="output--grade-number" class="grades-student-data--highlighted"></p>
+                            </div>
+                        </div>
+    
+                        <div class="table-grades-text-box d-flex jc-space">
+                            <p class="table-grades-title">Trabajo</p>
+                            <p class="table-grades-title">Nota</p>
+                        </div>
+                        <div data-form="form--grades-table" class="table-grades-rows-box">
+                            <!-- <div class="table-grades-comment">
+                                <p class="table-grades-comment__title">Comentario:</p>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti quaerat commodi eos aut? Omnis assumenda nisi velit.</p>
+                            </div> -->
+                        </div>
+                        <div class="table-grades-text-box table-grades-text-box--beneath d-flex jc-space">
+                            <p class="table-grades-title  table-grades-subtitle" id="table-grades-subtitle">Promedio:</p>
+                            <p data-output="output--average-score" class="table-grades-title table-grades-score"></p>
+                        </div>
+    
+    
+                        <!-- <p> Hello</p>
+    
+                        <table class="table-grades" id="example" style="width:100%">
+                            <thead class="table-grades__head">
+                                <tr>
+                                    <th>Trabajo</th>
+                                    <th>Nota</th>
+                                    <th>Comentario</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Taller 1 Entregado en el colegio</td>
+                                    <td>5.0</td>
+                                    <td>Excelente trabajo</td>
+                                </tr>
+                                <tr>
+                                    <td>Taller 1 Entregado en el colegio</td>
+                                    <td>5.0</td>
+                                    <td>Excelente trabajo</td>
+                                </tr>
+                                <tr>
+                                    <td>Taller 1 Entregado en el colegio</td>
+                                    <td>5.0</td>
+                                    <td>Excelente trabajo</td>
+                                </tr>
+                                <tr>
+                                    <td>Taller 1 Entregado en el colegio</td>
+                                    <td>5.0</td>
+                                    <td>Excelente trabajo</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div></div> -->
+                        
+                        
+                        
+                        
+                        <!-- <form action="">
+                            <label>Nombre:</label>
+                            <input data-input="input--username" type="text">
+                            <label>PIN:</label>
+                            <input data-input="input--password" type="password">
+                            <button data-btn="btn--submit">Enviar</button>
+                            <div class="form__selection d-flex">
+                                <p class="html-gen-instruction">Elige un nivel:</p>
+                                <select data-input="input--nivel" class="select-box select-box--small as-center">
+                                    <option value="1" class="select-box__option">Grado 1</option>
+                                    <option value="2" class="select-box__option">Grado 2</option>
+                                    <option value="3" class="select-box__option">Grado 3</option>
+                                    <option value="4" class="select-box__option">Grado 4</option>
+                                    <option value="5" class="select-box__option">Grado 5</option>
+                                </select>
+                            </div>
+                            <div class="form__selection d-flex">
+                                <p class="html-gen-instruction">Elige un nivel:</p>
+                                <select data-input="input--nivel" class="select-box select-box--small as-center">
+                                    <option value="1" class="select-box__option">Nivel 1</option>
+                                    <option value="2" class="select-box__option">Nivel 2</option>
+                                    <option value="3" class="select-box__option">Nivel 3</option>
+                                    <option value="4" class="select-box__option">Nivel 4</option>
+                                    <option value="5" class="select-box__option">Nivel 5</option>
+                                    <option value="1" class="select-box__option">Nivel 1</option>
+                                    <option value="2" class="select-box__option">Nivel 2</option>
+                                    <option value="3" class="select-box__option">Nivel 3</option>
+                                    <option value="4" class="select-box__option">Nivel 4</option>
+                                    <option value="5" class="select-box__option">Nivel 5</option>
+                                    <option value="1" class="select-box__option">Nivel 1</option>
+                                    <option value="2" class="select-box__option">Nivel 2</option>
+                                    <option value="3" class="select-box__option">Nivel 3</option>
+                                    <option value="4" class="select-box__option">Nivel 4</option>
+                                    <option value="5" class="select-box__option">Nivel 5</option>
+                                    <option value="1" class="select-box__option">Nivel 1</option>
+                                    <option value="2" class="select-box__option">Nivel 2</option>
+                                    <option value="3" class="select-box__option">Nivel 3</option>
+                                    <option value="4" class="select-box__option">Nivel 4</option>
+                                    <option value="5" class="select-box__option">Nivel 5</option>
+                                    <option value="4" class="select-box__option">Nivel 4</option>
+                                    <option value="5" class="select-box__option">Nivel 5</option>
+                                    <option value="1" class="select-box__option">Nivel 1</option>
+                                    <option value="2" class="select-box__option">Nivel 2</option>
+                                    <option value="3" class="select-box__option">Nivel 3</option>
+                                    <option value="4" class="select-box__option">Nivel 4</option>
+                                    <option value="5" class="select-box__option">Nivel 5</option>
+                                </select>
+                            </div>
+                        </form>
+                        <div data-form="form--show-grades" class="">
+                            <p>Your grade is: <span data-output="output--grade"></span></p>
+                        </div> -->
+                    </div>
+                    
+
+                </div>
+            </article>
+
+
+        <!-- JS -->
+        <script src="../../script/grade-displayer.js"></script>
+
+        
+
+    </body>
+
+    <!--<script src="../js/script.js"></script>-->
+
+</html>
