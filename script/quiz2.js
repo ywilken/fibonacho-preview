@@ -1,6 +1,11 @@
+console.log(questionArray_G1);
 // Select question and options
+const quizInformation = document.querySelector('.quiz-information');
+let questionArray = [];
 // *** Questions & QuestionCount
-const question = document.querySelector('.question');
+const question = document.querySelector('[data-output="output--question"]');
+const questionIntroText = document.querySelector('.question-intro-text');
+const questionInfo = document.querySelector('[data-output="output--question-info"]');
 const questionNumberSpan = document.querySelector('.question-num-value');
 const totalQuestionSpan = document.querySelector('.question-num-total');
 // *** Options
@@ -40,7 +45,7 @@ const quizOverTitle = document.querySelector('.quiz-over-title')
 
 
 // Questions / Options
-const questionArray = [
+const questionArrayOld = [
     {
         question: 'What is the color of the sky?',
         optionType: 'p',
@@ -92,7 +97,20 @@ totalQuestionSpan.innerHTML = questionArray.length;
 // Set Questions - Options - QuestionNumber
 function loadQuestions(){
     questionNumberSpan.innerHTML=index+1;
-    question.innerHTML=questionArray[questionIndex].question;
+    question.innerText=questionArray[questionIndex].question;
+    if(questionArray[questionIndex].questionIntroText) {
+        questionIntroText.innerText = questionArray[questionIndex].questionIntroText;
+    }
+    if(questionArray[questionIndex].questionInfo) {
+        questionInfo.innerHTML = questionArray[questionIndex].questionInfo;
+        questionInfo.classList.add('question-info');
+        console.log(index)
+        if(index === 0) {
+            questionInfo.classList.add('question-info-animated-delay');
+        } else {
+            questionInfo.classList.add('question-info-animated');
+        }
+    }
     if (questionArray[questionIndex].optionType === "p") {
         optionOne.innerHTML=questionArray[questionIndex].options[0];
         optionTwo.innerHTML=questionArray[questionIndex].options[1];
@@ -174,6 +192,13 @@ function validateSelection() {
     if(!options[0].classList.contains("disabled")) {
         alert("¡Elige una respuesta!");
     } else {
+        if(questionInfo.innerHTML !== "") {
+            questionInfo.innerHTML = "";
+            questionInfo.classList = "";
+        }
+        if(questionIntroText.innerHTML !== "") {
+            questionIntroText.innerHTML = "";
+        }
         enableOptions();
         randomQuestion();
     }
@@ -284,8 +309,28 @@ function goBack() {
 }
 
 
+function selectGradeNumber() {
+    switch(quizInformation.dataset.input) {
+        case "grade-1":
+            questionArray = questionArray_G1;
+            break;
+        case "grade-2":
+            questionArray = questionArray_G1;
+            break;
+        case "grade-3":
+            questionArray = questionArray_G1;
+            break;
+        case "grade-4":
+            questionArray = questionArray_G1;
+            break;
+    }
+    return questionArray;
+}
+
+
 // Call the RandomQuestion Function to start
 window.onload=function() {
+    selectGradeNumber();
     randomQuestion();
     displayAnswerTracker();
 }

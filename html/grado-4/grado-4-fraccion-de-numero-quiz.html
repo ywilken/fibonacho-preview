@@ -40,12 +40,17 @@
 
             <!--=======Article 01=======-->
             <article class="block quiz-block">
+                <!-- Quiz Information -->
+                <div class="quiz-information" data-input="grade-1"></div>
+                <!-- / Quiz Information -->
                 <div class="real-block real-quiz-block shadow">
                     <div class="quiz-container">
+                        <img class="quiz-logo" src="./../../img/favicon.png" alt="">
                         <div class="question-number">
-                            <h3>Question <span class="question-num-value"></span> of <span class="question-num-total"></span></h3>
+                            <h3>Pregunta <span class="question-num-value"></span> de <span class="question-num-total"></span></h3>
                         </div>
-                        <div class="question"><!--Question Text--></div>
+                        <div class="question"><span class="question-intro-text"><!--Question Intro Text--></span><span data-output="output--question"><!--Question Text--></span></div>
+                        <p data-output="output--question-info" class=""><!--Question Info--></p>
                         <!-- <img class="question-image" src="../../img/quiz/option-1.svg" alt=""> -->
                         <div class="quiz-options">
                             <!-- <div id="" class="opt" onclick="check(this)"><img src="../../img/quiz/option-1.svg" alt=""></div> -->
@@ -90,6 +95,7 @@
         </footer> -->
 
         <!-- JS -->
+        <script src="../../script/quiz/quiz-objects.js"></script>
         <script src="../../script/quiz2.js"></script>
 
         
