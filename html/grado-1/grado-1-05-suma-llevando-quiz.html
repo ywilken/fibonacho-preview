@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fibonacho</title>
+        <link rel="shortcut icon" type="image/png" href="../../img/favicon.png">
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Baloo+2:400,700|Caveat:400,700&display=swap" rel="stylesheet">        
+        <link href="../../css/styles.css" rel="stylesheet">
+    </head>
+    <body>
+
+        <!-- Quiz Information: Which Grade?-->
+        <div class="quiz-information" data-input="grade-1"></div>
+        <!-- / Quiz Information -->
+
+
+        <!--===SIDEBAR===-->
+        <!--=======Menu open/close=======-->
+        <input type="checkbox" id="check">
+        <label for="check">
+            <i class="fas fa-bars" id="btn"></i>
+            <i class="fas fa-times" id="cancel"></i>
+        </label>
+        <!--=======Sidebar Menu=======-->
+        <div class="sidebar">
+            <header>Grado 1</header>
+            <ul>
+                <li><a href="../../index.html"><i class="fas fa-home"></i>Home</a></li>
+                <li><a href="#" class="current-page"><i class="fas fa-user-astronaut"></i>Situaciones problema</a></li>
+                <li><div class="go-back-link"><i class="fas fa-undo-alt"></i>Volver</div></li>
+                <!-- <li><a href="../../index.html#site-contact"><i class="fas fa-envelope"></i>Contacto</a></li> -->
+            </ul>
+        </div>
+        
+        <main class="pattern pattern-overlay pattern-quiz">
+
+            <!--=======QUESTION BLOCK=======-->
+            <article class="block quiz-block">
+                <div class="real-block real-quiz-block shadow">
+                    <div class="quiz-container">
+                        <img class="quiz-logo" src="./../../img/favicon.png" alt="">
+                        <div class="question-number">
+                            <h3>Pregunta <span class="question-num-value"></span> de <span class="question-num-total"></span></h3>
+                        </div>
+                        <div class="question">
+                            <!-- ===QUESTION SITUATION=== -->
+                            <div class="question-situation">
+                                <!-- <p class="question-situation-instruction">Lee la siguiente situación problema y elige la respuesta que la resuelve: </p>
+                                <span class="question-situation-text">Carmen y Lucía han ahorrado $120.000 para comprarse una máquina para hacer helados. Si la máquina cuesta $95.500</span> -->
+                            </div>
+                            <!-- ===NORMAL QUESTION=== -->
+                            <div class="question-output" >
+                                <span class="question-intro-text"> <!--Question Intro Text--></span><span  data-output="output--question"><!--Question Text--></span> 
+                            </div>
+                        </div>
+                        <img data-output="output--question-image" class="" src="" alt="">
+                        <p data-output="output--question-info" class=""><!--Question Info--></p>
+                        <!-- <img class="question-image" src="../../img/quiz/option-1.svg" alt=""> -->
+                        <div class="quiz-options">
+                            <!-- <div id="" class="opt" onclick="check(this)"><img src="../../img/quiz/option-1.svg" alt=""></div> -->
+                            <div id="0" class="option-1" onclick="check(this)"><!--Option 01<img class="img-option-1" src="">--></div>
+                            <div id="1" class="option-2" onclick="check(this)"><!--Option 02<img class="img-option-2" src="">--></div>
+                            <div id="2" class="option-3" onclick="check(this)"><!--Option 03<img class="img-option-3" src="">--></div>
+                            <div id="3" class="option-4" onclick="check(this)"><!--Option 04<img class="img-option-4" src=""--></div>
+                        </div>
+                        <div class="quiz-button">
+                            <button type="button" class="btn-next"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <div class="answers-tracker">
+                            <!--<div></div>-->
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <div class="quiz-over">
+                <div class="quiz-over-box">
+                    <img class="quiz-over-logo" src="./../../img/favicon.png" alt="">
+                    <h2 class="quiz-over-title"><!--Quiz Over Title--></h2>
+                    <p class="quiz-over-text">
+                        Respondiste <span class="correct-answers"></span> <span> de </span><span class="total-questions"></span> preguntas correctamente.
+                    </p> 
+                    <p class="quiz-over-text">
+                        ¡Esto te da <span class="result-percentage"></span>!
+                    </p>
+                    <div class="quiz-buttons">
+                        <button class="try-again-btn" type="button"><i class="fas fa-rocket"></i>Repite</button>
+                        <button class="go-back-btn" type="button"><i class="fas fa-user-astronaut"></i> Volver</button>
+                    </div>
+                </div>
+            </div>
+            
+        </main>
+
+        <!-- <footer class="site-footer">
+            <img class="footer-logo" src="../../img/fibonacho.png" alt="">
+            <div class="footer-title">fibonacho</div>
+            <p class="copyright">Copyright 2020</p>
+            <p>• • •</p>
+        </footer> -->
+
+        <!-- JS -->
+        <script src="../../script/quiz/semana-5/quiz-objects.js"></script>
+        <script src="../../script/quiz-app.js"></script>
+
+        
+
+    </body>
+
+    <!--<script src="../js/script.js"></script>-->
+
+</html>

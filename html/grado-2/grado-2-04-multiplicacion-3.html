@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fibonacho</title>
+        <link rel="shortcut icon" type="image/png" href="../../img/favicon.png">
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Baloo+2:400,700|Caveat:400,700&display=swap" rel="stylesheet">        
+        <link href="../../css/styles.css" rel="stylesheet">
+    </head>
+    <body onload="pageLoaded()">
+        <!--===SIDEBAR===-->
+        <!--=======Menu open/close=======-->
+        <input type="checkbox" id="check">
+        <label for="check">
+            <i class="fas fa-bars" id="btn"></i>
+            <i class="fas fa-times" id="cancel"></i>
+        </label>
+        <!--=======Sidebar Menu=======-->
+        <div class="sidebar">
+            <header>Grado 2</header>
+            <ul>
+                <li><a href="../../index.html"><i class="fas fa-home"></i>Home</a></li>
+                <li><a href="./grado-2.html"><i class="fas fa-meteor"></i>Todos los temas</a></li>
+                <li><a href="#" class="current-page"><i class="fas fa-user-astronaut"></i>La Multiplicación (3)</a></li>
+                <li><a href="./grado-2-05-multiplicacion-una-cifra.html"><i class="fas fa-chevron-circle-right"></i>Siguiente</a></li>
+                <li><a href="./grado-2-03-multiplicacion-2.html"><i class="fas fa-chevron-circle-left"></i>Anterior</a></li>
+                <li><a href="../../index.html#site-contact"><i class="fas fa-envelope"></i>Contacto</a></li>
+            </ul>
+        </div>
+
+        <!--=======Section=======-->
+        <main class="pattern">
+            <article class="block">
+
+                <div class="real-block shadow">
+
+                    <!--***********INTRO***********-->
+                    <section class="chapter">
+                        <!--<p class="date">19/03/20</p>-->
+                        <div class="chapter-level">Nivel 3</div>
+                        <h1 class="chapter-title">La multiplicación</h1>
+                        <p class="subtitle">Terminamos con la multiplicación.</P>
+                        <!--=======Hero Image=======-->
+                        <img src="./../../img/grado-2/multiplicacion-3/hero.jpg" alt="">
+                         <!--=======Title & Video Button=======-->
+                            <div class="flex-video-title">
+                                <div><span class="chapter__number">Introducción</span></div>
+                            </div>
+                           
+                        <!--=======/Title & Video Button=======-->
+                        
+
+                        <p class="main-text">
+                            Recuerda que la multiplicación está siempre en relación con la suma, es por esto que podemos aprendernos 
+                            las tablas de multiplicar sumando. Las tablas de multiplicar nos sirven para reconocer un el resultado 
+                            de una suma grande de forma inmediata. Cuando te aprendes la secuencia de números de cada tabla de
+                             multiplicar te estas ahorrando muchos pasos, como por ejemplo tener que contar de número en número, 
+                             o tener que sumar de número en número. 
+                        </p> 
+
+                        <!--=======Goals=======-->
+                        <ul class="goals"><span class="goal-text">¿Que vamos a aprender en esta tercera parte?</span>
+                            <li class="goal-list-dot">La relación entre la suma y la multiplicación</li>
+                            <li class="goal-list-dot">Las tablas del 7, 8 y 9</li>
+                        </ul>
+                    </section>
+
+                    <!--***********Chapter 01***********-->
+                    <section class="chapter">
+                        <!--=======Title & Video Button=======-->
+                        <div class="flex-video">
+                            <div class="flex-video-title">
+                                <h2 class="section-title"><span class="chapter__number">(1)</span>La relación entre la suma y la multiplicación</h2>
+                            </div>
+                            <div class="flex-video-btn">
+                                <a class="test-button shadow-btn" href="https://www.youtube.com/watch?v=7F7sm193Fbg" target="_blank">Vídeo 01</a>
+                            </div>
+                        </div> <!--=======/Title & Video Button=======-->
+                        <p class="main-text">
+                            Como lo hemos visto en los anteriores post sobre la multiplicación, cuando trabajamos con una tabla de 
+                            multiplicar estamos realmente trabajando con grupos dentro de los cuales hay el mismo número de elementos.
+                        </p>
+                        <p class="main-text">
+                            Vamos a verlo con la tabla del 7:
+                        </p>
+                        <p><span class="example">Observa:</span></p> <!--"Observa"-->
+                        <img class="img-diagram img-diagram-full-screen" src="./../../img/grado-2/multiplicacion-3/multiplicacion-1.png" alt="">
+                        <img class="img-diagram img-diagram-full-screen" src="./../../img/grado-2/multiplicacion-3/multiplicacion-2.png" alt="">
+                        <img class="img-diagram img-diagram-full-screen" src="./../../img/grado-2/multiplicacion-3/multiplicacion-3.png" alt="">
+                        <p class="main-text">
+                            Observa que la tabla del 7 nos ayuda a contar con grupos que tienen de a 7 elementos cada uno, de una forma más rápida podemos 
+                            obtener el resultado si contamos de 7 en 7. Si cuentas la diferencia entre los resultados te darás cuenta que solo los separa 
+                            7 números, es decir aumentan de 7 en 7.
+                        </p>
+                        <p class="main-text">
+                            Ahora vamos a verlo con la tabla del 8:
+                        </p>
+                        <p><span class="example">Observa:</span></p> <!--"Observa"-->
+                        <img class="img-diagram img-diagram-full-screen" src="./../../img/grado-2/multiplicacion-3/multiplicacion-4.png" alt="">
+                        <img class="img-diagram img-diagram-full-screen" src="./../../img/grado-2/multiplicacion-3/multiplicacion-5.png" alt="">
+                        <img class="img-diagram img-diagram-full-screen" src="./../../img/grado-2/multiplicacion-3/multiplicacion-6.png" alt="">
+                        <p class="main-text">
+                            Observa ahora que la tabla del 8, nos ofrece los resultados de sumas o conteos de 8 en 8. Es por esto que cuando 
+                            trabajamos con la tabla del 8 estas trabajando con diferente número de grupos pero en cada grupo siempre tendrás 8 elementos.
+                        </p>
+                        <p class="main-text">
+                            Ahora vamos a verlo con la tabla del 9:
+                        </p>
+                        <p><span class="example">Observa:</span></p> <!--"Observa"-->
+                        <img class="img-diagram img-diagram-full-screen" src="./../../img/grado-2/multiplicacion-3/multiplicacion-7.png" alt="">
+                        <img class="img-diagram img-diagram-full-screen" src="./../../img/grado-2/multiplicacion-3/multiplicacion-8.png" alt="">
+                        <img class="img-diagram img-diagram-full-screen" src="./../../img/grado-2/multiplicacion-3/multiplicacion-9.png" alt="">
+                        <p class="main-text">
+                            Si observas bien, te darás cuenta que la tabla del 9 se conforma de un conteo de 9 en 9, y cada vez que trabajas 
+                            con esta tabla estas sumando grupos que contienen 9 elementos.
+                        </p>
+
+                    </section>
+
+
+                    <!--***********Chapter 02***********-->
+                    <section class="chapter">
+                        <!--=======Title=======-->
+                        <h2 class="section-title"><span class="chapter__number">(2)</span>Las tablas de multiplicar del 7 al 9:</h2>
+
+                        <!--***********Subsection 01 (Flex with Video)***********-->
+                        <div>
+                            <!--=======Section-Title & Video Button=======-->
+                            <div class="flex-video">
+                                <div class="flex-video-title">
+                                    <p class="main-text"><span class="section-nr">A. La tabla del 7:</span></p>
+                                </div>
+                                <div class="flex-video-btn">
+                                    <a class="test-button shadow-btn" href="https://www.youtube.com/watch?v=sy7YcvUvbfI" target="_blank">Vídeo 02</a>
+                                </div>
+                            </div> <!--=======/Section-Title & Video Button=======-->
+                            
+                            <!--=======Quote=======-->
+                            <p class="main-text-quote">
+                                <b>Tip:</b> Para aprenderte los resultados de la tabla del 7 solo debes contar<u> de 7 en 7</u>.
+                            </p> <!--=======/Quote=======-->
+                            <img class="img-diagram img-diagram-full-screen" src="./../../img/grado-2/multiplicacion-3/multiplicacion-10.png" alt="">
+                            <img class="img-diagram" src="./../../img/grado-2/multiplicacion-3/multiplicacion-11.png" alt="">
+                        </div>
+                        
+                        <!--***********Subsection 02 (Flex with Video)***********-->
+                        <div class="subsection-margin">
+                            <!--=======Section-Title & Video Button=======-->
+                            <div class="flex-video">
+                                <div class="flex-video-title">
+                                    <p class="main-text"><span class="section-nr">B. La tabla del 8:</span></p>
+                                </div>
+                                <div class="flex-video-btn">
+                                    <a class="test-button shadow-btn" href="https://www.youtube.com/watch?v=PgJNSbHm_P4" target="_blank">Vídeo 03</a>
+                                </div>
+                            </div> <!--=======/Section-Title & Video Button=======-->
+                            <!--=======Quote=======-->
+                            <p class="main-text-quote">
+                                <b>Tip:</b> Para aprenderte los resultados de la tabla del 8 solo debes contar <u>de 8 en 8</u>.
+                            </p> <!--=======/Quote=======-->
+                            <img class="img-diagram img-diagram-full-screen" src="./../../img/grado-2/multiplicacion-3/multiplicacion-12.png" alt="">
+                            <img class="img-diagram" src="./../../img/grado-2/multiplicacion-3/multiplicacion-13.png" alt="">
+                        </div>
+
+                        <!--***********Subsection 03 (Flex with Video)***********-->
+                        <div class="subsection-margin">
+                            <!--=======Section-Title & Video Button=======-->
+                            <div class="flex-video">
+                                <div class="flex-video-title">
+                                    <p class="main-text"><span class="section-nr">B. La tabla del 9:</span></p>
+                                </div>
+                                <div class="flex-video-btn">
+                                    <a class="test-button shadow-btn" href="https://www.youtube.com/watch?v=AXVCuW4606I" target="_blank">Vídeo 04</a>
+                                </div>
+                            </div> <!--=======/Section-Title & Video Button=======-->
+                            <!--=======Quote=======-->
+                            <p class="main-text-quote">
+                                <b>Tip:</b> Para aprenderte los resultados de la tabla del 9 solo tienes que contar <u>de 9 en 9</u>.
+                            </p> <!--=======/Quote=======-->
+                            <img class="img-diagram img-diagram-full-screen" src="./../../img/grado-2/multiplicacion-3/multiplicacion-14.png" alt="">
+                            <img class="img-diagram" src="./../../img/grado-2/multiplicacion-3/multiplicacion-15.png" alt="">
+                        </div>
+
+                    </section>
+
+
+                    <!--=======Video & PDF Button=======-->
+                    <section class="chapter chapter-new">
+                        <div class="flex-video-container">
+                            <p class="text-summary">¡Tiempo para un repaso!</p>
+                            <div class="flex-video flex-video-last">
+                                <!--=======Button: Video=======-->
+                                <div class="flex-video-btn">
+                                    <a class="test-button test-button-inverted shadow-btn" href="https://www.youtube.com/watch?v=JGl5bN61wNI" target="_blank">Vídeo 05</a>
+                                </div>
+                                <!--=======Button: Workshop=======-->
+                                <div class="flex-video-btn">
+                                    <a class="test-button test-button-inverted shadow-btn" href="https://drive.google.com/file/d/1Rn3NFX7NYYAqs9QMj5-n09Q8XAF6p14I/view?usp=sharing" target="_blank">Taller</a>
+                                </div>
+                            </div> <!--=======/Video & PDF Button=======-->
+                        </div>
+                    </section>
+
+                    <!--=======Extra: Resources=======-->
+                    <section class="resources resources-margin">
+                        <h2 class="section-title"><span class="chapter__number"><i class="fas fa-graduation-cap"></i></span>Material extra para trabajar el tema de la multiplicación:</h2>
+                        
+                        <div class="resources resources-extra-material">
+                            <p class="list-dot">En este enlace podrás descargar  
+                                <a href="https://educacionmaestros.com/cuadernillo-tablas-multiplicar-ejercicios/" target="_blank">un cuadernillo de trabajo sobre las tablas de multiplicar con múltiples ejercicios</a>
+                                 creado por <b>Educacionmaestros.com</b>.</p>
+                        </div>
+
+                        <div class="resources resources-extra-material">
+                            <p class="list-dot">Dando click en este enlace encontrarás  
+                                <a href="https://www.tablasdemultiplicar.com/fichas/" target="_blank">una página llena de fichas para descargar gratis sobre las tablas del 1 al 10</a>
+                                 creado por <b>Tablasdemultiplicar.com</b>.</p>
+                        </div>
+
+                        <div class="resources resources-extra-material">
+                            <p class="list-dot">Pinchando aquí hallarás 
+                                <a href="https://www.tablasdemultiplicar.com/juegos/" target="_blank">juegos virtuales en los cuales podrás practicar las tablas de multiplicar</a>
+                                 creado por <b>Tablasdemultiplicar.com</b>.</p>
+                        </div>
+
+                    </section>
+
+                    <!--=======Extra: Videos=======-->
+                    <section class="resources resources-margin">
+                        <h2 class="section-title"><span class="chapter__number"><i class="fas fa-video"></i></span>Vídeo orientativo:</h2>
+                        
+                        <div class="resources">
+                            <p class="list-dot">En estos vídeos encontrarás un explicación fácil y divertida sobre trucos para aprenderse las tablas:  
+                                <a href="https://www.youtube.com/watch?v=k98rgPPpZiU" target="_blank">la tabla del 7</a>, 
+                                <a href="https://www.youtube.com/watch?v=6MZYrCGcJT4" target="_blank">la tabla del 8</a> y  
+                                <a href="https://www.youtube.com/watch?v=QKrOVIDUMJQ" target="_blank">la tabla del 9</a>
+                                 creado por <b>Guíainfantil.com</b>.</p>
+                        </div>
+
+                    </section>
+
+                    <!--=======Extra: Credits=======-->
+                    <section class="resources resources-credits">
+                        <h2 class="section-title"><span class="chapter__number"><i class="fas fa-external-link-alt"></i></span>Créditos de las figuras:</h2>
+                        <div class="resources list-dot">
+                            <a href="https://unsplash.com/@exxteban" target="_blank">Photo by Esteban Lopez</a>
+                        </div>
+                        <div class="resources list-dot">
+                            <a href="https://www.freepik.es/fotos-vectores-gratis/navidad" target="_blank">Vector de Navidad creado por freepik - www.freepik.es</a>                        
+                        </div>
+                        <div class="resources list-dot">
+                            <a href="https://www.freepik.es/fotos-vectores-gratis/coche" target="_blank">Vector de Coche creado por freepik - www.freepik.es</a>                        
+                        </div>
+                        
+                    </section>
+
+                </div>
+            </article>
+        </main>
+        
+        <footer class="site-footer">
+            <img class="footer-logo" src="../../img/fibonacho.png" alt="">
+            <div class="footer-title">fibonacho</div>
+            <p class="copyright">Copyright 2020</p>
+            <p>• • •</p>
+        </footer>
+
+    </body>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>-->
+
+    <!-- JS -->
+    <script src="../js/script.js"></script>
+
+</html>

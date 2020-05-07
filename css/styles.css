@@ -1715,6 +1715,14 @@ QUIZ
     animation: highlight-question 6s 1;
 }
 
+
+.question-output {
+    margin: 1em auto 0;
+    width: 90%;
+    max-width: 600px;
+}
+
+
 .question-intro-text {
     font-weight: 400;
 }
@@ -1726,7 +1734,7 @@ QUIZ
     border-radius: 50px;
     width: 80%;
     max-width: 500px;
-    margin: 0 auto 1.5em;
+    margin: -1.5em auto 2em;
     padding: 0.25em 1.5em;
     opacity: 0.4;
 }
@@ -1791,6 +1799,111 @@ QUIZ
     }
 }
 
+/* ===QUESTION IMAGE=== */
+
+.question-image {
+    padding-top: 1em;
+    border-top: 5px rgba(255,118,101,0.4) solid;
+}
+
+/* ===QUESTION SITUATIONS=== */
+
+.question-situation {
+    font-size: 1.5rem;
+    line-height: -1;
+    margin-bottom: -1em;
+}
+
+.question-situation-instruction {
+    font-weight: 400;
+    font-size: 1rem;
+    color: #df675e;
+    opacity: 1;
+    width: 100%;
+    margin: 1em auto 0.125em;
+    padding: 0.25em 0.5em;
+    border-radius: 2px;
+}
+
+.question-situation-text {
+    display: block;
+    font-style: italic;
+    font-weight: 400;
+    border: #df675e 1px solid;
+    background: rgba(255,118,101,0.1);
+    margin: 0em auto 0.5em;
+    padding: 0.75em 1em;
+}
+
+.question-situation-text::before {
+    content: "»";
+    opacity: 0.6;
+    size: 1.2rem;
+    margin-right: 0.25rem;
+}
+
+.question-situation-text::after {
+    content: "«";
+    opacity: 0.6;
+    size: 1.2rem;
+    margin-left: 0.25rem;
+}
+
+@media (max-width: 400px) {
+    .question-output {
+        font-size: 90%;
+    }
+}
+
+@media (max-width: 350px) {
+    .question {
+    }
+
+    .question-output {
+        width: 100%;
+        font-size: 80%;
+    }
+
+    .question-situation {
+        font-size: 1.1rem;
+        line-height: -1;
+    }
+
+    .question-situation-instruction {
+        width: 90%;
+    }
+
+    .question-situation-text {
+        padding: 0.5em 0.25em;
+    }
+
+    .question-info {
+        border-radius: 40px;
+        width: 100%;
+    }
+    
+}
+
+@media (max-width: 300px) {
+    .quiz-logo {
+        width: 35px;
+        position: relative;
+        margin: 0 auto;
+    }
+
+    .question-number {
+        text-align: center;
+    }
+}
+
+@media (max-width: 280px) {
+    .question-output {
+        font-size: 65%;
+    }
+}
+
+/* ===/ QUESTION SITUATIONS=== */
+
 /* Test: Image */
 .question-image {
     width: 40%;
@@ -1812,6 +1925,7 @@ QUIZ
 
 .quiz-options div {
     width: 49%;
+    text-align: center;
 }
 /* until here */
 
@@ -1989,6 +2103,10 @@ QUIZ OVER SCREEN
     align-items: center;
 }
 
+.quiz-over-logo {
+    width: 20%;margin-bottom: 0;
+}
+
 /* This is our JS class to toggle display on*/
 .quiz-over.show {
     display: flex;
@@ -2128,6 +2246,22 @@ QUIZ OVER SCREEN
 HTML GENERATOR
 ==================*/
 
+.body-html-gen {
+    background: linear-gradient(120deg, rgb(39, 38, 38), black);
+}
+
+.html-gen-main {
+    display: block;
+    animation: show-html-gen 3s 1;
+}
+
+@keyframes show-html-gen {
+    0% {
+        display: none;
+        transform: translateY(-1200px)
+    }
+}
+
 .html-gen-container {
     background-image: linear-gradient(90deg, rgb(39, 39, 131), rgb(17, 148, 255));
     margin: 0;
@@ -2135,12 +2269,19 @@ HTML GENERATOR
 }
 
 .html-gen-box {
-    width: 55%;
+    width: 80%;
+    max-width: 800px;
     margin: 0 auto 1em;
     padding: 1em;
     background: rgba(255, 255, 255, 1);
     border-radius: 10px;
     color: black;
+}
+
+@media (max-width: 600px) {
+    .html-gen-box {
+        width: 100%;
+    }
 }
 
 .html-gen-box--new-form {

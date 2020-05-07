@@ -57,9 +57,11 @@ const inputImgFolder = document.querySelector('[data-input="input--img-folder"]'
 const inputImgName = document.querySelector('[data-input="input--img-name"]');
 const inputImgNumber = document.querySelector('[data-input="input--img-number"]');
 const inputCourseNumber = document.querySelector('[data-input="input--course-nr"]');
-let imageCount;
+let imageCount = 1;
 const inputImgFormat = document.querySelector('[data-input="input--img-format"]');
 const inputHeroImgFormat = document.querySelector('[data-input="input--hero-img-format"]');
+const inputAutomaticImgNaming = document.querySelector('[data-input="input--automatic-img-naming"]');
+
 
 /*=== Video Settings ===*/
 const inputAutomaticNumbering = document.querySelector('[data-input="input--automatic-numbering"]');
@@ -698,7 +700,12 @@ function addIntroInput(e) {
     pageIntroInput_Field.type = "text";
     pageIntroInput_Field.spellcheck = false;
     // This EventListener changes the color of the input field as soon as text is entered
-    pageIntroInput_Field.addEventListener('change', highlightGlobalInputField);
+    if (inputField.value === "img" && inputAutomaticImgNaming.value === "yes") {
+        pageIntroInput_Field.classList.add('html-gen-input-filled');
+    } else {
+        pageIntroInput_Field.addEventListener('change', highlightGlobalInputField);
+    }
+    
     pageIntroInput_Field.classList.add('html-gen-input');
     // Update the html container
     pageIntroInput.appendChild(pageIntroInput_Title);
@@ -745,7 +752,7 @@ function highlightGlobalInputField(e) {
     }
 };
 
-
+// This is used for he alt text for images
 function addIntroInputSpecial(container, message, data) {
     // Create the title
     const  pageIntroInput_Title = document.createElement('p');
@@ -1426,7 +1433,7 @@ function addSectionInput_Form() {
             pageSectionInput_placeholder = addSectionInput_Form_Elements('div', '', '', pageSectionInput_form, '', '', '', '');
                 addSectionInput_Form_Elements('p', 'html-gen-instruction', '', pageSectionInput_placeholder, 'Elige un título para el capítulo:', '', '', '');
                 htmlElementData = Math.random();
-                addSectionInput_Form_Elements('input', 'html-gen-input', '', pageSectionInput_placeholder, '', 'data-input', htmlElementData, 'text');
+                addSectionInput_Form_Elements('input', 'html-gen-input', '', pageSectionInput_placeholder, '', 'data-input', htmlElementData, 'text').addEventListener('change', highlightGlobalInputField);
                 updateSectionElement_childContainer('h2', htmlElementData, '', htmlElementList_container, '')
             // Create the input [chapter number] field
             htmlElementData = Math.random();
@@ -1438,7 +1445,7 @@ function addSectionInput_Form() {
             updateSectionElement_childContainer('chapter-nr-form', htmlElementData, '', htmlElementList_container, '')
             addSectionInput_Form_Elements('p', 'html-gen-instruction', '', pageSectionInput_placeholder, 'Número del capítulo (1, 2, 3 etc.):', '', '', '');
             htmlElementData = Math.random();
-            addSectionInput_Form_Elements('input', 'html-gen-input', '', pageSectionInput_placeholder, '(ej. 1)', 'data-input', htmlElementData, 'text');
+            addSectionInput_Form_Elements('input', 'html-gen-input', '', pageSectionInput_placeholder, '(ej. 1)', 'data-input', htmlElementData, 'text').addEventListener('change', highlightGlobalInputField);
             updateSectionElement_childContainer('chapter-nr', htmlElementData, '', htmlElementList_container, '')
             // Create the input [has video] select option
             pageSectionInput_placeholder = addSectionInput_Form_Elements('div', 'form__selection', 'd-flex', pageSectionInput_form, '', '', '', '');
@@ -1468,13 +1475,13 @@ function addSectionInput_Form() {
                 updateSectionElement_childContainer('video-nr-form', htmlElementData, '', htmlElementList_container, '')
                 addSectionInput_Form_Elements('p', 'html-gen-instruction', '', pageSectionInput_placeholder, 'Número del vídeo (01, 02, 03 etc.):', '', '', '');
                 htmlElementData = Math.random();
-                addSectionInput_Form_Elements('input', 'html-gen-input', '', pageSectionInput_placeholder, '(ej. 01)', 'data-input', htmlElementData, 'text');
+                addSectionInput_Form_Elements('input', 'html-gen-input', '', pageSectionInput_placeholder, '(ej. 01)', 'data-input', htmlElementData, 'text').addEventListener('change', highlightGlobalInputField);
                 updateSectionElement_childContainer('video-nr', htmlElementData, '', htmlElementList_container, '') 
                 // Create the input [video url] field
                 pageSectionInput_placeholder = addSectionInput_Form_Elements('div', '', '', pageSectionInput_placeholderVideoDiv, '', '', '', '');
                 addSectionInput_Form_Elements('p', 'html-gen-instruction', '', pageSectionInput_placeholder, 'La url del vídeo es:', '', '', '');
                 htmlElementData = Math.random();
-                addSectionInput_Form_Elements('input', 'html-gen-input', '', pageSectionInput_placeholder, '', 'data-input', htmlElementData, 'text');
+                addSectionInput_Form_Elements('input', 'html-gen-input', '', pageSectionInput_placeholder, '', 'data-input', htmlElementData, 'text').addEventListener('change', highlightGlobalInputField);
                 updateSectionElement_childContainer('video-url', htmlElementData, '', htmlElementList_container, '')
             // Create the input [add text] select option
             pageSectionInput_placeholder = addSectionInput_Form_Elements('div', 'form__selection', 'form__selection--add-elements', pageSectionInput_form, '', '', '', 'd-flex');
@@ -1523,7 +1530,10 @@ function addSectionInput_Form() {
                         pageSectionInput_placeholderSelect_div = addSectionInput_Form_Elements('div', '', '', pageSectionInput_form, '', '', '', '');
                         addSectionInput_Form_Elements('p', 'html-gen-instruction', '', pageSectionInput_placeholderSelect_div, 'La url de la imagen es:', '', '', '');
                         htmlElementData = Math.random();
-                        addSectionInput_Form_Elements('input', 'html-gen-input', '', pageSectionInput_placeholderSelect_div, '(Nota: Esta url sirve solo para la prevista.)', 'data-input', htmlElementData, 'text');
+                        let pageSectionInput_placeholderSelect_image = addSectionInput_Form_Elements('input', 'html-gen-input', '', pageSectionInput_placeholderSelect_div, '(Nota: Esta url sirve solo para la prevista.)', 'data-input', htmlElementData, 'text', '', '', 'for-image');
+                        if(inputAutomaticImgNaming.value === "yes") {
+                            pageSectionInput_placeholderSelect_image.classList.add('html-gen-input-filled');
+                        }
                         addSectionInput_Form_Elements('p', 'html-gen-instruction', '', pageSectionInput_placeholderSelect_div, 'Describe la imagen:', '', '', '');
                         htmlElementData_2 = Math.random();
                         addSectionInput_Form_Elements('textarea', 'html-gen-input', '', pageSectionInput_placeholderSelect_div, '', 'data-input', htmlElementData_2, 'text');
@@ -1668,7 +1678,9 @@ function addSectionInput_Form() {
                             addSectionInput_Form_Elements('option', 'select-box__option', '', pageSectionInput_subsection_placeholderSelect, 'Quote (Tip)', '', '', 'quote');
                         addSectionInput_Form_Elements('button', 'html-gen-btn', 'btn-add-element', pageSectionInput_subsection_placeholder, '<i class="fas fa-plus-circle"></i>', '', '', '').addEventListener('click', (e) => {
                             e.preventDefault();
-                            switch(pageSectionInput_subsection_placeholderSelect.value) {
+                            //console.log(e.target.parentNode.children[1].value)
+                            // switch(pageSectionInput_subsection_placeholderSelect.value) {
+                            switch(e.target.parentNode.children[1].value) {
                                 case "p":
                                     pageSectionInput_subsection_placeholderSelect_div = addSectionInput_Form_Elements('div', '', '', pageSectionInput_subsection_form, '', '', '', '');
                                     addSectionInput_Form_Elements('p', 'html-gen-instruction', '', pageSectionInput_subsection_placeholderSelect_div, 'Escribe el parágrafo:', '', '', '');
@@ -1689,7 +1701,10 @@ function addSectionInput_Form() {
                                     pageSectionInput_subsection_placeholderSelect_div = addSectionInput_Form_Elements('div', '', '', pageSectionInput_subsection_form, '', '', '', '');
                                     addSectionInput_Form_Elements('p', 'html-gen-instruction', '', pageSectionInput_subsection_placeholderSelect_div, 'La url de la imagen es:', '', '', '');
                                     htmlElementData = Math.random();
-                                    addSectionInput_Form_Elements('input', 'html-gen-input', '', pageSectionInput_subsection_placeholderSelect_div, '(Nota: Esta url sirve solo para la prevista.)', 'data-input', htmlElementData, 'text');
+                                    let pageSectionInput_subsection_placeholderSelect_image = addSectionInput_Form_Elements('input', 'html-gen-input', '', pageSectionInput_subsection_placeholderSelect_div, '(Nota: Esta url sirve solo para la prevista.)', 'data-input', htmlElementData, 'text', '', '', 'for-image');
+                                    if(inputAutomaticImgNaming.value === "yes") {
+                                        pageSectionInput_subsection_placeholderSelect_image.classList.add('html-gen-input-filled');
+                                    }
                                     addSectionInput_Form_Elements('p', 'html-gen-instruction', '', pageSectionInput_subsection_placeholderSelect_div, 'Describe la imagen:', '', '', '');
                                     htmlElementData_2 = Math.random();
                                     addSectionInput_Form_Elements('textarea', 'html-gen-input', '', pageSectionInput_subsection_placeholderSelect_div, '', 'data-input', htmlElementData_2, 'text');
@@ -2315,10 +2330,14 @@ function createSectionComments(tagName, className_1, className_2, message, space
 
 
 /*====== CHAPTER: CREATE FORM INPUT ELEMENTS - Create inputElements for sectionInputForm ======*/
-function addSectionInput_Form_Elements(tagName, className_1, className_2, parent, message, dataAttribute, htmlElementData, type, link, comment) {
+function addSectionInput_Form_Elements(tagName, className_1, className_2, parent, message, dataAttribute, htmlElementData, type, link, comment, isForImage) {
     const  pageSectionInput_Form_Element = document.createElement(tagName);
     if(tagName === "input" || tagName === "textarea") {
         pageSectionInput_Form_Element.spellcheck = false;
+        // Make input field green after filling
+        if(isForImage !== "for-image" || inputAutomaticImgNaming.value === "no") {
+            pageSectionInput_Form_Element.addEventListener('change', highlightGlobalInputField);
+        }
     };
     if((tagName === "input" && message !== "") || (tagName === "textarea" && message !== "")) {
         pageSectionInput_Form_Element.placeholder = message;
@@ -2631,12 +2650,18 @@ function createHeroImage(inputField, inputAltTag){
 }
 
 function createImage(inputField, className, inputAltTag){
-    if(inputField.value === "") {
+    if(inputField.value === "" && inputAutomaticImgNaming.value === "no") {
         return;
     } else {
     const pageElement = document.createElement('img');
     pageElement.classList.add(className);
-    pageElement.src = inputField.value;
+    if(inputAutomaticImgNaming.value === "yes" && inputField.value === "") {
+        pageElement.src = `./../../img/${inputCourseNumber.value}/${inputImgFolder.value}/${inputImgName.value}-${imageCount}.${inputImgFormat.value}`;
+        console.log(inputField.value)
+    } else {
+        pageElement.src = (inputField.value);
+    }
+    // || `./../../img/${inputCourseNumber.value}/${inputImgFolder.value}/${inputImgName.value}-${imageCount}.${inputImgFormat.value}`
     pageElement.alt = inputAltTag.value;
     pageSection.appendChild(pageElement);
 
