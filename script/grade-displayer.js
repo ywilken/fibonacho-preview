@@ -483,6 +483,26 @@ const userDataArray_gradeFive = [
         "lastName": "VASCO VARGAS", 
         "pin": "919250"}
     ];
+// Comments
+const commentDataArray = [
+    {
+        "id": "excellent",
+        "comments": ["Has hecho un excelente trabajo, tu tarea está completa y no tiene errores.","¡Felicitaciones! Tu tarea ha sido revisada y está muy bien desarrollada.","¡Gracias por tu dedicación! Tu tarea es excelente.","¡Muy bien hecho! Eres un@ super alumn@."]},
+    {
+        "id": "good",
+        "comments": ["¡Buen trabajo! Tenemos algunas correcciones para ti.","¡Gracias por el esfuerzo! Tu tarea ha sido revisada y tenemos unas observaciones para ti.","¡Gracias por tu compromiso! Revisemos algunos puntos para no cometer el mismo error de nuevo.","BIEN HECHO."]},
+    {
+        "id": "sufficient",
+        "comments": ["Tu tarea ha sido revisada, tenemos correcciones para ti, te recomendamos repasar el tema de nuevo.", "Es importante que repases el tema de nuevo y corrijas los errores que tiene tu tarea."]},
+    {
+        "id": "insufficient",
+        "comments": ["Tu tarea ha sido revisada y por el número de errores consideramos que es necesario que vuelvas a ver el tema.", "Tu tarea ha sido revisada, es conveniente realizarla de nuevo ya que el número de errores te ubica en un nivel bajo."]},
+    {
+        "id": "no-workshop",
+        "comments": ["No has entregado esta guía de trabajo, por favor enviala en cuanto la tengas (si ya lo enviaste espera hasta la próxima actualización)."]}
+];
+
+
 
 let currentUser_id = "";
 let currentUser_authenticated = false;
@@ -789,12 +809,12 @@ function displayGrade() {
                 keyWorkArray.forEach( workItem => {
                     // =====COMMENTS=====
                     // If workitem contains a suffix, we will save this suffix(later we will look for the equivalent)
-                    let workItemSuffix;
+                    let workItemSuffix = "";
                     // the includes method returns a boolean (true / false)
                     if(workItem.includes('_')) {
                         workItemSuffix = workItem.substring(workItem.indexOf('_'));
-                        console.log(workItemSuffix)
                     }
+                    console.log(workItemSuffix)
 
                     // =====GRADES ROW=====
                     // Create the <div> container
@@ -829,8 +849,9 @@ function displayGrade() {
                     oTableGradesRow_CommentTitle.innerText = "Comentario:";
                     oTableGradesRow_Comment.appendChild(oTableGradesRow_CommentTitle);
                     // Create the comment body
+                    const oTableGradesRow_CommentText_innerText = createCommentText(resultItem, workItemSuffix, resultItem[workItem]); 
                     let oTableGradesRow_CommentText = document.createElement('p');
-                    oTableGradesRow_CommentText.innerText = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti quaerat commodi eos aut? Omnis assumenda nisi velit.";
+                    oTableGradesRow_CommentText.innerText = oTableGradesRow_CommentText_innerText;
                     oTableGradesRow_Comment.appendChild(oTableGradesRow_CommentText);
                     // Add the EventListener
                     oTableGradesRow.addEventListener('click', () => {
@@ -858,10 +879,70 @@ function displayGrade() {
             }
         });
     });
-    
-
 }
 
+
+function createCommentText(resultItem, suffix, grade) {
+    // This is how we can access the corresponding comment to our resultItem:
+    // console.log(resultItem[`comment${suffix}`])
+
+    // Variables
+    const commentItem = resultItem[`comment${suffix}`];
+    let commentGradeRange;
+    let commentNumber;
+    let outputComment = "";
+    console.log(grade)
+
+    // ===GRADES===
+    //First we want to get the comment grade range
+    if(grade === "" || grade === undefined){
+        commentGradeRange = "no-workshop";
+    } else {
+        if(grade >= 4.6) {
+            commentGradeRange = "excellent";
+        } else if(grade < 4.6 && grade >= 4) {
+            commentGradeRange = "good";
+        } else if(grade < 4 && grade >= 3.6) {
+            commentGradeRange = "sufficient";
+        } else if(grade < 3.6) {
+            commentGradeRange = "insufficient";
+        }
+    }
+
+    // ===CORRESPONDING COMMENTS===
+    // Now we  have 2 cases: (1) We have a comment or a number (2) Comment Field is empty
+    if(commentItem !== "" && commentItem !== undefined) {
+        // ===COMMENT-NR===
+        if(commentItem.includes('#1')) {
+            commentNumber = 0;
+        } else if (commentItem.includes('#2')) {
+            commentNumber = 1;
+        } else if (commentItem.includes('#3')) {
+            commentNumber = 2;
+        } else if (commentItem.includes('#4')) {
+            commentNumber = 3;
+        }
+
+        if(commentNumber === "" || commentNumber === undefined){
+            outputComment = commentItem;
+        } else {
+            for (let i=0; i<commentDataArray.length; i++) {
+                if (commentDataArray[i].id === commentGradeRange) {
+                    outputComment = commentDataArray[i].comments[commentNumber];
+                }
+            }
+        } 
+    } else {
+        for (let i=0; i<commentDataArray.length; i++) {
+            if (commentDataArray[i].id === commentGradeRange) {
+                outputComment = commentDataArray[i].comments[0];
+                console.log(outputComment);
+            }
+        }
+    }
+    
+    return outputComment;
+}
 
 
 
