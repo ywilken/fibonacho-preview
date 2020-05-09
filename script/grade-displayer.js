@@ -487,10 +487,10 @@ const userDataArray_gradeFive = [
 const commentDataArray = [
     {
         "id": "excellent",
-        "comments": ["Has hecho un excelente trabajo, tu tarea está completa y no tiene errores.","¡Felicitaciones! Tu tarea ha sido revisada y está muy bien desarrollada.","¡Gracias por tu dedicación! Tu tarea es excelente.","¡Muy bien hecho! Eres un@ super alumn@."]},
+        "comments": ["Has hecho un excelente trabajo, tu tarea está completa y no tiene errores.","¡Felicitaciones! Tu tarea ha sido revisada y está muy bien desarrollada.","¡Gracias por tu dedicación! Tu tarea es excelente.","¡Muy bien hecho! Eres un@ super alumn@.", "¡Excelente! no tienes errores en tu tarea.", "Has hecho un gran esfuerzo y tu dedicación es muy notable, ¡es un excelente trabajo!"]},
     {
         "id": "good",
-        "comments": ["¡Buen trabajo! Tenemos algunas correcciones para ti.","¡Gracias por el esfuerzo! Tu tarea ha sido revisada y tenemos unas observaciones para ti.","¡Gracias por tu compromiso! Revisemos algunos puntos para no cometer el mismo error de nuevo.","BIEN HECHO."]},
+        "comments": ["¡Buen trabajo! Tenemos algunas correcciones para ti.","¡Gracias por el esfuerzo! Tu tarea ha sido revisada y tenemos unas observaciones para ti.","¡Gracias por tu compromiso! Revisemos algunos puntos para no cometer el mismo error de nuevo.","¡Sigue trabajando! haz hecho un buen trabajo. En algunos puntos tienes errores, pero no te desanimes, obtuviste un buen resultado.", "¡Bien hecho! Continúa trabajando y repasando los conceptos vistos para no cometer los mismo errores de nuevo.", "¡Continúa trabajando duro! obtuviste buenos resultados pero lo puedes hacer aún mejor. ¡Ánimo! revisa los errores que tienes para que no te confundas."]},
     {
         "id": "sufficient",
         "comments": ["Tu tarea ha sido revisada, tenemos correcciones para ti, te recomendamos repasar el tema de nuevo.", "Es importante que repases el tema de nuevo y corrijas los errores que tiene tu tarea."]},
@@ -522,28 +522,28 @@ iCourseNr.addEventListener('change', () => {
         case "1":
             // Update our user data
             userDataArraySelected = userDataArray_gradeOne;
-            console.log(userDataArray_gradeOne)
+            // console.log(userDataArray_gradeOne)
             // Update our selected File
             selectedExcelFile = myRequest_G1;
             break;
         case "2":
             // Update our user data
             userDataArraySelected = userDataArray_gradeTwo;
-            console.log(userDataArray_gradeTwo)
+            // console.log(userDataArray_gradeTwo)
             // Update our selected File
             selectedExcelFile = myRequest_G2;
             break;
         case "3":
             // Update our user data
             userDataArraySelected = userDataArray_gradeThree;
-            console.log(userDataArray_gradeThree)
+            // console.log(userDataArray_gradeThree)
             // Update our selected File
             selectedExcelFile = myRequest_G3;
             break;
         case "4":
             // Update our user data
             userDataArraySelected = userDataArray_gradeFour;
-            console.log(userDataArray_gradeFour)
+            // console.log(userDataArray_gradeFour)
             // Update our selected File
             selectedExcelFile = myRequest_G4;
             break;
@@ -556,7 +556,7 @@ iCourseNr.addEventListener('change', () => {
         default:
             // Update our user data
             userDataArraySelected = userDataArray_gradeOne;
-            console.log(userDataArray_gradeOne)
+            // console.log(userDataArray_gradeOne)
             // Update our selected File
             selectedExcelFile = myRequest_G1;
             break;
@@ -688,7 +688,7 @@ function fetchExcelFile(requestFile) {
         // var _JsonData = XLSX.utils.sheet_to_json(worksheet, { raw: true });
         /************************ End of conversion ************************/
 
-        console.log(_JsonData);
+        // console.log(_JsonData);
         return _JsonData;
     })
 }
@@ -708,8 +708,8 @@ btnLoginToggle.addEventListener('click', () => {
 btnSubmit.addEventListener('click', (e) => {
     e.preventDefault();
     authenticateUser();
-    console.log(currentUser_id);
-    console.log(currentUser_authenticated);
+    // console.log(currentUser_id);
+    // console.log(currentUser_authenticated);
     if(currentUser_authenticated) {
         fGradesWelcome.classList.add('grades-hidden');
         fLoginToggle.classList.add('user-login-grades-hidden');
@@ -717,7 +717,7 @@ btnSubmit.addEventListener('click', (e) => {
         fGrades.classList.remove('grades-hidden');
         fGradesTable.innerHTML = "";
         displayGrade();
-        console.log("Yes, it works")
+        // console.log("Yes, it works")
     } else if(!currentUser_authenticated) {
         fGrades.classList.add('grades-hidden')
     }
@@ -814,7 +814,7 @@ function displayGrade() {
                     if(workItem.includes('_')) {
                         workItemSuffix = workItem.substring(workItem.indexOf('_'));
                     }
-                    console.log(workItemSuffix)
+                    // console.log(workItemSuffix)
 
                     // =====GRADES ROW=====
                     // Create the <div> container
@@ -866,13 +866,13 @@ function displayGrade() {
                 })
                 // Output the average Score
                 oAverageScore.innerText = (averageScoreTotal / gradeRowCount).toFixed(1);
-                console.log(averageScoreTotal)
-                console.log(gradeRowCount)
+                // console.log(averageScoreTotal)
+                // console.log(gradeRowCount)
 
-                console.log(resultItem)
+                // console.log(resultItem)
                 // In the case of a comment
                 if (resultItem.comment === undefined) {
-                    console.log('There is no comment, bro')
+                    // console.log('There is no comment, bro')
                 }
                 // console.log(`Her grade is: ${item.Grade}`);
                 // oGrade.innerText = item.Grade;
@@ -891,7 +891,7 @@ function createCommentText(resultItem, suffix, grade) {
     let commentGradeRange;
     let commentNumber;
     let outputComment = "";
-    console.log(grade)
+    // console.log(grade)
 
     // ===GRADES===
     //First we want to get the comment grade range
@@ -921,6 +921,10 @@ function createCommentText(resultItem, suffix, grade) {
             commentNumber = 2;
         } else if (commentItem.includes('#4')) {
             commentNumber = 3;
+        } else if (commentItem.includes('#5')) {
+            commentNumber = 4;
+        } else if (commentItem.includes('#6')) {
+            commentNumber = 5;
         }
 
         if(commentNumber === "" || commentNumber === undefined){
@@ -936,7 +940,7 @@ function createCommentText(resultItem, suffix, grade) {
         for (let i=0; i<commentDataArray.length; i++) {
             if (commentDataArray[i].id === commentGradeRange) {
                 outputComment = commentDataArray[i].comments[0];
-                console.log(outputComment);
+                // console.log(outputComment);
             }
         }
     }
