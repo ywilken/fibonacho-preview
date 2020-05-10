@@ -700,11 +700,18 @@ function addIntroInput(e) {
     pageIntroInput_Field.type = "text";
     pageIntroInput_Field.spellcheck = false;
     // This EventListener changes the color of the input field as soon as text is entered
-    if (inputField.value === "img" && inputAutomaticImgNaming.value === "yes") {
-        pageIntroInput_Field.classList.add('html-gen-input-filled');
-    } else {
-        pageIntroInput_Field.addEventListener('change', highlightGlobalInputField);
+    if(inputField !== undefined) {
+        if (inputField.value === "img" && inputAutomaticImgNaming.value === "yes") {
+            pageIntroInput_Field.classList.add('html-gen-input-filled');
+        } else {
+            pageIntroInput_Field.addEventListener('change', highlightGlobalInputField);
+        }
     }
+    // if (inputField.value === "img" && inputAutomaticImgNaming.value === "yes") {
+    //     pageIntroInput_Field.classList.add('html-gen-input-filled');
+    // } else {
+    //     pageIntroInput_Field.addEventListener('change', highlightGlobalInputField);
+    // }
     
     pageIntroInput_Field.classList.add('html-gen-input');
     // Update the html container
