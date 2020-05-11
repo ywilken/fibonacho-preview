@@ -114,6 +114,10 @@ function loadQuestions(){
     if(questionArray[questionIndex].questionIntroText) {
         questionIntroText.innerText = questionArray[questionIndex].questionIntroText + " ";
     }
+    if(questionArray[questionIndex].questionImage) {
+        questionImage.classList.add('question-image');
+        questionImage.src = questionArray[questionIndex].questionImage;
+    }
     if(questionArray[questionIndex].questionInfo) {
         questionInfo.innerHTML = questionArray[questionIndex].questionInfo;
         questionInfo.classList.add('question-info');
@@ -123,10 +127,6 @@ function loadQuestions(){
         } else {
             questionInfo.classList.add('question-info-animated');
         }
-    }
-    if(questionArray[questionIndex].questionImage) {
-        questionImage.classList.add('question-image');
-        questionImage.src = questionArray[questionIndex].questionImage;
     }
     if (questionArray[questionIndex].optionType === "p") {
         optionOne.innerHTML=questionArray[questionIndex].options[0];

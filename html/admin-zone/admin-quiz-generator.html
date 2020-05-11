@@ -25,7 +25,7 @@
         </label>
         <!--=======Sidebar Menu=======-->
         <div class="sidebar">
-            <header>Grado 3</header>
+            <header>AdminZone</header>
             <ul>
                 <li><a href="../../index.html"><i class="fas fa-home"></i>Home</a></li>
                 <li><a href="#" class="current-page"><i class="fas fa-user-astronaut"></i>Situaciones problema</a></li>
@@ -41,7 +41,7 @@
             <div data-form="quiz-gen-results" class="quiz-gen-results d-none">
                 <div class="quiz-gen-results-container">
                     <h2 class="quiz-gen-results-title">¡Tu código esta listo!</h2>
-                    <textarea class="quiz-gen-code-window" name="" id="" spellcheck="false"></textarea>
+                    <textarea data-output="output--quiz-gen-code" class="quiz-gen-code-window" name="" id="" spellcheck="false"></textarea>
                 </div>
             </div>
 
@@ -59,44 +59,44 @@
                     <div data-form="form--image-settings-grade-1" class="d-none">
                         <div class="quiz-gen-toolbar-settings_div">
                             <label for="semana-g1"><span>G1:</span> Semana</label>
-                            <input type="number" id="semana-g1" min="1">
+                            <input data-input="input--image-week-g1" type="number" id="semana-g1" min="1">
                         </div>
                         <div class="quiz-gen-toolbar-settings_div">
                             <label for="nombre-imagen-g1"><span>G1:</span> Nombre Imagen</label>
-                            <input type="text" id="nombre-imagen-g1">
+                            <input data-input="input--image-name-g1" type="text" id="nombre-imagen-g1">
                         </div>
                     </div>
                     <!-- Grade 2 -->
                     <div data-form="form--image-settings-grade-2" class="d-none">
                         <div class="quiz-gen-toolbar-settings_div">
                             <label for="semana-g2"><span>G2:</span> Semana</label>
-                            <input type="number" id="semana-g2" min="1">
+                            <input data-input="input--image-week-g2" type="number" id="semana-g2" min="1">
                         </div>
                         <div class="quiz-gen-toolbar-settings_div">
                             <label for="nombre-imagen-g2"><span>G2:</span> Nombre Imagen</label>
-                            <input type="text" id="nombre-imagen-g2">
+                            <input data-input="input--image-name-g2" type="text" id="nombre-imagen-g2">
                         </div>
                     </div>
                     <!-- Grade 3 -->
                     <div data-form="form--image-settings-grade-3" class="d-none">
                         <div class="quiz-gen-toolbar-settings_div">
                             <label for="semana-g3"><span>G3:</span> Semana</label>
-                            <input type="number" id="semana-g3" min="1">
+                            <input data-input="input--image-week-g3" type="number" id="semana-g3" min="1">
                         </div>
                         <div class="quiz-gen-toolbar-settings_div">
                             <label for="nombre-imagen-g3"><span>G3:</span> Nombre Imagen</label>
-                            <input type="text" id="nombre-imagen-g3">
+                            <input data-input="input--image-name-g3" type="text" id="nombre-imagen-g3">
                         </div>
                     </div>
                     <!-- Grade 4 -->
                     <div data-form="form--image-settings-grade-4" class="d-none">
                         <div class="quiz-gen-toolbar-settings_div">
                             <label for="semana-g4"><span>G4/5:</span> Semana</label>
-                            <input type="number" id="semana-g4" min="1">
+                            <input data-input="input--image-week-g4" type="number" id="semana-g4" min="1">
                         </div>
                         <div class="quiz-gen-toolbar-settings_div">
                             <label for="nombre-imagen-g4"><span>G4/5:</span> Nombre Imagen</label>
-                            <input type="text" id="nombre-imagen-g4">
+                            <input data-input="input--image-name-g4" type="text" id="nombre-imagen-g4">
                         </div>
                     </div>
                 </div>
@@ -104,7 +104,7 @@
                     <div class="quiz-gen-toolbar-buttons">
                             <button data-btn="btn--add-text-question" class="quiz-gen-btn--toolbar"><i class="fas fa-plus-circle"></i> Pregunta Texto</button>
                             <button class="quiz-gen-btn--toolbar"><i class="fas fa-plus-circle"></i> Pregunta Imagen</button>
-                            <button class="quiz-gen-btn--toolbar quiz-gen-btn--toolbar-submit"><i class="fas fa-paper-plane"></i> Enviar</button>
+                            <button data-btn="btn--submit-questions" class="quiz-gen-btn--toolbar quiz-gen-btn--toolbar-submit"><i class="fas fa-paper-plane"></i> Enviar</button>
                             <button class="quiz-gen-btn--toolbar quiz-gen-btn--toolbar-delete"><i class="fas fa-trash"></i> Borrar</button>
                             <button data-btn="btn--toggle-code-window" class="quiz-gen-btn--toolbar-code"><i class="fas fa-code"></i></button>
                     </div>
@@ -126,198 +126,7 @@
 
             <!--=======QUESTION BLOCK=======-->
             
-            <article class="block quiz-block quiz-gen-block">
-                <div class="quiz-gen-question-settings">
-                    <!-- ICON: QUESTION TEXT -->
-                    <div>
-                        <i class="fas fa-file-alt quiz-gen-question-settings-icon"></i>
-                    </div>
-                    <!-- ICON: QUESTION IMAGE -->
-                    <!-- <div>
-                        <i class="fas fa-file-image quiz-gen-question-settings-icon"></i>
-                    </div> -->
-                    <button class="quiz-gen-btn--settings quiz-gen-btn--settings-clicked"><i class="fas fa-plus-circle"></i> <i class="fas fa-comment-dots"></i></button>
-                    <button class="quiz-gen-btn--settings"><i class="fas fa-plus-circle"></i> <i class="fas fa-theater-masks"></i></button>
-                    <button class="quiz-gen-btn--settings"><i class="fas fa-plus-circle"></i> <i class="fas fa-money-check"></i></button>
-                    <button class="quiz-gen-btn--settings"><i class="fas fa-plus-circle"></i> <i class="fas fa-question-circle"></i></button>
-                    <button class="quiz-gen-btn--settings"><i class="fas fa-plus-circle"></i> <i class="fas fa-image"></i></button>
-                    <button class="quiz-gen-btn--settings"><i class="fas fa-plus-circle"></i> <i class="fas fa-info-circle"></i></button>
-                    <button class="quiz-gen-btn--settings quiz-gen-btn--settings-delete"><i class="fas fa-times"></i></button>
-                </div>
-                <div class="real-block real-quiz-block shadow">
-                    <div class="quiz-container quiz-gen-container">
-                        <img class="quiz-logo" src="./../../img/favicon.png" alt="">
-                        <div class="question-number">
-                            <h3>Pregunta <span class="question-num-value"></span> de <span class="question-num-total"></span></h3>
-                        </div>
-                        <div class="question">
-                            <!-- ===QUESTION SITUATION=== -->
-                            <div class="question-situation">
-                                <!-- INPUT BOX: SITUATION INSTRUCTION -->
-                                <div>
-                                    <div class="quiz-gen-input-box quiz-gen-input-box--situation-instruction">
-                                        <textarea class="quiz-gen-input " name="" id=""></textarea><!--Question Intro Text-->
-                                        <!-- BUTTON-DELETE -->
-                                        <button class="quiz-gen-delete-btn">
-                                            <i class="fas fa-times"></i>
-                                        </button>
-                                        <!-- POP-UP MESSAGE -->
-                                        <!-- <div class="quiz-gen-delete-message">
-                                            <p>¿Estás seguro de que quieres borrar este campo?</p>
-                                            <button class="quiz-gen-confirm-delete-btn">Eliminar</button>
-                                        </div> -->
-                                    </div> <!-- / INPUT BOX -->
-                                </div>
-
-                                <!-- INPUT BOX: SITUATION TEXT -->
-                                <div class="question-situation-text quiz-gen-input-box">
-                                    <textarea class="quiz-gen-input quiz-gen-input--situation " name="" id=""></textarea><!--Question Intro Text-->
-                                    <!-- BUTTON-DELETE -->
-                                    <button class="quiz-gen-delete-btn">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                    <!-- POP-UP MESSAGE -->
-                                    <!-- <div class="quiz-gen-delete-message">
-                                        <p>¿Estás seguro de que quieres borrar este campo?</p>
-                                        <button class="quiz-gen-confirm-delete-btn">Eliminar</button>
-                                    </div> -->
-                                </div> <!-- / INPUT BOX -->
-                            </div>
-                            <!-- ===NORMAL QUESTION=== -->
-                            <div class="question-output">
-                                <!-- INPUT BOX: Q INTRO TEXT -->
-                                <div class="question-intro-text quiz-gen-input-box">
-                                    <textarea class="quiz-gen-input " name="" id=""></textarea><!--Question Intro Text-->
-                                    <!-- BUTTON-DELETE -->
-                                    <button class="quiz-gen-delete-btn">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                    <!-- POP-UP MESSAGE -->
-                                    <!-- <div class="quiz-gen-delete-message">
-                                        <p>¿Estás seguro de que quieres borrar este campo?</p>
-                                        <button class="quiz-gen-confirm-delete-btn">Eliminar</button>
-                                    </div> -->
-                                </div> <!-- / INPUT BOX -->
-                                
-                                <!-- INPUT BOX: QUESTION -->
-                                <div class="quiz-gen-input-box">
-                                    <textarea class="quiz-gen-input " name="" id=""></textarea><!--Question Text-->
-                                    <!-- BUTTON-DELETE -->
-                                    <button class="quiz-gen-delete-btn">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                    <!-- POP-UP MESSAGE -->
-                                    <!-- <div class="quiz-gen-delete-message">
-                                        <p>¿Estás seguro de que quieres borrar este campo?</p>
-                                        <button class="quiz-gen-confirm-delete-btn">Eliminar</button>
-                                    </div> -->
-                                </div> <!-- / INPUT BOX -->
-                                
-                            </div>
-
-                            <div>
-                                <img data-output="output--question-image" class="question-image" src="https://www.adslzone.net/app/uploads-adslzone.net/2019/04/borrar-fondo-imagen-930x487.jpg" alt="">
-                                <!-- BUTTON-DELETE -->
-                                <button class="quiz-gen-delete-btn">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                                <!-- POP-UP MESSAGE -->
-                                <!-- <div class="quiz-gen-delete-message">
-                                    <p>¿Estás seguro de que quieres borrar este campo?</p>
-                                    <button class="quiz-gen-confirm-delete-btn">Eliminar</button>
-                                </div> -->
-                            </div>
-                        
-                            <!-- INPUT BOX: QUESTION INFO -->
-                            <div class="question-info quiz-gen-question-info quiz-gen-input-filled quiz-gen-input-box">
-                                <textarea class="quiz-gen-input quiz-gen-input-question-info" name="" id=""></textarea><!--Question Text-->
-                                <!-- BUTTON-DELETE -->
-                                <button class="quiz-gen-delete-btn">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                                <!-- POP-UP MESSAGE -->
-                                <!-- <div class="quiz-gen-delete-message">
-                                    <p>¿Estás seguro de que quieres borrar este campo?</p>
-                                    <button class="quiz-gen-confirm-delete-btn">Eliminar</button>
-                                </div> -->
-                            </div> <!-- / INPUT BOX -->
-                        </div>
-
-                        <!-- <img class="question-image" src="../../img/quiz/option-1.svg" alt=""> -->
-                        <div class="quiz-options">
-                            <!-- <div id="" class="opt" onclick="check(this)"><img src="../../img/quiz/option-1.svg" alt=""></div> -->
-                            <div id="0" class="option-1" onclick="check(this)">
-                                <!-- INPUT BOX: OPTION -->
-                                <span class="quiz-gen-input-box quiz-gen-input-box-options">
-                                    <textarea class="quiz-gen-input quiz-gen-input--options" name="" id=""></textarea><!--Question Text-->
-                                    <!-- BUTTON-DELETE -->
-                                    <button class="quiz-gen-delete-btn quiz-gen-delete-btn--options">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                    <!-- POP-UP MESSAGE -->
-                                    <!-- <span class="quiz-gen-delete-message quiz-gen-delete-message--options">
-                                        <p>¿Estás seguro de que quieres borrar este campo?</p>
-                                        <button class="quiz-gen-confirm-delete-btn">Eliminar</button>
-                                    </span> -->
-                                </span> <!-- / INPUT BOX -->
-
-                                <!--Option 01<img class="img-option-1" src="">-->
-                            </div>
-                            <div id="1" class="option-2" onclick="check(this)">
-                                <!-- INPUT BOX: OPTION -->
-                                <span class="quiz-gen-input-box quiz-gen-input-box-options">
-                                    <textarea class="quiz-gen-input quiz-gen-input--options" name="" id=""></textarea><!--Question Text-->
-                                    <!-- BUTTON-DELETE -->
-                                    <button class="quiz-gen-delete-btn quiz-gen-delete-btn--options">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                    <!-- POP-UP MESSAGE -->
-                                    <!-- <span class="quiz-gen-delete-message quiz-gen-delete-message--options">
-                                        <p>¿Estás seguro de que quieres borrar este campo?</p>
-                                        <button class="quiz-gen-confirm-delete-btn">Eliminar</button>
-                                    </span> -->
-                                </span> <!-- / INPUT BOX -->
-                                <!--Option 02<img class="img-option-2" src="">--></div>
-                            <div id="2" class="option-3" onclick="check(this)">
-                                <!-- INPUT BOX: OPTION -->
-                                <span class="quiz-gen-input-box quiz-gen-input-box-options">
-                                    <textarea class="quiz-gen-input quiz-gen-input--options" name="" id=""></textarea><!--Question Text-->
-                                    <!-- BUTTON-DELETE -->
-                                    <button class="quiz-gen-delete-btn quiz-gen-delete-btn--options">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                    <!-- POP-UP MESSAGE -->
-                                    <!-- <span class="quiz-gen-delete-message quiz-gen-delete-message--options">
-                                        <p>¿Estás seguro de que quieres borrar este campo?</p>
-                                        <button class="quiz-gen-confirm-delete-btn">Eliminar</button>
-                                    </span> -->
-                                </span> <!-- / INPUT BOX -->
-                                <!--Option 03<img class="img-option-3" src="">--></div>
-                            <div id="3" class="option-4" onclick="check(this)">
-                                <!-- INPUT BOX: OPTION -->
-                                <span class="quiz-gen-input-box quiz-gen-input-box-options">
-                                    <textarea class="quiz-gen-input quiz-gen-input--options" name="" id=""></textarea><!--Question Text-->
-                                    <!-- BUTTON-DELETE -->
-                                    <button class="quiz-gen-delete-btn quiz-gen-delete-btn--options">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                    <!-- POP-UP MESSAGE -->
-                                    <!-- <span class="quiz-gen-delete-message quiz-gen-delete-message--options">
-                                        <p>¿Estás seguro de que quieres borrar este campo?</p>
-                                        <button class="quiz-gen-confirm-delete-btn">Eliminar</button>
-                                    </span> -->
-                                </span> <!-- / INPUT BOX -->
-                                <!--Option 04<img class="img-option-4" src=""--></div>
-                        </div>
-                        <div class="quiz-button">
-                            <button type="button" class="btn-next"><i class="fas fa-chevron-right"></i></button>
-                        </div>
-                        <div class="answers-tracker">
-                            <!--<div></div>-->
-                        </div>
-                    </div>
-                </div>
-            </article>
+            
 
             
 

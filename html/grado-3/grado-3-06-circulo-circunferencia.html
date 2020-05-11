@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fibonacho</title>
+        <link rel="shortcut icon" type="image/png" href="../../img/favicon.png">
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Baloo+2:400,700|Caveat:400,700&display=swap" rel="stylesheet">        
+        <link href="../../css/styles.css" rel="stylesheet">
+    </head>
+    <body onload="pageLoaded()">
+        <!--===SIDEBAR===-->
+        <!--=======Menu open/close=======-->
+        <input type="checkbox" id="check">
+        <label for="check">
+            <i class="fas fa-bars" id="btn"></i>
+            <i class="fas fa-times" id="cancel"></i>
+        </label>
+        <!--=======Sidebar Menu=======-->
+        <div class="sidebar">
+            <header>Grado 3</header>
+            <ul>
+                <li><a href="../../index.html"><i class="fas fa-home"></i>Home</a></li>
+                <li><a href="./grado-3.html"><i class="fas fa-meteor"></i>Todos los temas</a></li>
+                <li><a href="#" class="current-page"><i class="fas fa-user-astronaut"></i>El círculo y la circunferencia</a></li>
+                <!-- <li><a href="./grado-3-05-problema-una-operacion-quiz.html"><i class="fas fa-rocket"></i>Examen</a></li> -->
+                <!-- <li><a href="./grado-3-multiplicacion.html"><i class="fas fa-chevron-circle-right"></i>Siguiente</a></li> -->
+                <li><a href="./grado-3-05-problema-una-operacion.html"><i class="fas fa-chevron-circle-left"></i>Anterior</a></li>
+                <li><a href="../../index.html#site-contact"><i class="fas fa-envelope"></i>Contacto</a></li>
+            </ul>
+        </div>
+
+        <!--=======Section=======-->
+        <main class="pattern">
+            <article class="block">
+
+                <div class="real-block shadow">
+
+                   <!--=======Intro=======-->
+                    <section class="chapter">
+                        <div class="chapter-level">Nivel 1</div>
+                        <h1 class="chapter-title">El círculo y la circunferencia</h1>
+                        <p class="subtitle">En este capítulo vas a usar el doble y la mitad de un número.</p>
+                        <!--=======Hero Image=======-->
+                        <img src="./../../img/grado-3/06-el-circulo/hero.jpg" alt="Manos de diferentes personas que confluyen en un centro.">
+                        <!--=======Title (No Video Button)=======-->
+                        <div class="flex-video">
+                            <div class="flex-video-title">
+                                <div><span class="chapter__number">Introducción</span></div>
+                                <h2 class="section-title">¿Qué es el círculo y la circunferencia?</h2>
+                            </div>
+                        </div>
+                        <p class="main-text">Estas dos palabras hablan de dos cosas que están relacionadas pero que no son lo mismo. </p>
+                        <p class="example">Observa: </p>
+                        <img class="img-diagram" src="./../../img/grado-3/06-el-circulo/circulo-1.png" alt="Niños tomados de la mano formando un círculo.">
+                        <p class="main-text">Estos niños están tomados de la mano formando un círculo. El borde que rodea al círculo formando el contorno se llama circunferencia. </p>
+                        <p class="example"> Veamos las diferencias:</p>
+                        <img class="img-diagram" src="./../../img/grado-3/06-el-circulo/circulo-2.png" alt="Niños tomados de la mano formando un círculo. Círculo sombreado en su interior.">
+                        <p class="main-text">Todo el fondo coloreado de azul es una figura plana llamada Círculo, y el contorno punteado de amarillo es una línea curva cerrada llamada Circunferencia.</p>
+                        <!--=======Goals=======-->
+                        <ul class="goals"><span class="goal-text">¿Qué vamos a aprender?</span>
+                            <li class="goal-list-dot">Partes más importantes de una circunferencia</li>
+                            <li class="goal-list-dot">¿Cómo hallar el diámetro si ya tengo el radio?</li>
+                            <li class="goal-list-dot">¿Cómo hallar el radio si ya tengo el diámetro? </li>
+                        </ul>
+                    </section>
+
+                    <!--=======Chapter 01=======-->
+                    <section class="chapter chapter-new">
+                        <!--=======Title & Video Button=======-->
+                        <div class="flex-video">
+                            <div class="flex-video-title">
+                                <h2 class="section-title"><span class="chapter__number">(1)</span> Partes más importantes de una circunferencia:</h2>
+                            </div>
+                            <div class="flex-video-btn">
+                                <a class="test-button shadow-btn" href="https://youtu.be/TuIfJkBNERg" target="_blank">Vídeo 01</a>
+                            </div>
+                        </div>
+                        <p class="main-text">como ya sabemos la circunferencia es el contorno del círculo, y es una curva cerrada. Esta curva cerrada tiene varias partes importantes que la conforman y conocerlas nos ayudará a comprender por qué no es lo mismo que un círculo.</p>
+
+                        <!--***********Subsection A***********-->
+                        <p class="main-text section-nr">A. El centro: </p>
+                        <p class="main-text">Es un punto que está justo en la mitad de la circunferencia y desde este punto podemos trazar líneas que estarán siempre a la misma distancia de cualquier punto de la circunferencia.</p>
+                        <p class="example">Observa:</p>
+                        <img class="img-diagram" src="./../../img/grado-3/06-el-circulo/circulo-3.png" alt="Círculo con punto en el centro y líneas que se extienden desde el centro hacia cualquier punto de la circunferencia.">
+                        <p class="main-text">Si mides con una regla cada una de estas líneas encontrarás que miden exactamente lo mismo.</p>
+
+                        <!--***********Subsection B***********-->
+                        <p class="main-text section-nr">B. El diámetro:</p>
+                        <p class="main-text">Es un segmento que une dos puntos de la circunferencia pasando siempre por el centro.</p>
+                        <p class="example">Observa: </p>
+                        <img class="img-diagram" src="./../../img/grado-3/06-el-circulo/circulo-4.png" alt="Círculo con punto en el centro y un segmento que atraviesa la circunferencia de punto a punto.">
+                        <p class="main-text">Si observas este segmento te darás cuenta que atraviesa toda la circunferencia.</p>
+
+                        <!--***********Subsection C***********-->
+                        <p class="main-text section-nr">C. El radio:</p>
+                        <p class="main-text">Es el segmento que une al centro con cualquier punto de la circunferencia.</p>
+                        <p class="example">Observa:</p>
+                        <img class="img-diagram" src="./../../img/grado-3/06-el-circulo/circulo-5.png" alt="Dos circulos con punto en el centro y un segmento que va del centro a un punto de la circunferencia.">
+                    </section>
+
+                    <!--=======Chapter 02=======-->
+                    <section class="chapter chapter-new">
+                        <!--=======Title & Video Button=======-->
+                        <div class="flex-video">
+                            <div class="flex-video-title">
+                                <h2 class="section-title"><span class="chapter__number">(2)</span>¿Cómo hallar el diámetro si ya tengo el radio?</h2>
+                            </div>
+                            <div class="flex-video-btn">
+                                <a class="test-button shadow-btn" href="https://youtu.be/c4aMRjATLEE " target="_blank">Vídeo 02</a>
+                            </div>
+                        </div>
+                        <p class="main-text">Recuerda que el diámetro y el radio no son lo mismo, el diámetro es un segmento que se extiende de punto a punto de la circunferencia pasando por el centro, mientras que el radio podríamos decir que es la mitad del diámetro.</p>
+                        <p class="main-text">Cuando en un ejercicio conocemos el radio de una circunferencia podemos usarlo para hallar el diámetro de esta usando solo una operación: la multiplicación por 2.</p>
+                        <!--=======LearnBox=======-->
+                        <div class="chapter-box chapter-box--learn">
+                            <i class="fas fa-user-astronaut chapter-box__icon chapter-box__icon--learn"></i>
+                            <div class="chapter-box__text chapter-box__text--learn">
+                                <p class="strong--box">Regla:</p>
+                                <p>Diámetro = Radio X 2</p>
+                            </div>
+                        </div>
+                        <p class="example">Observa: </p>
+                        <img class="img-diagram" src="./../../img/grado-3/06-el-circulo/circulo-6.png" alt="Dos circulos, uno decribe el radio que mide 4 cm y el otro señala el segmento del diámetro.">
+                        <p class="main-text">En esta circunferencia nos están diciendo que el radio mide 4 cm, si observas bien te das cuenta que el radio es la mitad del diámetro, ya que cada segmento que pase por el centro hacia cualquier punto de la circunferencia medirá lo mismo. Para hallar el diámetro vamos a usar entonces el radio.</p>
+                        <p class="example">Observa: </p>
+                        <img class="img-diagram" src="./../../img/grado-3/06-el-circulo/circulo-7.png" alt="El radio mide 4 cm por lo cual lo vamos a multiplicar por 2 para hallar el diámetro: 4 cm x 2= 8 cm">
+                        <p class="main-text">Listo! el diámetro de esta circunferencia es 8 cm. </p>
+                    </section>
+
+                    <!--=======Chapter 03=======-->
+                    <section class="chapter chapter-new">
+                        <!--=======Title & Video Button=======-->
+                        <div class="flex-video">
+                            <div class="flex-video-title">
+                                <h2 class="section-title"><span class="chapter__number">(3)</span> ¿Cómo hallar el radio si ya tengo el diámetro?</h2>
+                            </div>
+                            <div class="flex-video-btn">
+                                <a class="test-button shadow-btn" href="https://youtu.be/vRdI5wU3kHE" target="_blank">Vídeo 03</a>
+                            </div>
+                        </div>
+                        <p class="main-text">El radio como ya lo visualizamos en el punto anterior es justo la mitad del diámetro, por lo cual para hallar el radio en una situación en la cual ya conocemos el diámetro solo tenemos que pensar en la mitad de lo que mide el diámetro.</p>
+                        <p class="example">Observa: </p>
+                        <img class="img-diagram" src="./../../img/grado-3/06-el-circulo/circulo-8.png" alt="Dos circunferencias, en una se da la medida del diámetro qué es 10 cm y en otra se señala el radio y se pregunta por su medida.">
+                        <p class="main-text">En esta circunferencia nos dicen que su diámetro es 10, vamos a hallar la mitad de 10 para así encontrar el radio.</p>
+                        <!--=======LearnBox=======-->
+                        <div class="chapter-box chapter-box--learn">
+                            <i class="fas fa-user-astronaut chapter-box__icon chapter-box__icon--learn"></i>
+                            <div class="chapter-box__text chapter-box__text--learn">
+                                <p class="strong--box">Regla:</p>
+                                <p>Radio = Diámetro ÷ 2</p>
+                            </div>
+                        </div>
+                        <p class="example">Observa: </p>
+                        <img class="img-diagram" src="./../../img/grado-3/06-el-circulo/circulo-9.png" alt="Circunferencia que tiene un diámetro de 10 cm y un radio de 5 cm.">
+                        <p class="main-text">Y listo! el radio de esta circunferencia es 5 cm.</p>
+                    </section>
+
+                    <!--=======Video & PDF Button=======-->
+                    <section class="chapter chapter-new">
+                        <div class="flex-video-container">
+                            <p class="text-summary">¡Tiempo para un repaso!</p>
+                            <div class="flex-video flex-video-last">
+                                <!--=======Button: Video=======-->
+                                <div class="flex-video-btn-last">
+                                    <a class="video-button video-button-last video-button-inverted shadow-btn" href="https://youtu.be/-CetGfzs7kE " target="_blank">Vídeo 04</a>
+                                </div>
+                                <!--=======Button: Workshop=======-->
+                                <div class="flex-video-btn-last">
+                                    <a class="video-button video-button--broader video-button-last video-button-inverted shadow-btn" href="https://drive.google.com/open?id=1tXyTwdYgwKzya4F-IWc5e9L0C-7vbreO" target="_blank">Taller</a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!--=======Extra: Resources Material=======-->
+                    <section class="resources resources-margin">
+                        <h2 class="section-title"><span class="chapter__number"><i class="fas fa-graduation-cap"></i></span>Material extra para trabajar el tema de círculo y circunferencia:</h2>
+                        <!--=======Resource-Link 01:=======-->
+                        <div class="resources resources-extra-material">
+                            <p class="list-dot">En el siguiente enlace podrás descargar un <a href="https://actividadeseducativas.net/wp-content/uploads/2019/06/Circunferencia-y-C%C3%ADrculo-para-Tercero-de-Primaria.pdf" target="_blank">pdf con ejercicios de reconocimiento del círculo y la circunferencia </a>creado por Actividadeseducativas.net</p>
+                        </div>
+                    </section>
+
+                    <!--=======Extra: Resources Videos=======-->
+                    <section class="resources resources-margin">
+                        <h2 class="section-title"><span class="chapter__number"><i class="fas fa-video"></i></span>Vídeos orientativos:</h2>
+                        <!--=======Resource-Link 01:=======-->
+                        <div class="resources resources-extra-material">
+                            <p class="list-dot">En el vídeo <a href="https://www.youtube.com/watch?v=Mco4xC2_BZQ" target="_blank">“Círculo y circunferencia” de Happy learning</a> encontrarás una explicación muy ilustrativa de estos dos conceptos </p>
+                        </div>
+                        <!--=======Resource-Link 02:=======-->
+                        <div class="resources resources-extra-material">
+                            <p class="list-dot">En el vídeo <a href="https://www.youtube.com/watch?v=ZLLxv_2H6SI" target="_blank">“Esto no es lo mismo: círculo y circunferencia” de Aula 365- Los creadores</a> hallarás una explicación divertida sobre la diferencia entre estos dos conceptos</p>
+                        </div>
+                        <!--=======Resource-Link 03:=======-->
+                        <div class="resources resources-extra-material">
+                            <p class="list-dot">En el vídeo <a href="https://www.youtube.com/watch?v=vXgoVsVHLT4" target="_blank">“Elementos de la circunferencia y el círculo” de Mundoprimaria.com</a> encontrarás una explicación de los elementos que conforman a la circunferencia</p>
+                        </div>
+                    </section>
+
+                    <!--=======Extra: Credits=======-->
+                    <section class="resources resources-margin">
+                        <h2 class="section-title"><span class="chapter__number"><i class="fas fa-external-link-alt"></i></span>Créditos de las figuras:</h2>
+                        <div class="resources list-dot">
+                            <a href="https://unsplash.com/@perrygrone" target="_blank">Photo by Perry Grone</a>
+                        </div>
+                        <div class="resources list-dot">
+                            <a target="_blank" href="https://www.freepik.es/fotos-vectores-gratis/fondo">Vector de Fondo creado por freepik - www.freepik.es</a>
+                        </div>
+                    </section>
+
+
+
+
+
+                </div>
+            </article>
+        </main>
+
+        <footer class="site-footer">
+            <img class="footer-logo" src="../../img/fibonacho.png" alt="">
+            <div class="footer-title">fibonacho</div>
+            <p class="copyright">Copyright 2020</p>
+            <p>• • •</p>
+        </footer>
+        
+    </body>
+
+    <!-- jQuery -->
+    <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>-->
+
+    <!-- JS -->
+    <!--<script src="../js/script.js"></script>-->
+
+</html>
