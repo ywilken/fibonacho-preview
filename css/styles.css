@@ -2508,6 +2508,10 @@ QUIZ GENERATOR: TOOLBAR
     margin-right: 0.25em;
 }
 
+.quiz-gen-toolbar-settings--input-filled {
+    background: rgb(192, 253, 192);
+}
+
 /*==================
 QUIZ GENERATOR: CODE WINDOW
 ==================*/

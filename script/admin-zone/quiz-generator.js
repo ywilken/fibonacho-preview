@@ -92,10 +92,49 @@ btnAddImageQuestion.addEventListener('click', addQuestion);
 btnSubmitQuestion.addEventListener('click', submitQuestions);
 // Event Listeners: Code Window Toggle
 btnCodeWindowToggle.addEventListener('click', toggleCodeWindow);
+// Event Listeners: Toggle Image Data
+inputImageWeekNum_G1.addEventListener('change', hideImageSettings);
+inputImageWeekNum_G2.addEventListener('change', hideImageSettings);
+inputImageWeekNum_G3.addEventListener('change', hideImageSettings);
+inputImageWeekNum_G4.addEventListener('change', hideImageSettings);
+inputImageName_G1.addEventListener('change', hideImageSettings);
+inputImageName_G2.addEventListener('change', hideImageSettings);
+inputImageName_G3.addEventListener('change', hideImageSettings);
+inputImageName_G4.addEventListener('change', hideImageSettings);
+
+
+
 
 /* =============
 FUNCTIONS
 ============= */
+/* ----------
+TOGGLE IMAGE SETTINGS
+----------*/
+function hideImageSettings(e) {
+    // Change input field color
+    if(e.target.value !== "") {
+        e.target.classList.add('quiz-gen-toolbar-settings--input-filled');
+    }
+    // Hide the image data when both fields are filled
+    setTimeout(hideImageSettingsTimer, 1000, e);
+    
+}
+
+function hideImageSettingsTimer(e) {
+    if(e.target.dataset.name === "image-week") {
+        let imageName = e.target.parentNode.parentNode.querySelector('[data-name="image-name"').value;
+        if(imageName !== "") {
+            e.target.parentNode.parentNode.parentNode.classList.add('d-none');
+        }
+    } else if(e.target.dataset.name === "image-name") {
+        let imageWeek = e.target.parentNode.parentNode.querySelector('[data-name="image-week"').value;
+        if(imageWeek !== "") {
+            e.target.parentNode.parentNode.parentNode.classList.add('d-none');
+        }
+    }
+}
+
 /* ----------
 TOGGLE CODE WINDOW
 ----------*/
@@ -109,57 +148,72 @@ TOGGLE GRADES
 ----------*/
 // Function: Display question containers for grades
 function changeGrade(e) {
-    // Before anything, disable all questions
-    disableAllGrades();
-    // Then, enable only the selected grade
-    e.target.classList.add('quiz-gen-toolbar-selected-grade');
-    // Make ImageSettings Container Visible
-    formImageSettings_Container.classList.remove('d-none');
-    // Hide the Code Window
-    if(formQuizGenResults.classList.contains('quiz-gen-results-show')){
-        formQuizGenResults.classList.add('quiz-gen-results-hide');
-    }
-    // ---ImageSettings: Grade 1
-    if (e.target.dataset.btn.includes('grade-1')) {
-        // Update the grade selection variable:
-        gradeSelection = "grade-1";
-        // Enable the image settings
-        for(let item of formImageSettings_G1.children) {
-            item.style.display = 'flex';
+    if(e.target.classList.contains('quiz-gen-toolbar-selected-grade')) {
+        // Hide the Code Window
+        if(formQuizGenResults.classList.contains('quiz-gen-results-show')){
+            formQuizGenResults.classList.add('quiz-gen-results-hide');
         }
-        // Enable the question container
-        formQuestionsContainer_G1.classList.remove('d-none');
-    // ---ImageSettings: Grade 2
-    } else if (e.target.dataset.btn.includes('grade-2')) {
-        // Update the grade selection variable:
-        gradeSelection = "grade-2";
-        // Enable the image settings
-        for(let item of formImageSettings_G2.children) {
-            item.style.display = 'flex';
-        }        
-        // Enable the question container
-        formQuestionsContainer_G2.classList.remove('d-none');
-    // ---ImageSettings: Grade 3
-    } else if (e.target.dataset.btn.includes('grade-3')) {
-        // Update the grade selection variable:
-        gradeSelection = "grade-3";
-        // Enable the image settings
-        for(let item of formImageSettings_G3.children) {
-            item.style.display = 'flex';
+        // Hide image settings on second click:
+        const imageSettings = e.target.parentNode.parentNode.children[1];
+        if(imageSettings.classList.contains('d-none')) {
+            imageSettings.classList.remove('d-none');
+        } else {
+            imageSettings.classList.add('d-none');
         }
-        // Enable the question container
-        formQuestionsContainer_G3.classList.remove('d-none');
-    // ---ImageSettings: Grade 4
-    } else if (e.target.dataset.btn.includes('grade-4')) {
-        // Update the grade selection variable:
-        gradeSelection = "grade-4";
-        // Enable the image settings
-        for(let item of formImageSettings_G4.children) {
-            item.style.display = 'flex';
-        }                
-        // Enable the question container
-        formQuestionsContainer_G4.classList.remove('d-none');
+    } else {
+        // Before anything, disable all questions
+        disableAllGrades();
+        // Then, enable only the selected grade
+        e.target.classList.add('quiz-gen-toolbar-selected-grade');
+        // Make ImageSettings Container Visible
+        formImageSettings_Container.classList.remove('d-none');
+        // Hide the Code Window
+        if(formQuizGenResults.classList.contains('quiz-gen-results-show')){
+            formQuizGenResults.classList.add('quiz-gen-results-hide');
+        }
+        // ---ImageSettings: Grade 1
+        if (e.target.dataset.btn.includes('grade-1')) {
+            // Update the grade selection variable:
+            gradeSelection = "grade-1";
+            // Enable the image settings
+            for(let item of formImageSettings_G1.children) {
+                item.style.display = 'flex';
+            }
+            // Enable the question container
+            formQuestionsContainer_G1.classList.remove('d-none');
+        // ---ImageSettings: Grade 2
+        } else if (e.target.dataset.btn.includes('grade-2')) {
+            // Update the grade selection variable:
+            gradeSelection = "grade-2";
+            // Enable the image settings
+            for(let item of formImageSettings_G2.children) {
+                item.style.display = 'flex';
+            }        
+            // Enable the question container
+            formQuestionsContainer_G2.classList.remove('d-none');
+        // ---ImageSettings: Grade 3
+        } else if (e.target.dataset.btn.includes('grade-3')) {
+            // Update the grade selection variable:
+            gradeSelection = "grade-3";
+            // Enable the image settings
+            for(let item of formImageSettings_G3.children) {
+                item.style.display = 'flex';
+            }
+            // Enable the question container
+            formQuestionsContainer_G3.classList.remove('d-none');
+        // ---ImageSettings: Grade 4
+        } else if (e.target.dataset.btn.includes('grade-4')) {
+            // Update the grade selection variable:
+            gradeSelection = "grade-4";
+            // Enable the image settings
+            for(let item of formImageSettings_G4.children) {
+                item.style.display = 'flex';
+            }                
+            // Enable the question container
+            formQuestionsContainer_G4.classList.remove('d-none');
+        }
     }
+    
 }
 
 // Function: Disable the display of all grades
@@ -307,27 +361,71 @@ function createFinishedArray(inputArray) {
                         break;
                 }
                 // Create the image URL
-                const imageURL = `../../script/quiz/semana-${imageWeekNum}/${grade}/${imageName}-${imageNum}.png`
+                const imageURL = `../../script/quiz/semana-${imageWeekNum}/${grade}/${imageName}-${imageNum}.png`;
                 singleQuestionObject.questionImage = imageURL;
             }
         }
         // Upload "OptionType" if existing
+        let optionType;
         if(input.optionTypeId) {
             const optionTypeValue = document.querySelector(`[data-input="${input.optionTypeId}"]`).dataset.input;            
 
-            let optionType;
             if (optionTypeValue === "input--text-question") {
                 optionType = "p";
+            } else if (optionTypeValue === "input--image-question") {
+                optionType = "img";
             }
             singleQuestionObject.optionType = optionType;
         }
-        if(input.option1Id && input.option2Id && input.option3Id && input.option4Id) {
-            const option1 = document.querySelector(`[data-input="${input.option1Id}"]`).value;
-            const option2 = document.querySelector(`[data-input="${input.option2Id}"]`).value;
-            const option3 = document.querySelector(`[data-input="${input.option3Id}"]`).value;
-            const option4 = document.querySelector(`[data-input="${input.option4Id}"]`).value;
-            const options = [option1, option2, option3, option4];
-            singleQuestionObject.options = options;
+        if(optionType === "p"){
+            if(input.option1Id && input.option2Id && input.option3Id && input.option4Id) {
+                const option1 = document.querySelector(`[data-input="${input.option1Id}"]`).value;
+                const option2 = document.querySelector(`[data-input="${input.option2Id}"]`).value;
+                const option3 = document.querySelector(`[data-input="${input.option3Id}"]`).value;
+                const option4 = document.querySelector(`[data-input="${input.option4Id}"]`).value;
+                const options = [option1, option2, option3, option4];
+                singleQuestionObject.options = options;
+            }
+        }else if(optionType === "img") {
+            // First we select the option image number field
+            const imageOptionNum = document.querySelector(`[data-input="${input.questionImageOptionId}"]`).value;
+            console.log(imageOptionNum)
+            // Dynamic Variables
+            let imageWeekNum;
+            let grade;
+            let imageName;
+            // Get the different values (weekNum, name & grade || according to the grade)
+            switch(inputArray) {
+                case inputArrayGradeOne:
+                    imageWeekNum = inputImageWeekNum_G1.value;
+                    imageName = inputImageName_G1.value;
+                    grade = "grado-1";
+                    break;
+                case inputArrayGradeTwo:
+                    imageWeekNum = inputImageWeekNum_G2.value;
+                    imageName = inputImageName_G2.value;
+                    grade = "grado-2";
+                    break;
+                case inputArrayGradeThree:
+                    imageWeekNum = inputImageWeekNum_G3.value;
+                    imageName = inputImageName_G3.value;
+                    grade = "grado-3";
+                    break;
+                case inputArrayGradeFour:
+                    imageWeekNum = inputImageWeekNum_G4.value;
+                    imageName = inputImageName_G4.value;
+                    grade = "grado-4";
+                    break;
+            }
+
+            if(imageOptionNum !== "") {
+                const option1 = `../../script/quiz/semana-${imageWeekNum}/${grade}/${imageName}-${imageOptionNum}A.png`;
+                const option2 = `../../script/quiz/semana-${imageWeekNum}/${grade}/${imageName}-${imageOptionNum}B.png`;
+                const option3 = `../../script/quiz/semana-${imageWeekNum}/${grade}/${imageName}-${imageOptionNum}C.png`;
+                const option4 = `../../script/quiz/semana-${imageWeekNum}/${grade}/${imageName}-${imageOptionNum}D.png`;
+                const options = [option1, option2, option3, option4];
+                singleQuestionObject.options = options;
+            } 
         }
         if(input.answerId) {
             // First we select the 4 radio buttons
@@ -400,6 +498,7 @@ function determineQuestionContainer() {
     }
 }
 
+
 function addQuestionItem(questionType) {
     // Variables
     let questionItemContainer;
@@ -434,8 +533,14 @@ function addQuestionItem(questionType) {
     // Functions
     //---Create Container
     questionItemContainer = createElementHTML('article', 'block', 'quiz-block', 'quiz-gen-block');
-    questionItemContainer.dataset.input = "input--text-question";
-    /* ==Upload:==*/ questionObject.optionTypeId = "input--text-question";
+    //---Determine if we have a "text-question" or "image-question"
+    if(questionType === "text-question") {
+        questionItemContainer.dataset.input = "input--text-question";
+        /* ==Upload:==*/ questionObject.optionTypeId = "input--text-question";
+    } else if(questionType === "image-question") {
+        questionItemContainer.dataset.input = "input--image-question";
+        /* ==Upload:==*/ questionObject.optionTypeId = "input--image-question";
+    }
     //---Create Settings Toolbar
     questionItemSettingsToolbar = createElementHTML('div', 'quiz-gen-question-settings', '', '', '');
     createSettingsToolbar(questionType, questionItemSettingsToolbar);
@@ -567,7 +672,9 @@ function addQuestionItem(questionType) {
 }
 
 
-
+/* ----------
+CREATE QUESTION ELEMENTS
+----------*/
 function createQuestionElementHtml(type, parent, inputFieldId) {
     // ---Variables
     let questionElement_container;
@@ -735,7 +842,6 @@ function createOptionElementHtml(type, parent, inputFieldId, radioButtonId, ques
     }
 }
 
-
 function createImageElementHtml(type, parent, inputFieldId_url, inputFieldId_num) {
     // ---Variables
     let questionElement_container;
@@ -810,6 +916,42 @@ function createImageElementHtml(type, parent, inputFieldId_url, inputFieldId_num
     }
 }
 
+function createElementHTML(type, class_1, class_2, class_3, parent, message, attribute_src, inputType) {
+    let htmlElement = document.createElement(type);
+    // Depending on tag type
+    switch(type) {
+        case "img":
+            htmlElement.src = (attribute_src || "");
+            htmlElement.alt = "";
+    }
+    // Adding the message
+    if(message) {
+        htmlElement.innerHTML = message;
+    }
+    // Adding classes
+    if(class_1) {
+        htmlElement.classList.add(class_1);
+    }
+    if(class_2) {
+        htmlElement.classList.add(class_2);
+    }
+    if(class_3) {
+        htmlElement.classList.add(class_3);
+    }
+    if(inputType) {
+        htmlElement.type = inputType;
+    }
+    // Upload the html Element
+    if(parent) {
+        parent.appendChild(htmlElement);
+    } else {
+        return htmlElement;
+    }
+}
+
+/* ----------
+SET IMAGE FUNCTIONALITY
+----------*/
 function updateImageData() {
     switch(gradeSelection) {
         case "grade-1":
@@ -918,6 +1060,9 @@ function updateOptionImage(e) {
     }
 }
 
+/* ----------
+SET TEXTAREA
+----------*/
 function setTextarea(type, textarea) {
     switch(type) {
         case "instruction":
@@ -957,51 +1102,9 @@ function setTextarea(type, textarea) {
     })
 }
 
-function setDeleteButton(button) {
-    button.addEventListener('click', (e) => {
-        e.target.parentNode.children[2].classList.remove('d-none');
-    });
-}
-
-function setDeleteButtonImage(button) {
-    button.addEventListener('click', (e) => {
-        e.target.parentNode.children[3].classList.remove('d-none');
-    });
-}
-
-function createElementHTML(type, class_1, class_2, class_3, parent, message, attribute_src, inputType) {
-    let htmlElement = document.createElement(type);
-    // Depending on tag type
-    switch(type) {
-        case "img":
-            htmlElement.src = (attribute_src || "");
-            htmlElement.alt = "";
-    }
-    // Adding the message
-    if(message) {
-        htmlElement.innerHTML = message;
-    }
-    // Adding classes
-    if(class_1) {
-        htmlElement.classList.add(class_1);
-    }
-    if(class_2) {
-        htmlElement.classList.add(class_2);
-    }
-    if(class_3) {
-        htmlElement.classList.add(class_3);
-    }
-    if(inputType) {
-        htmlElement.type = inputType;
-    }
-    // Upload the html Element
-    if(parent) {
-        parent.appendChild(htmlElement);
-    } else {
-        return htmlElement;
-    }
-}
-
+/* ----------
+SET QUESTION COUNT
+----------*/
 function updateQuestionCount() {
     switch(gradeSelection) {
         case("grade-1"):
@@ -1019,6 +1122,10 @@ function updateQuestionCount() {
             break;
     }
 }
+
+/* ----------
+CREATE SETTINGS TOOLBAR
+----------*/
 
 function createSettingsToolbar(type, parent) {
     // ---Variables
@@ -1086,6 +1193,12 @@ function createSettingsToolbar(type, parent) {
     });
     // ---Button: Delete
     settingsToolbar_btnDelete = createElementHTML('button', 'quiz-gen-btn--settings', 'quiz-gen-btn--settings-delete', '', '', `<i class="fas fa-times"></i>`);
+    settingsToolbar_btnDelete.addEventListener('click', (e) => {
+        console.log(e.target.parentNode);
+        const showDeleteMessage = e.target.parentNode.querySelector(`[data-type="delete-message"]`);
+        showDeleteMessage.classList.remove('d-none')
+    });
+    let deleteMessage = createDeleteMessage_completeQuestion();
     // Upload Buttons
     parent.appendChild(settingsToolbar_btnInstruction);
     parent.appendChild(settingsToolbar_btnSituation);
@@ -1093,8 +1206,9 @@ function createSettingsToolbar(type, parent) {
     parent.appendChild(settingsToolbar_btnQuestion);
     parent.appendChild(settingsToolbar_btnImage);
     parent.appendChild(settingsToolbar_btnInfo);
+    parent.appendChild(settingsToolbar_btnDelete);
+    parent.appendChild(deleteMessage);
 }
-
 
 function createSettingsButton(type, targetElement) {
         console.log(targetElement.parentNode.parentNode)
@@ -1127,6 +1241,22 @@ function createSettingsButton(type, targetElement) {
         deleteMessage.forEach( message => {
             message.classList.add('d-none');
         });
+}
+
+/* ----------
+SET DELETE FUNCTION
+----------*/
+
+function setDeleteButton(button) {
+    button.addEventListener('click', (e) => {
+        e.target.parentNode.children[2].classList.remove('d-none');
+    });
+}
+
+function setDeleteButtonImage(button) {
+    button.addEventListener('click', (e) => {
+        e.target.parentNode.children[3].classList.remove('d-none');
+    });
 }
 
 function createDeleteMessage(type) {
@@ -1186,5 +1316,30 @@ function createDeleteMessage(type) {
     // Upload the button
     deleteMessage_container.appendChild(deleteMessage_btn);
     // Return the container
+    return deleteMessage_container;
+}
+
+function createDeleteMessage_completeQuestion() {
+    // ---Variables
+    let deleteMessage_container;
+    let deleteMessage_btnClose;
+    let deleteMessage_btn;
+    // ---Functions
+    // Create the container
+    deleteMessage_container = createElementHTML('div', 'quiz-gen-delete-message', 'd-none', '', '');
+    deleteMessage_container.dataset.type = "delete-message";
+    // Create the close button
+    deleteMessage_btnClose = createElementHTML('p', 'quiz-gen-delete-message--close', '', '', '', '<i class="fas fa-times"></i>');
+    deleteMessage_btnClose.addEventListener('click', (e) => {
+        let item = e.target.closest('[data-type="delete-message"]');
+        item.classList.add('d-none');
+    })
+    deleteMessage_container.appendChild(deleteMessage_btnClose);
+    // Create the message text
+    createElementHTML('p', '', '', '', deleteMessage_container, '¿Estás seguro de que quieres borrar este campo?');
+    // Create the delete button
+    deleteMessage_btn = createElementHTML('button', 'quiz-gen-confirm-delete-btn', '', '', '', 'Eliminar');
+    deleteMessage_btn.dataset.name = `delete-complete-question`;
+
     return deleteMessage_container;
 }
