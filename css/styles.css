@@ -2277,6 +2277,7 @@ ADMIN ZONE: OVERVIEW
     align-items: center;
     justify-content: center;
     height: 90vh;
+    left: 10%;;
 }
 
 .admin-zone-card {
@@ -2285,6 +2286,8 @@ ADMIN ZONE: OVERVIEW
     border-radius: 20px;
     box-shadow: 0 0 10px 0 black;
     max-width: 300px;
+    margin-left: 1em;
+    margin-right: 1em;
 }
 
 .admin-zone-title {
@@ -2331,6 +2334,11 @@ ADMIN ZONE: OVERVIEW
     padding: 0.375em 2em;
     border-radius: 5px;
     color: white;
+}
+
+.admin-zone-button:focus,
+.admin-zone-button:hover {
+    opacity: 0.7;
 }
 
 /*==================
@@ -2512,6 +2520,10 @@ QUIZ GENERATOR: CODE WINDOW
     z-index: 2000;
 }
 
+.quiz-gen-results-hidden {
+    transform: translateY(1000px);
+}
+
 .quiz-gen-results-show {
     animation: show-quiz-gen-result 2s 1;
 }
@@ -2519,6 +2531,9 @@ QUIZ GENERATOR: CODE WINDOW
 @keyframes  show-quiz-gen-result {
     0% {
         transform: translateY(1000px)
+    }
+    100% {
+        transform: translateY(0px)
     }
     /* 100% {
         transform: translateY(0px)
@@ -2531,6 +2546,9 @@ QUIZ GENERATOR: CODE WINDOW
 }
 
 @keyframes  hide-quiz-gen-result {
+    0% {
+        transform: translateY(0px);
+    }
     100% {
         transform: translateY(1000px);
     }
@@ -2566,6 +2584,7 @@ QUIZ GENERATOR: QUESTION SETTINGS
 ==================*/
 .quiz-gen-block {
     display: block;
+    margin-bottom: 8em;
     /* margin-top: 2em; */
     /* BAD IDEA !!!!!! */
     /* margin-bottom: -15em;  */
@@ -2668,6 +2687,15 @@ QUIZ GENERATOR: QUESTIONS
     font-weight: 400;
     color: #4F80B3;
     margin-right: 0;
+    position: relative;
+}
+
+.quiz-gen-input-img-option {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #4F80B3;
+    width: 80%;
+    margin: 0 auto;
 }
 
 /* .quiz-gen-input-img:checked {

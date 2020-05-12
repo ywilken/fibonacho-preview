@@ -54,7 +54,7 @@ btnLoginSubmit.addEventListener('click', (e) => {
         }
     } else {
         if(inputLoginUsername.value === "fibonacho" && inputLoginPassword.value === "admin123") {
-            location.href="html/admin-zone/admin-html-generator.html";
+            location.href="html/admin-zone/admin-app-overview.html";
         } else if(inputLoginUsername.value !== "fibonacho" || inputLoginPassword.value !== "admin123") {
             messageLoginDataIncorrect.classList.remove('login-error-message-hidden');
         }

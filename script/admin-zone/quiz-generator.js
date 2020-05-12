@@ -66,6 +66,8 @@ const btnGradeThree = document.querySelector('[data-btn="btn--grade-3"]');
 const btnGradeFour = document.querySelector('[data-btn="btn--grade-4"]');
 // Buttons: Add Questions
 const btnAddTextQuestion = document.querySelector('[data-btn="btn--add-text-question"]');
+// Buttons: Add Questions
+const btnAddImageQuestion = document.querySelector('[data-btn="btn--add-image-question"]');
 // Buttons: Submit Questions
 const btnSubmitQuestion = document.querySelector('[data-btn="btn--submit-questions"]');
 // Buttons: Code Window Toggle
@@ -84,7 +86,8 @@ btnGradeTwo.addEventListener('click', changeGrade);
 btnGradeThree.addEventListener('click', changeGrade);
 btnGradeFour.addEventListener('click', changeGrade);
 // Event Listeners: Add Questions
-btnAddTextQuestion.addEventListener('click', addTextQuestion);
+btnAddTextQuestion.addEventListener('click', addQuestion);
+btnAddImageQuestion.addEventListener('click', addQuestion);
 // Event Listeners: Submit Questions
 btnSubmitQuestion.addEventListener('click', submitQuestions);
 // Event Listeners: Code Window Toggle
@@ -98,9 +101,7 @@ TOGGLE CODE WINDOW
 ----------*/
 function toggleCodeWindow() {
     // formQuizGenResults.classList.toggle('d-none');
-    formQuizGenResults.classList.toggle('quiz-gen-results-show');
-    formQuizGenResults.classList.toggle('d-none');
-
+    formQuizGenResults.classList.add('quiz-gen-results-show');
 }
 
 /* ----------
@@ -114,6 +115,10 @@ function changeGrade(e) {
     e.target.classList.add('quiz-gen-toolbar-selected-grade');
     // Make ImageSettings Container Visible
     formImageSettings_Container.classList.remove('d-none');
+    // Hide the Code Window
+    if(formQuizGenResults.classList.contains('quiz-gen-results-show')){
+        formQuizGenResults.classList.add('quiz-gen-results-hide');
+    }
     // ---ImageSettings: Grade 1
     if (e.target.dataset.btn.includes('grade-1')) {
         // Update the grade selection variable:
@@ -218,6 +223,10 @@ function submitQuestions() {
     outputQuizGenCode.appendChild(questionArray_G2_string_textNode);
     outputQuizGenCode.appendChild(questionArray_G3_string_textNode);
     outputQuizGenCode.appendChild(questionArray_G4_string_textNode);
+    // Open the code window:
+    formQuizGenResults.classList.remove('quiz-gen-results-hide');
+    formQuizGenResults.classList.add('quiz-gen-results-show');
+    formQuizGenResults.classList.remove('quiz-gen-results-hidden');
 }
 
 function createFinishedArray(inputArray) {
@@ -341,9 +350,24 @@ function createFinishedArray(inputArray) {
 /* ----------
 ADD QUESTIONS
 ----------*/
-function addTextQuestion() {
+function addQuestion(e) {
+    // Determine the Question Type
+    let questionType = determineQuestionType(e);
+    // Determine the Question Container
     determineQuestionContainer();
-    addQuestionItem();
+    // Add the question item
+    addQuestionItem(questionType);
+}
+
+// Function: Determine which question type ("text-question" or "image-question") we have
+function determineQuestionType(e) {
+    let questionTypeValue;
+    if(e.target.dataset.btn === 'btn--add-text-question') {
+        questionTypeValue = "text-question";
+    } else if(e.target.dataset.btn === 'btn--add-image-question') {
+        questionTypeValue = "image-question";
+    }
+    return questionTypeValue;
 }
 
 // Function: Determine which question container (G1-G4) is needed
@@ -376,7 +400,7 @@ function determineQuestionContainer() {
     }
 }
 
-function addQuestionItem() {
+function addQuestionItem(questionType) {
     // Variables
     let questionItemContainer;
     let questionItemSettingsToolbar;
@@ -388,6 +412,7 @@ function addQuestionItem() {
     let questionItem_question;
     let questionItem_options;
     let questionItem_element;
+    let questionItem_image;
     // Variables - Data
     const inputFieldId_instruction = Math.random();
     const inputFieldId_situation = Math.random();
@@ -396,6 +421,7 @@ function addQuestionItem() {
     const inputFieldId_info = Math.random();
     const inputFieldId_questionImage_url = Math.random();
     const inputFieldId_questionImage_num = Math.random();
+    const inputFieldId_questionImageOption_num = Math.random();
     const inputFieldId_option1 = Math.random();
     const inputFieldId_option2 = Math.random();
     const inputFieldId_option3 = Math.random();
@@ -412,7 +438,7 @@ function addQuestionItem() {
     /* ==Upload:==*/ questionObject.optionTypeId = "input--text-question";
     //---Create Settings Toolbar
     questionItemSettingsToolbar = createElementHTML('div', 'quiz-gen-question-settings', '', '', '');
-    createSettingsToolbar('text', questionItemSettingsToolbar);
+    createSettingsToolbar(questionType, questionItemSettingsToolbar);
     //---Create QuestionItemCard
     questionItemCard = createElementHTML('div', 'real-block', 'real-quiz-block', 'shadow', '');
     questionItemElementsContainer = createElementHTML('div', 'quiz-container', 'quiz-gen-container', '', '');
@@ -458,13 +484,62 @@ function addQuestionItem() {
     //---Create Options Container
     questionItem_options = createElementHTML('div', 'quiz-options', '', '', '');
         //---Create "1st Option"
-        questionItem_element = createOptionElementHtml('option1', questionItem_options, inputFieldId_option1, inputFieldId_correctOption);
+        questionItem_element = createOptionElementHtml('option1', '', inputFieldId_option1, inputFieldId_correctOption, questionType);
+        //------If we have an "image question" append an image
+        if(questionType === "image-question") {
+            questionItem_image = createElementHTML('img', '', '', '', '');
+            questionItem_image.dataset.output = "output--option-image";
+            questionItem_element.appendChild(questionItem_image);
+        }
+        /* ==Upload:==*/ questionItem_options.appendChild(questionItem_element);
         //---Create "2ndt Option"
-        questionItem_element = createOptionElementHtml('option2', questionItem_options, inputFieldId_option2, inputFieldId_correctOption);
+        questionItem_element = createOptionElementHtml('option2', '', inputFieldId_option2, inputFieldId_correctOption, questionType);
+        //------If we have an "image question" append an image
+        if(questionType === "image-question") {
+            questionItem_image = createElementHTML('img', '', '', '', '');
+            questionItem_image.dataset.output = "output--option-image";
+            questionItem_element.appendChild(questionItem_image);
+        }
+        /* ==Upload:==*/ questionItem_options.appendChild(questionItem_element);
         //---Create "3rd Option"
-        questionItem_element = createOptionElementHtml('option3', questionItem_options, inputFieldId_option3, inputFieldId_correctOption);
+        questionItem_element = createOptionElementHtml('option3', '', inputFieldId_option3, inputFieldId_correctOption, questionType);
+        //------If we have an "image question" append an image
+        if(questionType === "image-question") {
+            questionItem_image = createElementHTML('img', '', '', '', '');
+            questionItem_image.dataset.output = "output--option-image";
+            questionItem_element.appendChild(questionItem_image);
+        }
+        /* ==Upload:==*/ questionItem_options.appendChild(questionItem_element);
         //---Create "4th Option"
-        questionItem_element = createOptionElementHtml('option4', questionItem_options, inputFieldId_option4, inputFieldId_correctOption);
+        questionItem_element = createOptionElementHtml('option4', '', inputFieldId_option4, inputFieldId_correctOption, questionType);
+        //------If we have an "image question" append an image
+        if(questionType === "image-question") {
+        questionItem_image = createElementHTML('img', '', '', '', '');
+        questionItem_image.dataset.output = "output--option-image";
+        questionItem_element.appendChild(questionItem_image);
+        }
+        /* ==Upload:==*/ questionItem_options.appendChild(questionItem_element);
+
+        if(questionType === "image-question") {
+            //---Adding the image number field
+            let questionItem_imageNum_div = createElementHTML('span', 'quiz-gen-input-img-option', '', '', '');
+            let questionItem_imageNum = createElementHTML('input', 'quiz-gen-input', '', '', '');
+            questionItem_imageNum.dataset.input = inputFieldId_questionImageOption_num;
+            questionItem_imageNum.placeholder = "(Necesario:) Soy el número de las imagenes.";
+            questionItem_imageNum.type = "number";
+            questionItem_imageNum.min = 1;
+            questionItem_imageNum.addEventListener('change', (e) => {
+                if(e.target.value !== "") {
+                    e.target.classList.add('quiz-gen-input-filled');
+                } else {
+                    e.target.classList.remove('quiz-gen-input-filled');
+                }
+                updateOptionImage(e);
+            })
+            /* ==Upload:==*/ questionItem_imageNum_div.appendChild(questionItem_imageNum);
+            /* ==Upload:==*/ questionItem_options.appendChild(questionItem_imageNum_div);
+            /* ==Upload:==*/ questionObject.questionImageOptionId = inputFieldId_questionImageOption_num;
+        }
     // Upload our options
     questionObject.option1Id = inputFieldId_option1;
     questionObject.option2Id = inputFieldId_option2;
@@ -572,7 +647,7 @@ function createQuestionElementHtml(type, parent, inputFieldId) {
     }
 }
 
-function createOptionElementHtml(type, parent, inputFieldId, radioButtonId) {
+function createOptionElementHtml(type, parent, inputFieldId, radioButtonId, questionType) {
     // ---Variables
     let questionElement_container;
     let questionElement_placeholder_div;
@@ -628,6 +703,14 @@ function createOptionElementHtml(type, parent, inputFieldId, radioButtonId) {
     questionElement_textarea = createElementHTML('textarea', 'quiz-gen-input', 'quiz-gen-input--options', '', '');
     setTextarea(type, questionElement_textarea);
     questionElement_textarea.dataset.input = inputFieldId;
+    // ---Changes for "image-question" type
+    if(questionType === "image-question") {
+        // Add a different class for the styling of the textarea text 
+        questionElement_placeholder_div.classList.add('quiz-gen-input-img');
+        // Add a placeholder text
+        questionElement_textarea.placeholder = '(Opcional: url)';
+        questionElement_textarea.addEventListener('change', updateOptionImage);
+    }
     // Create the radio button
     questionElement_radioBtn = createElementHTML('input', '', '', '', '', '', '', 'radio');
     questionElement_radioBtn.name = radioButtonId;
@@ -652,18 +735,6 @@ function createOptionElementHtml(type, parent, inputFieldId, radioButtonId) {
     }
 }
 
-// <div>
-//     <img data-output="output--question-image" class="question-image" src="https://www.adslzone.net/app/uploads-adslzone.net/2019/04/borrar-fondo-imagen-930x487.jpg" alt="">
-//     <!-- BUTTON-DELETE -->
-//     <button class="quiz-gen-delete-btn">
-//         <i class="fas fa-times"></i>
-//     </button>
-//     <!-- POP-UP MESSAGE -->
-//     <!-- <div class="quiz-gen-delete-message">
-//         <p>¿Estás seguro de que quieres borrar este campo?</p>
-//         <button class="quiz-gen-confirm-delete-btn">Eliminar</button>
-//     </div> -->
-// </div>
 
 function createImageElementHtml(type, parent, inputFieldId_url, inputFieldId_num) {
     // ---Variables
@@ -790,6 +861,63 @@ function updatePreviewImage(e) {
     previewImage.classList.remove('d-none');
 }
 
+function updateOptionImage(e) {
+    console.log(e.target.parentNode.parentNode.children[1]);
+    console.log(e.target.parentNode.parentNode);
+    // ===UPDATE IMAGE DATA===
+    updateImageData();
+    // ===GET THE OPTION NUMBER / OR IMAGE===
+    // let optionNumber;
+    let imageOptionOne;
+    let imageOptionTwo;
+    let imageOptionThree;
+    let imageOptionFour;
+    let textareaOne;
+    let textareaTwo;
+    let textareaThree;
+    let textareaFour;
+    // The url dominates for preview purposes (if url and image number exist, the url will be displayed)
+    if(e.target.tagName.toLowerCase() === "textarea") {
+        // if(e.target.parentNode.parentNode.classList.contains('option-1')){
+        //     optionNumber = 'A'; 
+        // } else if(e.target.parentNode.parentNode.classList.contains('option-2')){
+        //     optionNumber = 'B'; 
+        // } else if(e.target.parentNode.parentNode.classList.contains('option-3')){
+        //     optionNumber = 'C'; 
+        // } else if(e.target.parentNode.parentNode.classList.contains('option-4')){
+        //     optionNumber = 'D';
+        // }
+        const previewImage = e.target.parentNode.parentNode.querySelector('[data-output="output--option-image"]');
+        previewImage.src = e.target.value;
+    } else if(e.target.tagName.toLowerCase() === "input") {
+        // Select the images
+        imageOptionOne = e.target.parentNode.parentNode.children[0].querySelector('[data-output="output--option-image"]');
+        imageOptionTwo = e.target.parentNode.parentNode.children[1].querySelector('[data-output="output--option-image"]');
+        imageOptionThree = e.target.parentNode.parentNode.children[2].querySelector('[data-output="output--option-image"]');
+        imageOptionFour = e.target.parentNode.parentNode.children[3].querySelector('[data-output="output--option-image"]');
+        // Select the textareas
+        textareaOne = e.target.parentNode.parentNode.children[0].children[0].children[0].value;
+        textareaTwo = e.target.parentNode.parentNode.children[1].children[0].children[0].value;
+        textareaThree = e.target.parentNode.parentNode.children[2].children[0].children[0].value;
+        textareaFour = e.target.parentNode.parentNode.children[3].children[0].children[0].value;
+
+        if(e.target.value !== "") {
+            if(textareaOne === "") {
+                imageOptionOne.src = `../../script/quiz/semana-${selectedImageWeekNum}/${selectedGrade}/${selectedImageName}-${e.target.value}A.png`;
+            }
+            if(textareaTwo === "") {
+                imageOptionTwo.src = `../../script/quiz/semana-${selectedImageWeekNum}/${selectedGrade}/${selectedImageName}-${e.target.value}B.png`;
+            }
+            if(textareaThree === "") {
+                imageOptionThree.src = `../../script/quiz/semana-${selectedImageWeekNum}/${selectedGrade}/${selectedImageName}-${e.target.value}C.png`;
+            }
+            if(textareaFour === "") {
+                imageOptionFour.src = `../../script/quiz/semana-${selectedImageWeekNum}/${selectedGrade}/${selectedImageName}-${e.target.value}D.png`;
+            }
+        }
+    }
+}
+
 function setTextarea(type, textarea) {
     switch(type) {
         case "instruction":
@@ -905,10 +1033,10 @@ function createSettingsToolbar(type, parent) {
 
     // ---Functions
     // Text / Image Icon
-    if(type === "text") {
+    if(type === "text-question") {
         settingsToolbar_icon = createElementHTML('div', '', '', '', '', '<i class="fas fa-file-alt quiz-gen-question-settings-icon"></i>');
         parent.appendChild(settingsToolbar_icon);
-    } else if(type === "img") {
+    } else if(type === "image-question") {
         settingsToolbar_icon = createElementHTML('div', '', '', '', '', '<i class="fas fa-file-image quiz-gen-question-settings-icon"></i>');
         parent.appendChild(settingsToolbar_icon);
     }

@@ -28,7 +28,7 @@
             <header>AdminZone</header>
             <ul>
                 <li><a href="../../index.html"><i class="fas fa-home"></i>Home</a></li>
-                <li><a href="#" class="current-page"><i class="fas fa-user-astronaut"></i>Situaciones problema</a></li>
+                <li><a href="#" class="current-page"><i class="fas fa-user-astronaut"></i>Quiz Generator</a></li>
                 <li><div class="go-back-link"><i class="fas fa-undo-alt"></i>Volver</div></li>
                 <!-- <li><a href="../../index.html#site-contact"><i class="fas fa-envelope"></i>Contacto</a></li> -->
             </ul>
@@ -38,7 +38,7 @@
 
 
             <!--=======CODE WINDOW=======-->
-            <div data-form="quiz-gen-results" class="quiz-gen-results d-none">
+            <div data-form="quiz-gen-results" class="quiz-gen-results quiz-gen-results-hidden">
                 <div class="quiz-gen-results-container">
                     <h2 class="quiz-gen-results-title">¡Tu código esta listo!</h2>
                     <textarea data-output="output--quiz-gen-code" class="quiz-gen-code-window" name="" id="" spellcheck="false"></textarea>
@@ -103,7 +103,7 @@
                 <div class="quiz-gen-toolbar-main">  
                     <div class="quiz-gen-toolbar-buttons">
                             <button data-btn="btn--add-text-question" class="quiz-gen-btn--toolbar"><i class="fas fa-plus-circle"></i> Pregunta Texto</button>
-                            <button class="quiz-gen-btn--toolbar"><i class="fas fa-plus-circle"></i> Pregunta Imagen</button>
+                            <button data-btn="btn--add-image-question" class="quiz-gen-btn--toolbar"><i class="fas fa-plus-circle"></i> Pregunta Imagen</button>
                             <button data-btn="btn--submit-questions" class="quiz-gen-btn--toolbar quiz-gen-btn--toolbar-submit"><i class="fas fa-paper-plane"></i> Enviar</button>
                             <button class="quiz-gen-btn--toolbar quiz-gen-btn--toolbar-delete"><i class="fas fa-trash"></i> Borrar</button>
                             <button data-btn="btn--toggle-code-window" class="quiz-gen-btn--toolbar-code"><i class="fas fa-code"></i></button>

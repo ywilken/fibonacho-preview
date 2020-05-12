@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fibonacho</title>
+        <link rel="shortcut icon" type="image/png" href="../../img/favicon.png">
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Baloo+2:400,700|Caveat:400,700&display=swap" rel="stylesheet">        
+        <link href="../../css/styles.css" rel="stylesheet">
+    </head>
+    <body>
+
+        <!-- Quiz Information: Which Grade?-->
+        <div class="quiz-information" data-input="grade-3"></div>
+        <!-- / Quiz Information -->
+
+
+        <!--===SIDEBAR===-->
+        <!--=======Menu open/close=======-->
+        <input type="checkbox" id="check">
+        <label for="check">
+            <i class="fas fa-bars" id="btn"></i>
+            <i class="fas fa-times" id="cancel"></i>
+        </label>
+        <!--=======Sidebar Menu=======-->
+        <div class="sidebar">
+            <header>AdminZone</header>
+            <ul>
+                <li><a href="../../index.html"><i class="fas fa-home"></i>Home</a></li>
+                <li><a href="#" class="current-page"><i class="fas fa-user-astronaut"></i>Overview</a></li>
+                <li><div class="go-back-link"><i class="fas fa-undo-alt"></i>Volver</div></li>
+                <!-- <li><a href="../../index.html#site-contact"><i class="fas fa-envelope"></i>Contacto</a></li> -->
+            </ul>
+        </div>
+        
+        <main class="pattern pattern-overlay pattern-quiz">
+
+            <div class="admin-zone-container">
+                <div class="admin-zone-card">
+                    <div class="admin-zone-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h2 class="admin-zone-title">HTML Generator</h2>
+                    <p class="admin-zone-text">¡Crea tu proprio código de html con la ayuda de este generador!</p>
+                    <div class="admin-zone-button--div"><a class="admin-zone-button" href="./admin-html-generator.html">Abrir</a></div>
+                </div>
+        
+                <div class="admin-zone-card">
+                    <div class="admin-zone-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h2 class="admin-zone-title">Quiz Generator</h2>
+                    <p class="admin-zone-text">¡Crea tus proprios quizzes con la ayuda de esta máquina silenciosa!</p>
+                    <div class="admin-zone-button--div"><a class="admin-zone-button" href="./admin-quiz-generator.html">Abrir</a></div>
+                </div>
+            </div>
+
+            <!--=======TASKBAR=======-->
+            <div class="quiz-gen-toolbar">
+                <div class="quiz-gen-toolbar-main">  
+                </div>
+            </div>
+
+        
+
+    </body>
+</html>
